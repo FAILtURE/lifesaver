@@ -1,0 +1,108 @@
+//
+// Typography
+// --------------------------------------------------
+@font-face {
+    font-family: 'ChunkFiveRegular';
+    src: url('../fonts/Chunkfive-webfont.eot');
+    src: url('../fonts/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Chunkfive-webfont.woff') format('woff'),
+         url('../fonts/Chunkfive-webfont.ttf') format('truetype'),
+         url('../fonts/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family: 'ChunkFiveRegular';
+        src: url('../fonts/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    }
+}
+
+// Body text
+// -------------------------
+
+p {
+  margin: 0 0 @line-height-base / 2;
+}
+.lead {
+  margin-bottom: @line-height-base;
+  font-size: @font-size-base * 1.5;
+  font-weight: 200;
+  line-height: @line-height-base * 1.5;
+}
+
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  margin: (@line-height-base / 2) 0;
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: 27px;
+  color: @headings-color;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
+  
+  small, .small {
+    font-weight: normal;
+    line-height: 1;
+    color: @gray-light;	
+  }
+}
+
+h1,
+h2,
+h3 { line-height: @line-height-base * 2; }
+
+h1 { 
+    font-size: @font-size-base * 4;
+    font-family: 'ChunkFiveRegular', 'Open Sans', sans-serif;
+    line-height: @line-height-base * 3;
+    letter-spacing: 1px;
+} 
+h2 { font-size: @font-size-base * 2.25; } // ~32px
+h3 { font-size: @font-size-base * 1.75; } // ~24px
+h4 {
+    font-size: @font-size-base;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: @gray;
+    letter-spacing: 1px;
+}
+
+h5 { 
+    font-size: @font-size-base;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: (@line-height-base / 1.4) 0;
+    letter-spacing: 1px;
+}
+
+h6 {
+    font-size: @font-size-base * 0.8;
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: (@line-height-base / 2) 0;
+    letter-spacing: 1px;
+    margin: 0px;
+}
+
+h1 small { font-size: @font-size-base * 1.75; } // ~24px
+h2 small { font-size: @font-size-base * 1.25; } // ~18px
+h3 small { font-size: @font-size-base; }
+h4 small { font-size: @font-size-base; }
+h5 small {
+    letter-spacing: 1px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+// Page header
+// -------------------------
+
+.page-header {
+  padding-bottom: (@line-height-base / 2) - 1;
+  margin: @line-height-base 0 (@line-height-base * 1.5);
+  border-bottom: 1px solid @gray-lighter;
+}

@@ -1,0 +1,214 @@
+/*
+*   Fixed elements, top or bottom.
+*/
+
+.fixed-top {
+    position: fixed;
+    top: 0px;
+    .opacity(0);
+}
+.fixed-bottom {
+    position: fixed;
+    bottom: 0px;
+    display: none;
+    .opacity(0);
+}
+
+.fixed-visable {
+    .opacity(100);
+    display: block;
+}
+
+/*
+*   Submenu
+*/
+
+.submenu {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    
+    ul {
+        margin: 0;
+		padding: 0;
+    }
+    
+    li {
+        display: inline-table;
+    }
+    a {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 28px;
+        letter-spacing: 1px;
+        color: @white;
+        padding: 3px 8px;
+        margin: 0 3px;
+        position: relative;
+        background-color: @gray-lighter;
+    }
+    
+    a:hover,
+    a.active {
+        background-color: @blueGray;
+        text-decoration: none;
+        color: @white;
+    }
+}
+
+/*
+*   Show more cube
+*/
+
+.show-more-cube {
+    background: url("../images/css/divider_more.png") no-repeat center center;
+    display: block;
+    width: 630px;
+    text-align: center;
+    margin: auto;
+    
+    a {
+        background-color: @blueGray;
+        color: #FFFFFF;
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 16px;
+        margin: auto;
+        padding: 20px 0;
+        text-align: center;
+        text-transform: uppercase;
+        width: 70px;
+        .rotate(45deg);
+    }
+    a span {
+        .rotate(-45deg);
+        display: block;
+    }
+    a:hover {
+        text-decoration: none;
+        color: @white;
+        .opacity(80);
+    }
+}
+
+
+/*
+*   Divider for Heading lines
+*/
+
+.line-divider:after {
+    background: url("../images/css/divider.png") no-repeat bottom center;
+    padding-bottom: 25px;
+    display: block;
+    height: 10px;
+    content: ",";
+    text-indent: -9999px;
+    width: 630px;
+    text-align: center;
+    margin: auto auto 24px;
+}
+
+.line-divider-inline:after {
+    background: url("../images/css/divider_more_text.png") no-repeat bottom center;
+    padding-bottom: 0px;
+    display: block;
+    height: 10px;
+    content: ",";
+    text-indent: -9999px;
+    width: 100%;
+    text-align: center;
+    margin: auto auto 24px;
+    margin-top: -22px;
+}
+
+/*
+*   Heading images
+*/
+
+.overlay:after {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAHUlEQVQIW2NkYGD4D8SM6DRIAAQwJDFUwhRRUQcALRkSBISGlPAAAAAASUVORK5CYII=") repeat top left;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    .opacity(.4);
+}
+
+
+/*
+*   Center block
+*/
+
+.centralized {
+    left: 50%;
+    top: 50%;
+    float: left;
+    position: relative;
+    visibility: hidden;
+    .opacity(0);
+}
+
+
+/*
+*   Loading block
+*/
+
+.loading {
+    position: fixed;
+    width: 100%;
+	height: 25px;
+    bottom: 0px;
+    display: none;
+    z-index: 200;
+	
+	.progress-bar {
+		width: 100%;
+	}
+}
+
+/*
+*	Functional addons
+*/
+// Background sizing
+.background-size(@size) {
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+       -o-background-size: @size;
+          background-size: @size;
+}
+
+
+// Border Radius
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// Single Corner Border Radius
+.border-top-left-radius(@radius) {
+  -webkit-border-top-left-radius: @radius;
+      -moz-border-radius-topleft: @radius;
+          border-top-left-radius: @radius;
+}
+.border-top-right-radius(@radius) {
+  -webkit-border-top-right-radius: @radius;
+      -moz-border-radius-topright: @radius;
+          border-top-right-radius: @radius;
+}
+.border-bottom-right-radius(@radius) {
+  -webkit-border-bottom-right-radius: @radius;
+      -moz-border-radius-bottomright: @radius;
+          border-bottom-right-radius: @radius;
+}
+.border-bottom-left-radius(@radius) {
+  -webkit-border-bottom-left-radius: @radius;
+      -moz-border-radius-bottomleft: @radius;
+          border-bottom-left-radius: @radius;
+}

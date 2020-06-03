@@ -1,0 +1,159 @@
+html, body {
+    height: 100%;
+    width: 100%;
+	font-weight: @base-font-weight;
+	margin: 0;
+}
+
+
+// Images
+// -------------------------
+
+// Rounded corners
+.img-rounded {
+  .border-radius(6px);
+}
+
+// Add polaroid-esque trim
+.img-polaroid {
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  .box-shadow(0 1px 3px rgba(0,0,0,.1));
+}
+
+// Perfect circle
+.img-circle {
+  .border-radius(500px); // crank the border-radius so it works with most reasonably sized images
+}
+
+
+// White color
+.white {
+    color: @white;
+}
+
+// Black background
+.black-bg {
+  background-color: @gray-darker;
+}
+
+
+
+// Margins for row cols
+.show-margin {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.smallFontBy08 {
+    font-size: 0.8em;
+    line-height: @line-height-base / 1.2;
+}
+.cutBy10 {
+    margin: 0px 10%;
+}
+
+
+[data-type*="paralax"] {
+    .transition(top 0.3s ease 0s);
+}
+
+.badge {
+  padding: 4px 6px;
+  line-height: 19px; // ensure proper line-height if floated
+}
+
+.media > .pull-left {
+  margin-right: 20px;
+}
+.media > .pull-right {
+  margin-left: 20px;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  margin-top: 6px;
+}
+
+
+.thumbnails {
+  margin-left: -15px;
+  padding: 0;
+  list-style: none;
+  .clearfix();
+}
+// Fluid rows have no left margin
+.row .thumbnails {
+  margin-left: 0;
+}
+
+// Float li to make thumbnails appear in a row
+.thumbnails > li {
+  float: left; // Explicity set the float since we don't require .span* classes
+  margin-bottom: @line-height-base;
+}
+
+// Images and captions
+.thumbnails {
+	img {
+	  display: block;
+	  max-width: 100%;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+}
+
+img {
+  /* Responsive images (ensure images don't scale beyond their parents) */
+  max-width: 100%; /* Part 1: Set a maxium relative to the parent */
+  width: auto\9; /* IE7-8 need help adjusting responsive images */
+  height: auto; /* Part 2: Scale the height according to the width, otherwise you get stretching */
+
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+
+.thumbnails .caption {
+  padding: 9px;
+  color: @gray;
+}
+
+blockquote {
+  padding: 0 0 0 40px;
+  margin: 0 0 @line-height-base;
+  color: @gray;
+  position: relative;
+  border: none; 
+}
+  
+
+blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 60px;
+    font-weight: bold;
+    position: absolute;
+    left: 0px;
+    top: 18px;
+    color: @gray;
+    font-family: Georgia,serif;
+}
+
+
+
+&.pull-right {
+    float: right;
+    
+    &:before {
+        right: 0px;
+        left: auto;
+    }
+}
