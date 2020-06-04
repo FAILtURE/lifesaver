@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.co.lifesaver.*.controller" />
-	<context:component-scan base-package="kr.co.lifesaver.*.controller.Impl" />
+	<context:component-scan base-package="kr.co.lifesaver.*.web" />
+	<context:component-scan base-package="kr.co.lifesaver.*.service.Impl" />
 	
 </beans:beans>
