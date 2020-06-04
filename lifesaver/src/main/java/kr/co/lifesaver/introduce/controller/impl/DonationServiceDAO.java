@@ -1,5 +1,5 @@
 package kr.co.lifesaver.introduce.controller.impl;
 
-public class DonationDAO {
+public class DonationServiceDAO {
 
 }
