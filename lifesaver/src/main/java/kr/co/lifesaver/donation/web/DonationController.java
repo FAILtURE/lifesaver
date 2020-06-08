@@ -10,8 +10,8 @@ import kr.co.lifesaver.introduce.service.DonationService;
 @Controller
 public class DonationController {
 
-	@Resource(name="donationService")
-	private DonationService donationService;
+	/*@Resource(name="donationService")
+	private DonationService donationService;*/
 	
 	@RequestMapping(value = "/donation.do")
 	public String login() {
@@ -20,3 +20,4 @@ public class DonationController {
 	}
 	
 }
+	
