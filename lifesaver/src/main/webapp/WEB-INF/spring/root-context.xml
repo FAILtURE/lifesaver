@@ -8,29 +8,30 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	
+	<bean id="dao" class="kr.co.lifesaver.kakaoLogin.service.Impl.JoinDAO">
+		<property name="ss" ref="sqlSessionTemplate" /> 
+	</bean>
 	
 	<!-- datasource -->	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/management?useSSL=false" />
 		<property name="username" value="scott" />
 		<property name="password" value="tiger" />
-	</bean>
+	</bean> 
 	
-	
-	<!-- SqlSessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
-		<property name="configLocation" value="classpath:/mybatis-config.xml.xml" />	<!-- classpath=src.main -->
-		<property name="mapperLocations" value="classpath:/mapper/**/*.xml" />
+		<!-- SqlSessionFactory -->
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="configLocation" value="classpath:/mybatis-config.xml.xml" />	
+		<property name="mapperLocations" value="classpath:/**/**/**/**/mapper/*.xml" />   <!-- ** :폴더, * : 파일 -->
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
 	
 	<!-- SqlSessionTemplate -->
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+	 <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
-	</bean>
+	</bean> 
 	
 	
 </beans>
