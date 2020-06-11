@@ -1,82 +1,250 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=ege"/>
-<meta nmae="viewport" content="user-scalable=no,inital-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,width=device-width">
-<title>:: Custom Login Demo - Kakao JavaScript SDK ::</title>
-<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+html, body {
+	color: #454545;
+	font-family: Noto Sans CJK JP;
+	font-weight: bold;
+	font-size: 10.5px;
+}
+
+img {
+	max-width: 100%;
+	max-height: auto;
+}
+#container {
+	width: 600px;
+	padding: 20px;
+	margin: 10px auto;
+	text-align: center;
+	
+
+}
+
+#header {
+	padding: 20px;
+	margin-bottom: 20px;
+	/* border: 1px solid black; */
+}
+
+#logincontents {
+	padding-top: 20px;
+	clear: both;
+	background-color: rgb(249, 249, 249);
+	/* border: 1px solid red; */
+}
+
+input {
+	width: 70%;
+	margin-bottom: 10px;
+	padding: 20px;
+	border: 1px solid gray;
+	border-radius: 5px 5px 5px 5px;
+}
+
+#submitbutton {
+	background-image: url("img/login/login.png");
+	background-position: center;
+}
+
+#keep{
+	margin-bottom: 5px;
+} 
+
+
+
+#keeplogin{
+	background-color: rgb(249, 249, 249);
+	padding-top: 10px;
+	padding-left: 60px;
+	padding-right: 60px;
+	text-align: left;
+	font-size: 15px;
+	/* border: 1px solid blue; */
+}
+
+#findid{
+	margin-bottom: -1px;
+}
+
+#menus{
+	background-color: rgb(249, 249, 249);
+	padding-bottom: -60px;
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+
+#kakao{
+	background-color: rgb(249, 249, 249);
+}
+
+#line1{
+	margin-bottom: 7px;
+	
+}
+
+#line2{
+	margin-bottom: 60px;
+	
+}
+
+#loginkakao {
+	font-size: 14px;
+	background-color: rgb(249, 249, 249);
+}
+
+
+#logo2 {
+	margin-bottom: -10px;
+} 
+
+#footer {
+	margin-top: -10px;
+}
+
+@media(max-width: 400px) {
+	#container{
+	width: auto;
+	}
+	#logincontents{
+	width: auto;
+	}
+	#keeplogin{
+	width: auto;
+	}
+	#menus{
+	width: auto;
+	}
+	#agree{
+	width: auto;
+	}
+	#footer{
+	width: auto;
+	}
+	#loginkakao {
+	width: auto;
+	}
+	img{
+	width: auto;
+	}
+	#logo2{
+	width: 20%;
+	height: 20%;
+	margin-bottom: -5px;
+	}
+	 
+	
+	 
+	
+}
+</style>
+
 <script type="text/javascript">
 
-    document.addEventListener("DOMContentLoaded", function() {
+function changeImg() {
+	var on = document.getElementById('on');
 
-        // @details 카카오톡 Developer API 사이트에서 발급받은 JavaScript Key
+	if(on.src.indexOf('off') == -1) {			// == -1 : src 주소 내에 'off'가 없음
+	on.src = on.src.replace('on.png', 'off.png');
+	
+	// 로그인 유지 : 세션에 저장 
+	
+	
+	} else {
+	on.src = on.src.replace('off.png', 'on.png');
+	
+	// 로그인 유지 해제 : 세션에서 삭제
+	
+	}
+	}
 
-        Kakao.init( "발급받은 JavaScript Key" );
-
-
-        // @breif 카카오 로그인 버튼을 생성합니다.
-
-        Kakao.Auth.createLoginButton({
-              container : "#kakao-login-btn"
-            , success : function( authObj ) {
-
-
-
-                // console.log( authObj );
-
-
-                Kakao.API.request({
-                      url : "/v1/user/me"
-                    , success : function( res ) {
-
-
-                        // console.log( res );
-
-
-                        // @breif 아이디
-                        document.getElementById( "kakaoIdentity" ).innerHTML = res.id;
-
-                        // @breif 닉네임
-                        document.getElementById( "kakaoNickName" ).innerHTML = res.properties.nickname;
-
-
-                        // @breif 프로필 이미지
-                        document.getElementById( "kakaoProfileImg" ).src = res.properties.profile_image;
-
-                        // @breif 썸네일 이미지
-                        document.getElementById( "kakaoThumbnailImg" ).src = res.properties.thumbnail_image;
-
-
-                    }, fail : function( error ) {
-                        alert( JSON.stringify( error ) );
-                    }
-                });
-            }
-            , fail : function( error ) {
-                alert( JSON.stringify( error ));
-            }
-        });
-    });
 
 </script>
 
-</head>
 
+</head>
 <body>
 
-    <div>카카오 아이디 : <span id="kakaoIdentity"></span></div>
 
-    <div>닉네임 : <span id="kakaoNickName"></span></div>
+	<div id="container">
 
-    <div>프로필 이미지 : <img id="kakaoProfileImg" src=""/></div>
+	<div id="header">
+		<img src="img/login/logo.png" alt="로고" id="logo" />
+	</div>
 
-    <div>썸네일 이미지 : <img id="kakaoThumbnailImg" src=""/></div>
 
-    <br/>
+<form action="./normalLogin" method="post">
+		<div id="logincontents">
+			<br />
+			<br />
+			<br />
+			<input type="text" name="id" id="id" placeholder="아이디"> <br />
+			<input type="password" name="pw" id="pw" placeholder="비밀번호"> <br /> <br />
+			
+			<input type="submit" value="" id="submitbutton">
+		
+			
+		</div>
+			
+		<!-- 	<div id="keeplogin">
+					<img id="on" src="img/login/on.png" onclick="changeImg()"style="cursor: pointer" />  
+					<img src="img/login/keep.png" id="keep" />
+					<br />
+					<img src="img/login/line.png" id="line1" />
+				
+			</div>
+				 -->
+			<div id="menus">
+				
+				아이디 찾기 / 비밀번호 찾기 / <a href="./registerSelect">회원가입</a>
+				
+		
+				<br /><br />
+			
+			<a href="https://kauth.kakao.com/oauth/authorize?client_id=5461997da2e1069ba99ac732d8c5018c&redirect_uri=http://localhost:9090/kakaologin&response_type=code&scope=account_email">
+			<img src="img/login/kakao.png" id="kakao">
+			</a>
+					<br /><br />
+			</div>
+</form>		
 
-    <a id="kakao-login-btn"></a>
+
+	
+			<div id="loginkakao">
+			카카오 계정으로 로그인
+			<br />
+			<img src="img/login/line.png" id="line2" />
+			
+		
+			</div>
+			
+			<div id="agree">
+				<br />
+				<br />
+				이용약관 | 개인정보처리방침 | 책임의 한계와 법적 고지 | 회원정보 고객센터
+				<br />
+				<br />
+			</div>
+			
+			<div id="footer">
+				
+				<img src="img/login/logo2.png" id="logo2" />
+				Copyright  LifeSaver Corp.  All Right Reserved.
+			
+			</div>
+	</div>
+	
+
 
 </body>
 </html>

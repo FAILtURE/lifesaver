@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mybatis - getstarted -->
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+
+	<typeAliases>
+		
+		<!-- DTO 위치 지정 -->
+		<typeAlias type="kr.co.lifesaver.kakaoLogin.service.JoinVO" alias="dto"/>
+	
+	</typeAliases>
+
+</configuration>
