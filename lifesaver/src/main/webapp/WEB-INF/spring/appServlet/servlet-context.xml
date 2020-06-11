@@ -21,9 +21,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+
 	<!-- <context:component-scan base-package="kr.co.lifesaver.*.controller" /> -->
 <!-- 	<context:component-scan base-package="kr.co.lifesaver.*.service.Impl" /> -->
 	<context:component-scan base-package="kr.co.lifesaver.kakaoLogin.controller" />
 	<context:component-scan base-package="kr.co.lifesaver.kakaoLogin.service.Impl" />
+
+	<!-- <context:component-scan base-package="kr.co.lifesaver.**.web" /> -->
+	<context:component-scan base-package="kr.co.lifesaver.donation.web" />
+	<!-- 	<context:component-scan base-package="kr.co.lifesaver.*.service.Impl" /> -->
 	
 </beans:beans>
