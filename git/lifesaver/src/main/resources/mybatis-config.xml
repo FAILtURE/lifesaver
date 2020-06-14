@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="kr.co.lifesaver.user.service.JoinVO" alias="dto"/>
+		<typeAlias type="kr.co.lifesaver.admin.service.SituationStatusVO" alias="SSdto"/>
+		<typeAlias type="kr.co.lifesaver.admin.service.SaverInfoVO" alias="SaverInfoDTO"/>
+		<typeAlias type="kr.co.lifesaver.admin.service.HospitalLocationVO" alias="hosLocDTO"/>
+		<typeAlias type="kr.co.lifesaver.admin.service.AdminLoginVO" alias="adminLogDTO"/>
+		<typeAlias type="kr.co.lifesaver.map.service.mapVO" alias="mapVO"/>
+		<typeAlias type="kr.co.lifesaver.admin.service.AEDInfoVO" alias="AEDDTO"/>
+		<typeAlias type="kr.co.lifesaver.support.service.SupportVO" alias="Sdto"/>
+	</typeAliases>
+</configuration>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="temp">
+	<select id="selectAllSS" resultType="SSdto">
+		select * from situation_status
+	</select>
+	
+	<select id="selectSSB" parameterType="SSdto" resultType="SSdto">
+		select * from situation_status
+		<trim prefix="where" >
+			<if test="saver_code != null">saver_code='${saver_code}'</if>		
+			<if test="ssb_situation_num != 0">ssb_situation_num=${ssb_situation_num}</if>		
+			<if test="sit_emr_arrtime != null">sit_emr_arrtime='${sit_emr_arrtime}'</if>		
+			<if test="sit_saver_stat != null">sit_saver_stat like '%${sit_saver_stat}%'</if>
+			<if test="sit_emr_stat != null">sit_emr_stat like '%${sit_emr_stat}%'</if>		
+			<if test="sit_hos_arrstatus != null">sit_hos_arrstatus like '%${sit_hos_arrstatus}%'</if>		
+			<if test="sit_unicare_Status != null">sit_unicare_Status like '%${sit_unicare_Status}%'</if>		
+			<if test="sit_death_cuz != null">sit_death_cuz like '%${sit_death_cuz}%'</if>		
+			<if test="sit_arrest_cuz != null">sit_arrest_cuz like '%${sit_arrest_cuz}%'</if>		
+			<if test="sit_alive != 0">sit_alive=${sit_alive}</if>	
+		</trim>
+	</select>
+	
+	<update id="updateSSStat" parameterType="SSdto">
+		update situation_status
+		<trim prefix="set" suffixOverrides=",">
+			<if test="sit_saver_stat != null">sit_saver_stat = '${sit_saver_stat}',</if>
+			<if test="sit_emr_stat != null">sit_emr_stat = '${sit_emr_stat}',</if>
+			<if test="sit_hos_arrstatus != null">sit_hos_arrstatus = '${sit_hos_arrstatus}',</if>
+			<if test="sit_unicare_Status != null">sit_unicare_Status = '${sit_unicare_Status}',</if>
+			<if test="sit_death_cuz != null">sit_death_cuz = '${sit_death_cuz}',</if>
+			<if test="sit_arrest_cuz  != null">sit_arrest_cuz  = '${sit_arrest_cuz }',</if>
+			<if test="sit_alive  != -1">sit_alive  = '${sit_alive}',</if>		
+		</trim>
+		where ssb_situation_num = ${ssb_situation_num}	
+	</update>
+	
+	<update id="updateAuthPass" parameterType="String">
+		update saver_info
+		set saver_auth = 1
+		where saver_code = '${String}'
+	</update>
+	
+	<select id="selectAllSaver" resultType="SaverInfoDTO">
+		select * from saver_info
+	</select>
+	
+	<select id="selectWaitAuth" parameterType="int" resultType="SaverInfoDTO">
+		select * from saver_info
+		where saver_auth = ${saver_auth }
+	</select>
+	
+	<select id="selectSaverInfo" parameterType="SaverInfoDTO" resultType="SaverInfoDTO">
+		select * from saver_info
+		<trim prefix="where"  prefixOverrides="and">
+			<if test="saver_code != null">saver_code='${saver_code}'</if>		
+			<if test="common_code != null">common_code='${common_code}'</if>		
+			<if test="saver_license != null">saver_license='${saver_license}'</if>		
+			<if test="saver_grade != null">saver_grade like '%${saver_grade}%'</if>
+			<if test="saver_job != null">saver_job like '%${saver_job}%'</if>		
+			<if test="saver_job_addr != null">saver_job_addr like '%${saver_job_addr}%'</if>		
+			<if test="saver_rev_try != null">saver_rev_try like '%${saver_rev_try}%'</if>		
+			<if test="saver_rev_succ != null">saver_rev_succ like '%${saver_rev_succ}%'</if>		
+			<if test="saver_rev_fail != null">saver_rev_fail like '%${saver_rev_fail}%'</if>		
+			<if test="saver_auth != -1"> and saver_auth=${saver_auth}</if>
+		</trim>
+	</select>
+	<update id="updateSaverInfo" parameterType="SaverInfoDTO">
+		update saver_info
+		<trim prefix="set" suffixOverrides=",">
+			<if test="common_code != null">common_code='${common_code}',</if>		
+			<if test="saver_license != null">saver_license='${saver_license}',</if>		
+			<if test="saver_grade != null">saver_grade = '${saver_grade}',</if>
+			<if test="saver_job != null">saver_job = '${saver_job}',</if>		
+			<if test="saver_job_addr != null">saver_job_addr = '${saver_job_addr}',</if>		
+			<if test="saver_rev_try != null">saver_rev_try = '${saver_rev_try}',</if>		
+			<if test="saver_rev_succ != null">saver_rev_succ = '${saver_rev_succ}',</if>		
+			<if test="saver_rev_fail != null">saver_rev_fail = '${saver_rev_fail}'</if>		
+		</trim>
+		where saver_code='${saver_code}'
+	</update>
+	
+	<insert id="insertHosLoc" parameterType="hosLocDTO">
+		insert into hospital_loc
+		values('${hos_code}', '${hos_name}', '${hos_road}', '${hos_jiburn}')
+	</insert>
+	
+	<select id="selectHosLoc" parameterType="hosLocDTO" resultType="hosLocDTO">
+		select * from hospital_loc
+		<trim prefix="where">
+			<if test="hos_code != null"> hos_code like '${hos_code}' </if>
+			<if test="hos_name != null"> hos_name like '${hos_name}' </if>
+			<if test="hos_road != null"> hos_road like '${hos_road}' </if>
+			<if test="hos_jiburn != null"> hos_jiburn like '${hos_jiburn}' </if>
+		</trim>
+	</select>
+	
+	<select id="adminLogin" parameterType="adminLogDTO" resultType="adminLogDTO">
+		select * from lifesaveradmin
+		where id = '${id}' and password = '${pwd}'
+	</select>
+	
+	<insert id="insertMap" parameterType="mapVO">
+		insert into synthesize_situation_board
+		(ssb_situation_num, ssb_situation_lat, ssb_situation_lon, ssb_report_time)
+		values((select count(ssb_situation_num)+1 from synthesize_situation_board a) , '${ssb_situation_lat}', '${ssb_situation_lon}', '${ssb_report_time}')
+	</insert>
+	
+	
+	<!-- 세이버 코드 S-1044로 고정되어서 들어감 후에 세이버 코드 받아올 수 있으면 변수로 변경할것-->
+	<insert id="insertMaching" >
+		insert into matching
+		values('S-1044' , (select max(ssb_situation_num) from synthesize_situation_board))
+	</insert>
+	
+	<!-- 세이버 코드 S-1044로 고정되어서 들어감 후에 세이버 코드 받아올 수 있으면 변수로 변경할것-->
+	<update id="updateTry">
+		update saver_info
+		set saver_rev_try = saver_rev_try + 1 , saver_rev_succ = saver_rev_succ +1
+		where saver_code = 'S-1044';
+	</update>
+	
+	<insert id="initSituationStat">
+		insert into situation_status
+		values ('S-1044',(select max(ssb_situation_num) from synthesize_situation_board), '2020', 'resuscitation', 'resuscitation', 'resuscitation', 'resuscitation', '0', '0', '1'  )
+	
+	</insert>
+	<select id="saverTotal" resultType="int">
+		select count(saver_code) from saver_info where saver_auth = 1;
+	
+	</select>
+	
+	<select id="sumSucc" resultType="int">
+		select sum(saver_rev_succ) from saver_info
+	</select>
+	
+	<select id="todayHelp" resultType="int">
+		select count(ssb_situation_num) from synthesize_situation_board
+	</select>
+	
+	<update id="saverAtt" parameterType="SaverInfoDTO">
+		update saver_info
+		set saver_rev_succ = (select count(sit_alive) from situation_status s where saver_code = '${saver_code}' and sit_alive = 1),
+		saver_rev_fail = (select count(sit_alive) from situation_status f where saver_code = '${saver_code}' and sit_alive = 0)
+		where saver_code = '${saver_code}'
+	</update>
+	
+	<select id="selectAllAED" resultType="AEDDTO">
+		select * from aed_loc
+	</select>
+	
+</mapper>
