@@ -41,5 +41,7 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean> 
 	
+
+	<context:component-scan base-package="kr.co.lifesaver.persistance"></context:component-scan>
 	
 </beans>

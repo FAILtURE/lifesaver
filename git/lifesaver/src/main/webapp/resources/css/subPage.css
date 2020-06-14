@@ -1,0 +1,329 @@
+    html,
+    body,
+    div,
+    h2,
+    h3,
+    p,
+    section {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        border-collapse: separate;
+        vertical-align: baseline;
+    }
+    
+    body {
+        line-height: 1;
+    }
+    
+    body {
+        -webkit-text-size-adjust: none;
+    }
+    
+    @-ms-viewport {
+        width: device-width;
+    }
+    
+    body {
+        -ms-overflow-style: scrollbar;
+    }
+    
+    @media screen and (max-width: 480px) {
+        html,
+        body {
+            min-width: 320px;
+        }
+    }
+    
+    html {
+        box-sizing: border-box;
+    }
+    
+    body {
+        background-color: #f7f7f7;
+        background-image: url("../img/images/overlay.png"), -moz-linear-gradient(90deg, #fffdfd 15%, #f7f7f7 85%);
+        background-image: url("../img/images/overlay.png"), -webkit-linear-gradient(90deg, #fffdfd 15%, #f7f7f7 85%);
+        background-image: url("../img/images/overlay.png"), -ms-linear-gradient(90deg, #fffdfd 15%, #f7f7f7 85%);
+        background-image: url("../img/images/overlay.png"), linear-gradient(90deg, #fffdfd, #f7f7f7 85%);
+    }
+    /* Type */
+    
+    body {
+        background-color: #f7f7f7;
+        color: black;
+    }
+    /* body {
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 17pt;
+    font-weight: 300;
+    line-height: 1.65;
+} */
+    
+    @media screen and (max-width: 1920px) {
+        body {
+            font-size: 14pt;
+        }
+    }
+    
+    @media screen and (max-width: 1280px) {
+        body {
+            font-size: 12pt;
+        }
+    }
+    
+    @media screen and (max-width: 360px) {
+        body {
+            font-size: 11pt;
+        }
+    }
+    
+    p {
+        margin: 0 0 2em 0;
+        /* 글자 상하 양옆 조정 하는 명령 */
+        line-height: 2.3em;
+    }
+    
+    h2 {
+        font-weight: 800;
+        line-height: 1.5;
+        margin: 0 0 0.7em 0;
+        letter-spacing: -0.025em;
+    }
+    
+    h3 {
+        font-weight: 800;
+        line-height: 1.5;
+        /* 위,왼쪽,아래,오른쪽 */
+        margin: 0 0 1.3em 0;
+        letter-spacing: -0.025em;
+    }
+    
+    h2 a {
+        color: inherit;
+        text-decoration: none;
+    }
+    /* h1 {
+    font-size: 2.5em;
+    line-height: 1.2;
+} */
+    
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    h3 {
+        font-size: 1.25em;
+    }
+    /* 
+h4 {
+    font-size: 1.1em;
+}
+
+h5 {
+    font-size: 0.9em;
+}
+
+h6 {
+    font-size: 0.7em;
+} */
+    
+    @media screen and (max-width: 736px) {
+        h1 {
+            font-size: 2em;
+        }
+    }
+    
+    h2 {
+        color: #444444;
+    }
+    /* Header */
+    
+    #header {
+        padding: 5em 5em 2em 5em;
+        text-align: center;
+    }
+    
+    #header h2 {
+        margin: 3em 0 0.25em 0;
+    }
+    
+    #header p {
+        font-size: 1.25em;
+        letter-spacing: -0.025em;
+    }
+    
+    @media screen and (max-width: 1920px) {
+        #header {
+            padding: 4em 4em 0.1em 4em;
+        }
+    }
+    
+    @media screen and (max-width: 1280px) {
+        #header {
+            padding: 4em 3em 0.1em 3em;
+        }
+    }
+    
+    @media screen and (max-width: 736px) {
+        #header {
+            padding: 3em 2em 0.1em 2em;
+        }
+        #header p {
+            font-size: 1em;
+            letter-spacing: 0;
+        }
+        #header p br {
+            display: none;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        #header {
+            padding: 4em 1.5em 0.1em 1.5em;
+            margin: 2em 0 0.3em 0;
+        }
+    }
+    /* @media screen and (max-width: 360px) {
+    #header {
+        padding: 2.5em 1em 0.1em 1em;
+    }
+} */
+    /* #content {
+    column-count: 2;
+    column-width: auto;
+    vertical-align: middle;
+} */
+    /* Main */
+    
+    #main {
+        background-color: #ffffff;
+        color: #636363;
+        border-radius: 0.25em;
+    }
+    
+    #main h2 {
+        color: #636363;
+    }
+    
+    #main>.main {
+        padding: 2em 5.5em 0.5em 5.5em;
+        border-top: solid 1px #dddddd;
+    }
+    
+    #main>.main:first-child {
+        border-top: 0;
+    }
+    
+    @media screen and (max-width: 1280px) {
+        #main>.main {
+            padding: 4em 4em 2em 4em;
+        }
+    }
+    
+    @media screen and (max-width: 980px) {
+        #main>.main {
+            padding: 4em 3em 2em 3em;
+        }
+    }
+    
+    @media screen and (max-width: 736px) {
+        #main>.main {
+            padding: 3em 2em 1em 2em;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        #main>.main {
+            padding: 3em 1.5em 1em 1.5em;
+        }
+    }
+    
+    @media screen and (max-width: 360px) {
+        #main {
+            border-radius: 0;
+        }
+        #main>.main {
+            padding: 2.5em 1em 0.5em 1em;
+        }
+    }
+    
+    .law_page_subText {
+        width: 100%;
+    }
+    /* .law__line {
+    margin: 20m 0 0 0;
+} */
+    /* Wrapper */
+    
+    #wrapper {
+        width: 67em;
+        /* calc() 함수는 매개변수로 표현식 하나를 받고, 
+    표현식의 결과가 최종 값이 됩니다. 표현식은 단순 계산식은 무엇이든 가능하며,
+     표준 연산자 우선순위를 따릅니다. */
+        max-width: calc(100% - 4em);
+        margin: 0 auto;
+    }
+    
+    @media screen and (max-width: 480px) {
+        #wrapper {
+            max-width: calc(100% - 2em);
+        }
+    }
+    
+    @media screen and (max-width: 360px) {
+        #wrapper {
+            max-width: 100%;
+        }
+    }
+    /* Page | CPR start*/
+    
+    .cpr_ctep01 {
+        position: absolute;
+        margin-left: 480px;
+        margin-top: -1305px;
+    }
+    
+    .cpr_ctep02 {
+        position: absolute;
+        margin-left: 480px;
+        margin-top: -1090px;
+    }
+    
+    .cpr_ctep03 {
+        position: absolute;
+        margin-left: 480px;
+        margin-top: -870px;
+    }
+    
+    .cpr_ctep04 {
+        position: absolute;
+        margin-left: 480px;
+        margin-top: -655px;
+    }
+    
+    .cpr_ctep05 {
+        position: absolute;
+        margin-left: 480px;
+        margin-top: -410px;
+    }
+    
+    .cpr_ctep06 {
+        position: absolute;
+        margin-left: 480px;
+        margin-top: -160px;
+    }
+    
+    .cpr_ctep01_text01 h4,
+    .cpr_ctep02_text02 h4,
+    .cpr_ctep03_text03 h4,
+    .cpr_ctep04_text04 h4,
+    .cpr_ctep05_text05 h4,
+    .cpr_ctep06_text06 h4 {
+        color: #ff4343;
+    }
+    /* Page | CPR end*/

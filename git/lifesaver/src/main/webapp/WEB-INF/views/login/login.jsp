@@ -6,8 +6,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
+<title>LifeSaver</title>
+<link rel="shortcut icon" href='<c:out value="/resources/img/images/ico/favicon.png" />'>
 <style type="text/css">
 
 html, body {
@@ -26,8 +26,6 @@ img {
 	padding: 20px;
 	margin: 10px auto;
 	text-align: center;
-	
-
 }
 
 #header {
@@ -52,7 +50,7 @@ input {
 }
 
 #submitbutton {
-	background-image: url("/resources/img/login/login.png");
+	background: url("/resources/img/login.png") no-repeat;
 	background-position: center;
 }
 
@@ -143,9 +141,6 @@ input {
 	margin-bottom: -5px;
 	}
 	 
-	
-	 
-	
 }
 </style>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -187,59 +182,36 @@ function newLogin(){
 </head>
 <body>
 
-
 	<div id="container">
-
-	<div id="header">
-		<img src="<c:url value='/resources/img/login/logo.png'/>" alt="로고" id="logo" />
-	</div>
+		<div id="header">
+			<img src="<c:url value='/resources/img/login/logo.png'/>" alt="로고" id="logo" />
+		</div>
 	
-
-
 	<form action="./normalLogin" method="post">
-
 		<div id="logincontents">
 			<br />
 			<br />
 			<br />
 			<input type="text" name="id" id="id" placeholder="아이디"> <br />
 			<input type="password" name="pw" id="pw" placeholder="비밀번호"> <br /> <br />
-			
 			<input type="submit" value="" id="submitbutton">
-		
-			
 		</div>
-
 			<div id="menus">
-				
 				아이디 찾기 / 비밀번호 찾기 / <a href="<c:url value="/registerAgree" />">회원가입</a>
-				
-		
-				<br /><br />
-			
-		
-		
-			
-			<a href="
-https://kauth.kakao.com/oauth/authorize?client_id=5461997da2e1069ba99ac732d8c5018c&redirect_uri=http://13.209.132.37:8080/lifesaver/kakaologin&response_type=code&scope=account_email
-			">
-			<img src="<c:url value='/resources/img/login/kakao.png'/>" id="kakao" style="width: 88%;">
-			
+				<br />
+				<br />
+			<a href="https://kauth.kakao.com/oauth/authorize?client_id=5461997da2e1069ba99ac732d8c5018c&redirect_uri=http://13.209.132.37:8080/lifesaver/kakaologin&response_type=code&scope=account_email">
+				<img src="<c:url value='/resources/img/login/kakao.png'/>" id="kakao" style="width: 88%;">
 			</a>
-		
-
-					<br /><br /> 
+				<br />
+				<br /> 
 			</div>
-</form>		
+	</form>		
 
-
-	
-			<div id="loginkakao">
-			카카오 계정으로 로그인
-			<br />
-			<img src="<c:url value='/resources/img/login/line.png'/>" id="line2" />
-			
-		
+		<div id="loginkakao">
+				카카오 계정으로 로그인
+				<br />
+				<img src="<c:url value='/resources/img/login/line.png'/>" id="line2" />
 			</div>
 			
 			<div id="agree">
@@ -251,13 +223,10 @@ https://kauth.kakao.com/oauth/authorize?client_id=5461997da2e1069ba99ac732d8c501
 			</div>
 			
 			<div id="footer">
-				
 				<img src="<c:url value='/resources/img/login/logo2.png'/>" id="logo2" />
 				Copyright  LifeSaver Corp.  All Right Reserved.
-				
-			
 			</div>
-	</div>
+		</div>
 	
 
 </body>

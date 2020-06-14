@@ -36,9 +36,25 @@ public class MainController {
 		return "main";
 	}
 	
+	
 	@RequestMapping(value = "/board")
 	public String boardIndex() {
 		return "board";
+	}
+	
+	@RequestMapping(value = "/cprpage")
+	public String cprpageIndex() {
+		return "subPage/cprPage";
+	}
+	
+	@RequestMapping(value = "/lawpage")
+	public String lawpageIndex() {
+		return "subPage/lawPage";
+	}
+	
+	@RequestMapping(value ="/aedinfopage")
+	public String aedinfoIndex() {
+		return "subPage/aedinfoPage";
 	}
 	
 	
