@@ -377,4 +377,19 @@ public class AdminController {
 		
 		return "/admin/managerlogin";
 	}
+	@RequestMapping(value = "/1")
+	public String adminLo(HttpSession session) {
+		
+		
+		
+		return "/admin/test";
+	}
+	
+	@RequestMapping(value = "/2")
+	public String adminALo(HttpSession session) {
+		
+		
+		
+		return "test2";
+	}
 }

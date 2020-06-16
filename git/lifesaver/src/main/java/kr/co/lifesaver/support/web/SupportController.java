@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,23 +17,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.lifesaver.support.service.SupportVO;
-import kr.co.lifesaver.support.service.impl.SupportDAO;
+import kr.co.lifesaver.support.service.impl.SupportService;
 
 
 @Controller
 public class SupportController {
 
-	@Inject
-	SupportDAO dao;
+	@Resource(name = "SupportService")
+	private SupportService supportService;
 	
-	public void setDao(SupportDAO dao) {
-		this.dao = dao;
+	public void setDao(SupportService dao) {
+		this.supportService = dao;
 	}
 	
 	@RequestMapping(value = "/donation")
 	public String list0(HttpServletRequest req, HttpSession session) {
 		
-		int totalprice = dao.getsum();
+		int totalprice = supportService.getsum();
 		
 		req.setAttribute("totalprice", totalprice);
 		
@@ -128,7 +129,7 @@ public class SupportController {
 		SupportVO dto = new SupportVO(cr_name, cr_number, cr_man_name, cr_man_phone_number, price, box, box2);
 		
 		
-		dao.addData(dto);
+		supportService.addData(dto);
 		
 		
 		

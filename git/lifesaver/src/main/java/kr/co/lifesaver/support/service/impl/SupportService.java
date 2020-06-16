@@ -5,9 +5,8 @@ import java.util.List;
 import kr.co.lifesaver.support.service.SupportVO;
 
 
-
-
-public interface SupportDAO {
+public interface SupportService {
+	
 	public List<SupportVO> getEverything();
 	public void addData(SupportVO Dto);
 	public int getsum();

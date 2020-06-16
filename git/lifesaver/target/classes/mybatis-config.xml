@@ -13,5 +13,6 @@
 		<typeAlias type="kr.co.lifesaver.map.service.mapVO" alias="mapVO"/>
 		<typeAlias type="kr.co.lifesaver.admin.service.AEDInfoVO" alias="AEDDTO"/>
 		<typeAlias type="kr.co.lifesaver.support.service.SupportVO" alias="Sdto"/>
+		<typeAlias type="kr.co.lifesaver.board.service.LifeSaver_BoardVO" alias="boardDTO"/>
 	</typeAliases>
 </configuration>

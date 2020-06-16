@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+  <mapper namespace="ttt">
+  	<select id="selectAllBoard" resultType="boardDTO">
+  		select * from board
+  		order by bno desc, regdate desc;
+  	</select>
+  	
+  	<select id="selectshowBoard" parameterType="boardDTO" resultType="boardDTO">
+  		select bno, category, writer, title, content
+    	 from board
+    	 where bno = ${bno}
+  	
+  	
+  	</select>
+  	
+  	<delete id="deleteBoard"  parameterType="boardDTO">
+  		delete from board
+  		where bno = ${bno}
+  	</delete>
+  	
+  	<update id="updateBoard" parameterType="boardDTO">
+  		update from board
+  		<set>
+  		<if test="title != null and title != '' ">title = #{title},</if>
+  		<if test="content != null and title != '' ">content = #{content},</if>
+  		writer = #{writer},
+  		regdate = now()
+  		</set>
+  		where bno = #{bno}
+  	</update>
+  	
+  	
+  	 <insert id="insertBoard" parameterType="boardDTO">
+  		insert into board(category, writer, title, content)
+  		values(#{category}, #{writer} , #{title} , #{content});
+  	</insert> 
+  
+  </mapper>

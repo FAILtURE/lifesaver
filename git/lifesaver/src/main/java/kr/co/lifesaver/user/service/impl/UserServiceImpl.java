@@ -78,6 +78,47 @@ public class UserServiceImpl implements UserService {
 		return userDAO.lawyerByCommonCode(common_code);
 	}
 
+	@Override
+	public JoinVO selectByID(String id) {
+		return userDAO.selectByID(id);
+	}
+
+	@Override
+	public JoinVO selectByLicenseSaver(String saver_license) {
+		return userDAO.selectByLicenseSaver(saver_license);
+	}
+
+	@Override
+	public JoinVO selectByLicenseLaw(String law_license) {
+		return userDAO.selectByLicenseLaw(law_license);
+	}
+
+	@Override
+	public int idChk(JoinVO vo) throws Exception {
+		
+		return userDAO.idChk(vo);
+	}
+
+	@Override
+	public int sLicenseChk(String saver_license) throws Exception {
+		// TODO Auto-generated method stub
+		return userDAO.sLicenseChk(saver_license);
+	}
+
+	@Override
+	public int lLicenseChk(String law_license) throws Exception {
+		// TODO Auto-generated method stub
+		return userDAO.lLicenseChk(law_license);
+				
+	}
+
+	@Override
+	public int phoneChk(String common_phone) throws Exception {
+		// TODO Auto-generated method stub
+		return userDAO.phoneChk(common_phone);
+	}
+
+
 
 
 }

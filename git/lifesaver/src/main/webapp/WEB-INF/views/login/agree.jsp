@@ -50,11 +50,6 @@ img {
 	color: red;
 }
 
-#agreeall{
-	display: inline-block;
-	vertical-align: 6px;
-	padding-bottom: 0px;
-}
 
 #checking{
 	width: 100%;
@@ -65,7 +60,7 @@ img {
 	/* border: 1px solid green; */
 }
 
-#agree1, #agree2, #agree3 {
+#agree1, #agree2, #agree3{
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
@@ -80,18 +75,20 @@ img {
 
 
 #other{
-	width: 90%;
+	
 	margin: 0 auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
-	/* border: 1px solid red; */
-	text-align: left;
-}
+	text-align: center;
+} 
 
 #button{
-	margin-top: 50px;
-	margin-bottom: 43px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin: 0 auto;
 }
 
 #beforebutton, #afterbutton {
@@ -109,9 +106,13 @@ img {
 
 
 
-@media(max-width: 480px) {
+@media(max-width: 1024px) {
 	#container{
 	width: auto;
+	}
+	#checking{
+	width: auto;
+	float: none;
 	}
 	#header{
 	width: auto;
@@ -122,7 +123,13 @@ img {
 	#context{
 	width: auto;
 	}
-	#agree{
+	#agree1, #agree2, #agree3{
+	width: auto;
+	}
+	#other{
+	width: auto;
+	}
+	#button{
 	width: auto;
 	}
 	#footer{
@@ -142,30 +149,38 @@ img {
 }
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 
 
-	function agree() {
-		var chkbox = document.getElementsByName('chk_agree');
-		var chk = false;
-		for (var i = 0; i < chkbox.length; i++) {
-			if (chkbox[i].checked) {
-				chk = true;
-			} else {
-				chk = false;
-			}
-		}
-		if (chk != true) {
-			alert("모든 약관에 동의해 주세요.");
-			location.href('/registerAgree');
-		}	
-		location.href('/registerSelect');
-	}
+$(document).ready(function(){
+    
+    $("#nextbutton").click(function(){    
+        if($("#chk1").is(":checked") == false){
+            alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
+
+            return;
+        }else if($("#chk2").is(":checked") == false){
+            alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다..");
+            
+            return;
+     /* }else if($("#check_3").is(":checked") == false){
+            alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다...");
+            return; */
+        }else if($("#chk1").is(":checked") == true && $("#chk2").is(":checked") == true){
+             $("#terms_form").submit(); 
+           
+        }
+    });    
+});
+
+
+
 </script>
 </head>
 <body>
 
-
+<form id="terms_form" action="<c:url value="/registerSelect"/>">
 
 <div id="container">
 
@@ -192,11 +207,7 @@ img {
 		</div>
 			
 		<div id="checking">
-			<!-- <div id="agree1">
-				<input type="checkbox" name="" id="agreeall" /> 
-				<span id="agreeall">전체동의</span>
-				
-				</div> -->
+			
 		
 
 				<div id="agree2">
@@ -207,28 +218,35 @@ img {
 				</div>
 				
 				<div id="agree3">
-					<input type="checkbox" name="chk_agree"><label for="box">개인정보 수집 및 이용 동의 (필수)</label>
+					<input type="checkbox" name="chk_agree" id="chk2"><label for="box">개인정보 수집 및 이용 동의 (필수)</label>
 	
 					<!-- 전문보기 -->
 					<img src="<c:url value="/resources/img/agree/agreebefore.png"/>" alt="" id="agreebutton"/>
 				</div>
+				
+				<div id="agree1">
+				<input type="checkbox" name="chk_agree" id="chk3" /><label for="box">기타 안내 사항</label>
+				<img src="<c:url value="/resources/img/agree/agreebefore.png"/>" id="agreebutton" />
+				
+				</div> 
 			
-		</div>
-		<hr />
-		<div id="other">	
-			<span style="font-size:16px">기타 안내 사항</span>
-			<img src="<c:url value="/resources/img/agree/agreebefore.png"/>" id="agreebutton1" />
-			<br />
-			<span style="font-size:12px">위의 개인정보 수집/이용에 대한 동의를 거부할 권리가 있습니다.</span>
-		</div>	
+			<div id="other">	
+				<!-- <span style="font-size:16px">기타 안내 사항</span> -->
+				
+				<span style="font-size:12px">위의 개인정보 수집/이용에 대한 동의를 거부할 권리가 있습니다.</span>
+				<hr />
+			</div>	
 	
+		</div>
+		
+		
 		<div id="button">
 		
 		
 			<a href="<c:url value="/main" />"><img src="	<c:url value="/resources/img/agree/beforeBtnDefault.png"/>" id="beforebutton2" /></a>
 				
-			<a href="<c:url value="/registerSelect" />"><img src="<c:url value="/resources/img/agree/nextBtnClick.png"/>"
-			 id="nextbutton" onclick="agree()"/></a>	
+			<img src="<c:url value="/resources/img/agree/nextBtnClick.png"/>"
+			 id="nextbutton" onclick="agree()"/>	
 		</div>
 		
 		
@@ -251,6 +269,6 @@ img {
 			</div>
 		
 </div>
- 
+</form>
 </body>
 </html>

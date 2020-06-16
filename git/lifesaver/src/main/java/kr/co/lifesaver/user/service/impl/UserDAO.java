@@ -68,6 +68,48 @@ public class UserDAO implements UserService {
 		return ss.selectOne("lawyerByCommonCode", common_code);
 	}
 
+	@Override
+	public JoinVO selectByID(String id) {
+		return ss.selectOne("selectByID", id);
+	}
+
+	@Override
+	public JoinVO selectByLicenseSaver(String saver_license) {
+		return ss.selectOne("selectByLicenseSaver", saver_license);
+	}
+
+	@Override
+	public JoinVO selectByLicenseLaw(String law_license) {
+		return ss.selectOne("selectByLicenseLaw", law_license);
+	}
+
+	@Override
+	public int idChk(JoinVO vo) throws Exception {
+		int result = ss.selectOne("idChk", vo);
+		return result;
+	}
+
+	@Override
+	public int sLicenseChk(String saver_license) throws Exception {
+		int result2 = ss.selectOne("sLicenseChk", saver_license);
+		return result2;
+		
+	}
+
+	@Override
+	public int lLicenseChk(String law_license) throws Exception {
+		int result2 = ss.selectOne("sLicenseChk", law_license);
+		return result2;
+		
+	}
+
+	@Override
+	public int phoneChk(String common_phone) throws Exception {
+		// TODO Auto-generated method stub
+		int result3 = ss.selectOne("phoneChk", common_phone);
+		return result3;
+	}
+
 
 
 }

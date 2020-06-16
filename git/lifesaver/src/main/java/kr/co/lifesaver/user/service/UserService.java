@@ -37,4 +37,25 @@ public interface UserService {
 	/*  */
 	public JoinVO lawyerByCommonCode(String common_code);
 	
+	/* 아이디 중복체크 */
+	public JoinVO selectByID(String id);
+	
+	/* 아이디 중복체크2 */
+	public int idChk(JoinVO vo) throws Exception;
+	
+	/* 세이버 라이선스 중복체크 */
+	public JoinVO selectByLicenseSaver(String saver_license);
+	
+	/* 법조인 라이선스 중복체크 */
+	public JoinVO selectByLicenseLaw(String law_license);
+	
+	/* 세이버 라이선스 중복체크2 */
+	public int sLicenseChk(String saver_license) throws Exception;
+	
+	/* 법조인 라이선스 중복체크2 */
+	public int lLicenseChk(String law_license) throws Exception;
+	
+	/* 휴대폰 번호 중복체크 */
+	public int phoneChk(String common_phone) throws Exception;
+	
 }

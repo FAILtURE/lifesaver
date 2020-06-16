@@ -383,6 +383,7 @@ cursor:pointer;
 
 </script>
 <body class="no-skin">
+
 	<!-- #section:basics/navbar.layout -->
 	<div id="admin_logo">
 		<a href="/lifesaver/admin"><img src='<c:url value="/resources/admin/admin_logo.gif"></c:url>' alt="로고" /></a>
@@ -397,6 +398,7 @@ cursor:pointer;
 				<!-- #section:basics/navbar.layout.brand -->
 				<a href="/lifesaver/home.page" class="navbar-brand">
 					<small>종합상황판</small>
+					
 				</a>
 				<!-- /section:basics/navbar.layout.brand -->
 				<!-- </div> -->
@@ -483,6 +485,7 @@ cursor:pointer;
 	</div>
 	<!-- /section:basics/navbar.layout -->
 	<div class="main-container" id="main-container" >
+	
 	<form name="frm" id="admin_frm" >
 		<script type="text/javascript">
 			try{ace.settings.check('main-container' , 'fixed')}catch(e){}
@@ -544,6 +547,7 @@ cursor:pointer;
 					</a>
 				</li>
 			</ul>
+			
 			<!-- #section:basics/sidebar.layout.minimize -->
 			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse" >
 				<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right" ></i>
@@ -563,6 +567,7 @@ cursor:pointer;
 					<div class="page-header"  style="float: left; width: 100%; padding:11.5px; " >
 						<h1 class="page-title">종합상황판</h1>
 					</div>
+					<jsp:include page="header.jsp"></jsp:include>
 					<!-- /.page-header -->
 					<div class="row">
 						<div class="col-xs-12" id = boxcontents>
@@ -854,6 +859,7 @@ cursor:pointer;
 		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
+	<jsp:include page="footer.jsp"></jsp:include>
 	
 </body>
 <style type="text/css">

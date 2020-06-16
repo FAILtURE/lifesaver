@@ -513,6 +513,8 @@ $(document).ready(function (){
 					<div class="page-header"  style="float: left; width: 100%; padding:11.5px; " >
 						<h1 class="page-title">승인 대기</h1>
 					</div>
+						<jsp:include page="header.jsp"></jsp:include>
+						
 					<!-- /.page-header -->
 					<div class="row">
 						<div class="col-xs-12" id = boxcontents>
@@ -594,6 +596,7 @@ $(document).ready(function (){
 </div>
 	</form>						
 	<!-- PAGE CONTENT ENDS -->
+	
 						</div><!-- /.col -->
 					</div><!-- /.row -->
 			<!-- 	</div>/.page-content-area
@@ -622,7 +625,7 @@ $(document).ready(function (){
 		</a>
 	</div>
 	
-	
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 <style type="text/css">
 .dataTables_wrapper .dataTables_paginate {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.lifesaver.admin.service.AdminService;
+import kr.co.lifesaver.support.service.impl.SupportService;
 
 @Controller
 public class MainController {
@@ -19,27 +20,23 @@ public class MainController {
 	@Inject
 	AdminService lifesaverDAO;
 
+	@Inject
+	SupportService supportService;
+	
 	@RequestMapping(value = "/")
 	public String index(Model model) {
+		
 		int result = lifesaverDAO.totalSaver();
-		
 		int sum = lifesaverDAO.sumSucc();
-		
-		int todayHelp = lifesaverDAO.todayHelp();
+		int todayHelp = lifesaverDAO.todayHelp();	
+		int totalprice = supportService.getsum();
 		
 		model.addAttribute("totalSaver", result);
-		
 		model.addAttribute("sum", sum);
-		
 		model.addAttribute("todayHelp", todayHelp);
+		model.addAttribute("totalprice", totalprice);
 		
 		return "main";
-	}
-	
-	
-	@RequestMapping(value = "/board")
-	public String boardIndex() {
-		return "board";
 	}
 	
 	@RequestMapping(value = "/cprpage")

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +14,6 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <link rel="shortcut icon" href='<c:out value="/resources/img/images/ico/favicon.png" />'>
-
 
 <!-- STYLESHEETS -->
 <link rel="stylesheet" href='<c:url value="/resources/css/lifeSaver.css" />' type="text/css" />
@@ -101,6 +99,7 @@ function getCookie(name){
 				<div class="col-md-12 center">
 					<!-- LOGO -->
 					<a class="brand pull-left" href=""> <img
+
 						src=' <c:url value="/resources/img/logo_re.png"/>' id="logo_mobile" alt="LifeSaver">
 					</a>
 					<!-- END LOGO -->
@@ -110,6 +109,7 @@ function getCookie(name){
 						data-target=".navbar-collapse" aria-controls="bs-navbar"
 						aria-expanded="false">
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+
 							class="icon-bar"></span><span class="icon-bar"></span> 
 					</div>
 					<!-- END MOBILE MENU BUTTON -->
@@ -121,7 +121,8 @@ function getCookie(name){
 							<li><a href="#page-features" id="feature-move">응급의료정보</a></li>
 							<li><a href="#page-about" id="about-move">응급의료이슈</a></li>
 							<li><a href="#page-blog" id="blog-move">지도</a></li>
-							<!-- <li><a href="#page-contact">나눔소통</a></li> -->
+							<li><a href="#page-contact" id="contact-move">나눔소통</a></li>
+
 
 						</ul>
 						<!-- END MAIN MENU -->
@@ -190,7 +191,9 @@ function getCookie(name){
 	       	<p class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 767px; position: relative; margin-left: 370px; font-size: 60px; " > <c:out value="${todayHelp }"></c:out></p>
         </div>
         <!-- 영역 차지하는 공간 --> 
-     
+
+        <div class="rating__footer"></div>
+    </div>
 --%>
 
 
@@ -250,8 +253,6 @@ function getCookie(name){
                  <div id="box4-2">
                  <img src='<c:url value="/resources/img/saverLife.png"></c:url>'>
                  </div>
-                    
-
               </div>
            </div>
         </div>
@@ -643,6 +644,11 @@ function getCookie(name){
 			<br/><br/>
 		</p>
 		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <jsp:include page="footer.jsp"></jsp:include>
+		
+
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=119f00e9c183b4e48ccbded04cfb8f47"></script>
 		<script>
             function submitInfo(url, name, tell, code, img) {
@@ -1412,8 +1418,6 @@ function getCookie(name){
                         drawCircleRange(mouseLatLng, 100); //마우스 클릭 지군, 반경값을 지정합니다.
                         console.log("라이프 세이버 좌표 : " + mouseLatLng);
 
-
-
                         drawInfoMarker(mouseLatLng, function() {
                             var content_data = getContentDataByOrder();
                             drawInfoOverlay(mouseLatLng, wrapInfoContent(mouseLatLng, content_data));
@@ -1515,7 +1519,8 @@ function getCookie(name){
                             "\n매칭 일자    : " + Now.getFullYear() + "년" + (Now.getMonth() + 1) + "월" + Now.getDate() + "일" +
                             "\n매칭 시간    : " + Now.getHours() + "시" + Now.getMinutes() + "분" + Now.getSeconds() + "초" +
                             "\n거리           : " + show_dist + "m");
-                        alert("13" + resultPeo);
+                        console.log("resultPeo : " + resultPeo);
+
                         //	var my_pos = [myPlace.getLat(), myPlace.getLng()]
                         
                         if (resultPeo == 1) {
@@ -1543,7 +1548,6 @@ function getCookie(name){
                             });
                             polyline.setMap(map);
 
-
                             var poldistance = Math.round(myPlace + new kakao.maps.LatLng(37.483327, 126.8972991)), // 선의 총 거리를 계산합니다
                                 content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + poldistance + '</span>m</div>'; // 커스텀오버레이에 추가될 내용입니다
 
@@ -1553,8 +1557,6 @@ function getCookie(name){
                     }
                 );
             }
-
-
 
             function showPositionErr(error) { //에러코드
                 var errTypes = {
@@ -1635,11 +1637,9 @@ function getCookie(name){
 
             function closeInfoOverlay(event, position) {
                 eraseInfoOverlay(position);
-
             }
 
             //클릭에 의한 위치 표시, 즉 라이프 가드의 위치를 임의적으로 매핑해줍니다.
-
 
             /* var hpPositions = [
                 new kakao.maps.LatLng(37.5812887,	126.9364294) */
@@ -1667,10 +1667,401 @@ function getCookie(name){
                     console.log("3");
                 }
             }
+                
+                
+           
+                function showPosition(position) {
+             	   
+             	   
+             	   
+                    resultPoint=0;
+                    resultPeo=0;
+                      
+
+                   
+                   var result = confirm("신고자가 두명 이상인가요 ?");
+
+                      if(result==true){
+                         resultPeo +=1;
+                         alert("주변의 자동제세동기 위치를 제공합니다. 자동제세동기는 환자 및 세이버에게 큰 도움이 됩니다.");
+                      }
+                   var myPlace = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
+                   mpPositions = [myPlace];//new kakao.maps.LatLng(37.6389443, 127.0647295)      //mpPositions =  마커
+                   drawCircleRange(myPlace, 100);                        //위치데이터는 myPlace에 담겨있고, 써클만 관여함
+                   console.log("기본 써클 반경은 : 100입니다.");
+                   console.log("resultPoint : " + resultPoint);
+                   //alert("mpPositions.length" + mpPositions.length); // 커피포지션의 위도, 경도 입력완료
+                   if(myPlace != null){
+                   console.log("현재  신고자 좌표 : " + myPlace +  "입니다."); // 내 위도 경도 보여주기.
+                   //console.log("hpPositions" + hpPositions); // 주변 응급실위치입니다. []
+                   /*  시간 */
+                      var Now = new Date();
+                                var NowTime = Now.getFullYear();
+                                NowTime += '0' + (Now.getMonth()+1);
+                                NowTime += '0' + Now.getDate();
+                                NowTime += ' time : ' + Now.getHours();
+                                NowTime += ':' + Now.getMinutes();
+                                NowTime += ':' + Now.getSeconds();
+                                
+                               console.log(NowTime );
+                 /* ------------------------------------------------------중앙위치 재공급  ------------------------------------------------*/
+
+                   var moveLatLon = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude );
+                    map.setCenter(moveLatLon);
+                   }
+                   
+                    /* ------------------------------------------------------중앙위치 재공급   end------------------------------------------------*/
+                    
+                    function panTo(){
+                    var moveLatLon = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude );
+                    map.panTo(moveLatLon);
+
+                 }
+
+                   creatempMarkers();
+                   changeMarker('mp');      //좌측 변경될 이미지(mp)
+                   
+                   kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                      
+                  
+                     var mouseLatLng = mouseEvent.latLng;
+                      var myplace_range = 100
+                      drawCircleRange(mouseLatLng, 100);      //마우스 클릭 지군, 반경값을 지정합니다.
+                      console.log("라이프 세이버 좌표 : " + mouseLatLng);
+                      
+                       
+                       
+                      drawInfoMarker(mouseLatLng, function(){
+                         var content_data = getContentDataByOrder();
+                         drawInfoOverlay(mouseLatLng, wrapInfoContent(mouseLatLng, content_data));
+                         
+                      });
+                     // console.log("drawInfoOverlay" + drawInfoOverlay(mouseLatLng, wrapInfoContent(mouseLatLng, content_data)))
+                      
+                      for(var i=0; i < mpPositions.length; i++) {
+                         var myPlace = mpPositions[i];
+                         var keys = Object.keys(drawingCircles);
+                         for(var j=0; j < keys.length; j++) {
+                            var key = keys[j];
+                            var circle_pos = key.replace(/[()]/gi, "").split(",");
+                            circle_pos = [Number(circle_pos[0]), Number(circle_pos[1])];
+                            var circle_range = drawingCircles[key].getRadius();
+                            var my_pos = [myPlace.getLat(), myPlace.getLng()]
+                                var polyline = new kakao.maps.Polyline({
+                                  path: [new kakao.maps.LatLng(my_pos[0], my_pos[1]), new kakao.maps.LatLng(circle_pos[0], circle_pos[1])],
+                                  // 선을 구성하는 좌표 배열입니다. 원의 중심좌표와 클릭한 위치로 설정합니다
+                              });
+                                     //console.log("pol"+ polyline + kakao.maps.LatLng(my_pos[0], my_pos[1]));
+                            var dist = polyline.getLength() // 내위치부터 다른 원 사이까지의 거리
+                            console.log("범위 :" + (myplace_range + circle_range));
+                            console.log(polyline);
+                            
+                              
+                            
+
+                            //              ************************************** 1level 유효범위 반경100M입니다. 신고자와 세이버 간 거리가 200미터 이하 시  매치됩니다. *****************************************************                          
+                            if (dist != 0 && dist < (myplace_range + circle_range) ) {
+                               //alert( "A"+(myplace_range + circle_range));
+                               var show_dist = Math.round(dist);//신고자와 가드의 거리를 알려줍니다.      
+                            //   alert("신고자와 범위안에 있는 " "  매칭되었습니다.  (거리 : " + show_dist + "m)" );
+                            //   alert("현재 신고자의 위치 (" + myPlace + ") 로 D1166이 출동하였습니다." );
+                               alert("현재 신고자의 위치로 신고가 접수되었습니다." + show_dist + "거리에 세이버가 매치되었습니다.");
+                            
+                               resultPoint ++;
+                               
+                                alert("신고자 좌표 : " + myPlace 
+                                     + "\n세이버 코드 : " + content_list[0].code 
+                                     + "\n세이버 좌표 : " + mouseLatLng
+                                     + "\n매칭 일자    : " +Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                     + "\n매칭 시간    : " + Now.getHours()+"시" + Now.getMinutes()+"분" +  Now.getSeconds()+"초" 
+                                     + "\n거리           : " + show_dist+"m");
+
+                            console.log("//////////////////level 1");
+                            year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                            latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                            Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                 window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                     +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                 // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+                      //       if(window.open !=null ){function drawInfoMarker(position, listener) {drawingInfoMarker[position] = new kakao.maps.Marker({position: position, clickable: true  });drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);}}
+                      
+                                 
+                        
+                           
+                                 drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                            }//if (dist != 0 && dist < (myplace_range + circle_range) )end
+                            //              **************************************신고자와 세이버 간 거리가 200M이상이면 신고자 유효범위 증가합니다. 2level 신고자의 유효범위 반경 200M, 세이버 유효범위 100M 
+                             
+                         
+                         else if(dist != 0 && dist > (myplace_range + circle_range)){//둘 사이의 거리가, myplace_range + cirecle_range보다 작다면~
+                                console.log("//////////////////level 2");
+                                console.log("resultPoint  : " +  resultPoint);
+                               var show_dist = Math.round(dist);
+                                  alert("유효거리가 멀어, 유효범위 증가하여 매치를 시작합니다.");
+                                  if((100-show_dist) < 0 && dist<500){
+                                  var circle_count = Object.keys(drawingCircles).length;
+                                  console.log("check 1 : 써클 삭제합니다.");   
+                                  mpPositions = [myPlace];
+                                  drawCircleRange(myPlace, 100);   //기본 써클반경 300
+                                   for (var i=0; i<circle_count; i++) {
+                                      eraseCircleRange(Object.keys(drawingCircles)[circle_count-1-i])
+                                   console.log("check 2 :  ");
+                                      }
+                                   drawCircleRange(myPlace, (300 + (show_dist-300)));
+                                   drawCircleRange(mouseLatLng, 100);
+                                   console.log("check 3 : 기존에 삭제한 써클 유효범위 증가해 생성합니다.");
+                                   alert("현재 신고자의 위치로 신고가 접수되었습니다." + show_dist + "m 거리에 있는 세이버가 매치되었습니다.");
+                                   alert("신고자 좌표 : "+myPlace+"\n세이버 코드 : "+content_list[0].code + "\n세이버 좌표 : " + mouseLatLng+"\n매칭 일자    : "+Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                        + "\n매칭 시간    : "+Now.getHours()+"시" + Now.getMinutes()+"분"+Now.getSeconds()+"초"+"\n거리           : "+ show_dist+"m");
+                                   year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                                   latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                                   Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                        window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                            +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                  
+                                       drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                             }else if (dist != 0 && dist > (myplace_range + circle_range) && dist<300) {
+                                var circle_count = Object.keys(drawingCircles).length;
+                                mpPositions = [myPlace];
+                                drawCircleRange(myPlace, (300 + (show_dist-300))); //반경 300미터 + (신고자, 세이버 둘 사이의 거리 - 300)
+                                drawCircleRange(mouseLatLng, 100);
+                                
+                                   console.log(myplace_range + circle_range + "myplace_range + circle_range");
+                                  
+                                  console.log(show_dist + " dist");
+                                  console.log("check4 : maching suc");      //connection
+                                  var show_dist = Math.round(dist);//신고자와 가드의 거리를 알려줍니다.   
+                                  alert("현재 신고자의 위치로 신고가 접수되었습니다." + show_dist + "m 거리에 있는 세이버가 매치되었습니다.");
+                                  alert("신고자 좌표 : "+myPlace+"\n세이버 코드 : "+content_list[0].code + "\n세이버 좌표 : " + mouseLatLng+"\n매칭 일자    : "+Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                        + "\n매칭 시간    : "+Now.getHours()+"시" + Now.getMinutes()+"분"+Now.getSeconds()+"초"+"\n거리           : "+ show_dist+"m");
+                                  year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                                  latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                                  Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                       window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                           +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                      
+                                       drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                            }else if(dist> 300 && dist<500 ){
+                                  console.log("check5 : 2번째 재매치 실패했습니다. 3번째 재매치 시작합니다.");      //connection fail, restart
+                                  console.log(dist + (show_dist-300));
+                                  var circle_count = Object.keys(drawingCircles).length;
+                                  mpPositions = [myPlace];
+                                   drawCircleRange(myPlace, (300 + (show_dist-300))); //반경 300미터 + (신고자, 세이버 둘 사이의 거리 - 300)
+                                   drawCircleRange(mouseLatLng, 100);
+                   
+                                   alert("신고자 좌표 : "+myPlace+"\n세이버 코드 : "+content_list[0].code + "\n세이버 좌표 : " + mouseLatLng+"\n매칭 일자    : "+Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                        + "\n매칭 시간    : "+Now.getHours()+"시" + Now.getMinutes()+"분"+Now.getSeconds()+"초"+"\n거리           : "+ show_dist+"m");
+                                   year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                                   latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                                   Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                        window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                            +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                       
+                                       drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                                  }else{
+                                     alert("세이버 매치가 불가합니다.");
+                                     }
+                                 }
+
+                               }//if((100-show_dist) < 0 && dist<500) end
+                               
+                            //else if(dist != 0 && dist > (myplace_range + circle_range)){ end
+                         }//for(var j=0; j < keys.length; j++) end
+                      //for(var i=0; i < mpPositions.length; i++) end
+                      
+                      
+                      ik = Now.getHours()+Now.getMinutes()+Now.getSeconds();
+
+                      if(resultPeo==1){
+                                     
+                          var moveLatLon = new kakao.maps.LatLng(37.483327, 126.8972991 );
+                          map.panTo(moveLatLon);
+                          
+                           var linePath = [ myPlace,  new kakao.maps.LatLng(37.483327, 126.8972991)];
+                          var polyline = new kakao.maps.Polyline({
+                                path: linePath, // 선을 구성하는 좌표배열 입니다
+                                strokeWeight: 5, // 선의 두께 입니다
+                                strokeColor: '#FFAE00', // 선의 색깔입니다
+                                strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                strokeStyle: 'solid' // 선의 스타일입니다
+                            });
+                          polyline.setMap(map);  
+                          var poldistance = Math.round( myPlace + new kakao.maps.LatLng(37.483327, 126.8972991)), // 선의 총 거리를 계산합니다
+                               content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + poldistance + '</span>m</div>'; // 커스텀오버레이에 추가될 내용입니다
+                          }
+                      }
+                   );
+                }//showPosition(position) end
+         
+                
+                $(function () {
+                	$('#btnSend').on('click', function(evt) {
+                	  console.log(socket.readyState);
+                	  evt.preventDefault();
+                	if (socket.readyState !== 1) return;
+                			console.log("반응");
+                		  let msg = "신고가 접수 되었습니다.";
+                		  socket.send(msg);
+                		});
+                });
+                
         </script>
 	</div>
 	<!-- PAGE | 지도 end -->
 	
+
+	<!-- PAGE | 나눔소통 start -->
+    <section id="page-contact" class="blog-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+          <div class="title__mark">  	
+                    <img src=' <c:url value="/resources/img/pageLine.png" />' alt="">
+          </div>
+            <h3 class="title-a">
+              		나눔소통
+            </h3>
+            
+            <hr />
+            <h3 class="subtitle-a">
+             		 원하는 정보를 찾아보세요
+            </h3>
+            <div class="line-mf"></div>
+          
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="<c:url value="/blog"/>" ><img src='./resources/img/biglogo.png' alt="" class="img-fluid"></a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+                
+              </div>
+              <h3 class="card-title"><a href="<c:url value="/blog"/>" >공지</a></h3>
+             	  <p2>LifeSavor 6월 2일부터 정상 운영합니다
+                         <span id="dots">...</span><br />
+                         <span id="more">저희 LifeSaver가 6월 2일부터 정상 운영됩니다. <br />
+                         
+										지난 5월 19일 세이버 4명의 확진 판정 후 1,400여 직원 및 일부 환자 분에 대한 역학조사 결과, <br />
+										
+						 <span id="moretext">		
+										추가 감염자가 없어 5월 25일 수술장 재오픈에 이어 6월 2일부터 모든 영역에서 정상 운영합니다. <br />
+										
+										기술 지연과 일부 출동 중단으로 인해 불편을 겪으신 분들께 진심으로 사과 드리며 조속히 치료 받으시도록 최선을 다하겠습니다. <br />
+										
+										앞으로 저희 기관은 더 철저히 신종 감염병으로부터 안전한 기관이 되도록 노력하겠습니다. <br />
+						 </span>
+						 <span id="moredots">...</span>	
+                         </span> 
+                         
+                  </p2>
+					 <div class="read-more2">
+						 <a href="<c:url value="/blog"/>"  onclick="myFunction()" id="moreview">더보기..</a>
+                  		<a onclick="myFunction()" id="myBtn">Read More...</a>
+               		 </div>
+              
+            </div>
+          
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="<c:url value="/blog"/>" ><img src='./resources/img/biglogo.png' alt="" class="img-fluid"></a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+                
+              </div>
+              <h3 class="card-title"><a href="<c:url value="/blog"/>" >CPR (심폐소생술) 강사</a></h3>
+              <p>안녕하세요. 심폐소생술 강사에 관심를 갖고 있는 고1 여고생입니다. <br /> 
+                         <span id="dots2">...</span><br />
+                         <span id="more2">인터넷에 CPR강사 조건이나 연봉등을 검색해봐도 잘 나오지 않아서요..ㅜㅜ <br />
+						 <span id="moretext2">		
+										 제가 제일 궁금한 것은 CPR강사가 될 수 있는 방법들이나 연봉이 궁금합니다 <br />
+						 </span>
+						 <span id="moredots2">...</span>	
+                         </span> 
+                         
+                  </p2>
+               
+                        
+                         
+					   
+							       
+							      
+                  			<!-- 심폐소생술관련은 우선 자격증으로 발급되는게 아니고 수료증, 이수증 같은것으로 발급되고요.
+
+							강사 같은 경우 보통 성인이 되어서 일반과정 수료 후 유효기간이 있을때 강사과정을 수료하면 됩니다.
+							
+							심폐소생술강사 같은 경우 대다수가 따로 연봉 같은것은 없습니다. 자신이 얼마나 강의를 많이 했냐에 따라 건당 얼마 이런 형태로 받을 수 있다고 생각하시면 됩니다.
+							
+							간호사면허증, 응급구조사자격증 같이 관련학과를 나온뒤 국가고시를 합격하여 관련 자격증, 
+							면허증을 소지하고 있는경우 보건소,구청이나 관련 업체에 월급 받으면서 일하는 강사는 있긴하지만 그수가 적고요. 
+							일반인인 경우 대부분 건당 얼마 이런 형태 입니다. -->
+                         </span> 
+                         
+                  </p2>
+					 <div class="read-more2">
+						 <a href="<c:url value="/blog"/>"  onclick="myFunction2()" id="moreview2">더보기..</a>
+                  		<a onclick="myFunction2()" id="myBtn2">Read More...</a>
+               		 </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="blog-single.jsp"><img src='./resources/img/save.jpg' alt="" class="img-fluid" ></a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+              </div>
+              <h3 class="card-title"><a href="<c:url value="/blog"/>" >cpr순서</a></h3>
+                 <p2>cpr순서에 대해 알려드립니다 <br />
+                         <span id="dots3">...</span><br />
+                         <span id="more3">1. 심정지 확인(반응 및 호흡 확인)하기
+										        우선 현장의 안전을 확인하고, 쓰러진 사람의 반응 및 호흡상태를 확인합니다. <br />
+						 <span id="moretext3">		
+										 2. 119 신고와 도움요청하기
+											주변에 도움을 요청 및 119에 빠르게 신고하고 발견장소 및 현 상황을 알립니다. <br />
+										 3. 가슴압박 위치잡기
+										        양손을 깍지 끼어 손꿈치로 가슴 중앙(명치를 피해)을 압박하되, 손가락 끝이 몸에 닿지 않도록 합니다. <br />
+									     4. 가슴압박 30회 시행하기
+											팔꿈치를 펴서 팔이 바닥에 수직을 이룬 상태로 체중을 이용하여 가슴압박을 시작합니다. <br />
+										 5. 기도 유지 후 인공호흡 2회 시행하기
+											기도를 확보(머리를 젖히고 턱 들기)한 후 인공호흡을 시행하되 가슴이 부풀어 오르는지 확인하면서 1회/1초, 총 2회 시행합니다. <br />
+										 6. 가슴압박과 인공호흡 병행하기
+											가슴압박과 인공호흡의 시행비율은 가슴압박 30회, 인공호흡 2회로 번갈아서 시행합니다. <br />
+						 </span>
+						 <span id="moredots3">...</span>	
+                         </span> 
+                  </p2>
+					 <div class="read-more2">
+						 <a href="<c:url value="/blog"/>"  onclick="myFunction3()" id="moreview3">더보기..</a>
+                  		<a onclick="myFunction3()" id="myBtn3">Read More...</a>
+               		 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="board-more">
+    	 <a class="boardmore" href="<c:url value="/blog"/>"  id="boardmore">게시판더보기</a>
+    </div>
+  </section>
+    <!-- PAGE | 나눔소통 end -->
+	
+
 	<!-- PAGE | footer start -->
 	<footer id="lifesaver_footer">
 		<div class="lifesaver_footer_container">
