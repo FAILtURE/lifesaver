@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -15,11 +14,11 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <link rel="shortcut icon" href='<c:out value="/resources/img/images/ico/favicon.png" />'>
-<link rel="stylesheet" href="css/Custom.css" type="text/css" />
-<link rel="stylesheet" href="css/newhhw.css" type="text/css" />
 
 <!-- STYLESHEETS -->
 <link rel="stylesheet" href='<c:url value="/resources/css/lifeSaver.css" />' type="text/css" />
+<link rel="stylesheet" href='<c:url value="/resources/css/subPage.css" />' type="text/css" />
+<link rel="stylesheet" href='<c:url value="/resources/css/Custom.css" />' type="text/css" />
 
 <!-- GOOGLE WEB FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -100,7 +99,8 @@ function getCookie(name){
 				<div class="col-md-12 center">
 					<!-- LOGO -->
 					<a class="brand pull-left" href=""> <img
-						src=' <c:url value="/resources/img/logo_re.png"/>' alt="LifeSaver">
+
+						src=' <c:url value="/resources/img/logo_re.png"/>' id="logo_mobile" alt="LifeSaver">
 					</a>
 					<!-- END LOGO -->
 
@@ -109,7 +109,8 @@ function getCookie(name){
 						data-target=".navbar-collapse" aria-controls="bs-navbar"
 						aria-expanded="false">
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
+
+							class="icon-bar"></span><span class="icon-bar"></span> 
 					</div>
 					<!-- END MOBILE MENU BUTTON -->
 					<div class="main__navibar" id="main__navibar">
@@ -121,6 +122,7 @@ function getCookie(name){
 							<li><a href="#page-about" id="about-move">응급의료이슈</a></li>
 							<li><a href="#page-blog" id="blog-move">지도</a></li>
 							<li><a href="#page-contact" id="contact-move">나눔소통</a></li>
+
 
 						</ul>
 						<!-- END MAIN MENU -->
@@ -189,6 +191,7 @@ function getCookie(name){
 	       	<p class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 767px; position: relative; margin-left: 370px; font-size: 60px; " > <c:out value="${todayHelp }"></c:out></p>
         </div>
         <!-- 영역 차지하는 공간 --> 
+
         <div class="rating__footer"></div>
     </div>
 --%>
@@ -645,6 +648,7 @@ function getCookie(name){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <jsp:include page="footer.jsp"></jsp:include>
 		
+
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=119f00e9c183b4e48ccbded04cfb8f47"></script>
 		<script>
             function submitInfo(url, name, tell, code, img) {
@@ -1516,6 +1520,7 @@ function getCookie(name){
                             "\n매칭 시간    : " + Now.getHours() + "시" + Now.getMinutes() + "분" + Now.getSeconds() + "초" +
                             "\n거리           : " + show_dist + "m");
                         console.log("resultPeo : " + resultPeo);
+
                         //	var my_pos = [myPlace.getLat(), myPlace.getLng()]
                         
                         if (resultPeo == 1) {
@@ -1552,7 +1557,6 @@ function getCookie(name){
                     }
                 );
             }
-
 
             function showPositionErr(error) { //에러코드
                 var errTypes = {
@@ -1636,7 +1640,7 @@ function getCookie(name){
             }
 
             //클릭에 의한 위치 표시, 즉 라이프 가드의 위치를 임의적으로 매핑해줍니다.
-            
+
             /* var hpPositions = [
                 new kakao.maps.LatLng(37.5812887,	126.9364294) */
 
@@ -1909,6 +1913,7 @@ function getCookie(name){
 	</div>
 	<!-- PAGE | 지도 end -->
 	
+
 	<!-- PAGE | 나눔소통 start -->
     <section id="page-contact" class="blog-mf sect-pt4 route">
     <div class="container">
@@ -2056,6 +2061,7 @@ function getCookie(name){
   </section>
     <!-- PAGE | 나눔소통 end -->
 	
+
 	<!-- PAGE | footer start -->
 	<footer id="lifesaver_footer">
 		<div class="lifesaver_footer_container">

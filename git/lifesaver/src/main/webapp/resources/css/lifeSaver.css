@@ -7,19 +7,21 @@ body {
     background-color: #fffdfd;
 }
 
-#donation { 
-   padding:12%;
-   width:100%;
-   height: 100%;
-   text-align: center;
-   background: url(../img/donationBg.png) no-repeat;
-  }
-	           
-.supbtn {width: 191px;
-	height:53px;
-	border-radius:10px;
-	padding:0;}
-	
+#donation {
+    padding: 12%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: url(../img/donationBg.png) no-repeat;
+}
+
+.supbtn {
+    width: 191px;
+    height: 53px;
+    border-radius: 10px;
+    padding: 0;
+}
+
 .main__navibar {
     display: flex;
     justify-content: center;
@@ -78,7 +80,44 @@ body {
 }
 
 
-/* �꽭�씠踰� �쁽�솴 css */
+/* 상단 네비 부분 mobile css start */
+
+@media screen and (max-width:480px) {
+    .headernavibar01 {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+    }
+    .nav__menu {
+        display: flex;
+        justify-content: space-between;
+        /* flex-wrap: wrap; */
+        align-items: flex-end;
+        padding: 3px 8px;
+        margin-top: 10px;
+    }
+}
+
+
+/* 상단 네비 부분 mobile css end */
+
+
+/* 모바일 로고 부분 media start */
+
+@media screen and (max-width:480px) {
+    #logo_mobile {
+        position: absolute;
+        width: 38%;
+        padding: 2px 10px;
+    }
+    /* #logo_m_link {
+        padding: 7 0 8 0;
+        width: auto;
+    } */
+}
+
+
+/* 占쎄쉭占쎌뵠甕곤옙 占쎌겱占쎌넺 css */
 
 .saverStatusBg {
     font-family: 'Roboto', sans-serif;
@@ -88,7 +127,6 @@ body {
     width: 100%;
     height: 100vh;
 }
-
 
 .sub__navi {
     background: #000;
@@ -133,7 +171,6 @@ body {
 .info__box02 a {
     padding: 10px;
 }
-
 
 .rating__infoText {
     font-family: Noto Sans CJK JP;
@@ -203,29 +240,21 @@ body {
     padding-top: 100px;
     padding-left: 410px;
 }
-@media (min-width: 752px) {
-	.rating__mainSub {
-	font-size:16.2px;
-	width:414px;
-	height: 100px;
-	padding:0px;
-	padding-left:60px;
-	padding-right:60px;
-	}
-	
+
+@media screen and (max-width:480px) {
+    .rating__mainSub {
+        width: auto;
+        display: flex;
+        text-align: center;
+        padding: 0px;
+    }
+    .rating__footerSub {
+        width: auto;
+        text-align: center;
+        padding: 0px;
+    }
 }
 
-@media (max-width: 1031px) {
-	.rating__mainSub {
-	font-size:16.2px;
-	width:768px;
-	height: 100px;
-	padding:0px;
-	padding-left:60px;
-	padding-right:60px;
-	}
-	
-}
 .rating__Text {
     font-size: 30px;
     padding-left: 10px;
@@ -247,11 +276,19 @@ body {
     padding-top: 25px;
 }
 
+@media screen and (max-width:480px) {
+    .rating__footerSub {
+        width: auto;
+        text-align: center;
+        padding: 0px;
+    }
+}
 
-/* �꽭�씠踰꾨벑湲� �럹�씠吏� css end */
+
+/* 占쎄쉭占쎌뵠甕곌쑬踰묉묾占� 占쎈읂占쎌뵠筌욑옙 css end */
 
 
-/* 吏��룄�럹�씠吏� css */
+/* 筌욑옙占쎈즲占쎈읂占쎌뵠筌욑옙 css */
 
 .saver__map {
     background: url("../img/saverPage03BG.png");
@@ -262,7 +299,7 @@ body {
 }
 
 
-/* 吏��룄�럹�씠吏� css end */
+/* 筌욑옙占쎈즲占쎈읂占쎌뵠筌욑옙 css end */
 
 .up__navi ul li {
     display: flex;
@@ -8450,7 +8487,7 @@ button.close {
 }
 
 
-/* �뒳�씪�씠�뱶 �븷�땲硫붿씠�뀡 諛곌꼍�깋�긽  */
+/* 占쎈뮩占쎌뵬占쎌뵠占쎈굡 占쎈막占쎈빍筌롫뗄�뵠占쎈�� 獄쏄퀗瑗랃옙源뗰옙湲�  */
 
 .portfolio-items .portfolio-overlay {
     width: 100%;
@@ -8470,7 +8507,7 @@ button.close {
 }
 
 
-/* �뒳�씪�씠�뱶 �븷�땲硫붿씠�뀡 諛곌꼍�깋�긽 end*/
+/* 占쎈뮩占쎌뵬占쎌뵠占쎈굡 占쎈막占쎈빍筌롫뗄�뵠占쎈�� 獄쏄퀗瑗랃옙源뗰옙湲� end*/
 
 .portfolio-items a:hover .portfolio-overlay {
     opacity: 95;
@@ -8589,6 +8626,8 @@ button.close {
 /*
 *   PAGE | FEATURES
 */
+
+
 /* 
 .page-features {
     position: relative;
@@ -8599,6 +8638,7 @@ button.close {
     background-size: cover;
 }
  */
+
 .page-features .container {
     position: relative;
     z-index: 2;
@@ -9120,7 +9160,7 @@ button.close {
 }
 
 
-/* 硫붿씤 �꽕鍮꾨컮 css �냽�꽦媛� */
+/* 筌롫뗄�뵥 占쎄퐬�뜮袁⑥뺍 css 占쎈꺗占쎄쉐揶쏉옙 */
 
 #navigation #main-menu a {
     font-family: 'Roboto', sans-serif;
@@ -9184,7 +9224,7 @@ button.close {
 }
 
 #navigation .mobile-menu:hover .icon-bar {
-    background-color: #4e808e;
+    background-color: #f15151;
 }
 
 
@@ -9247,7 +9287,7 @@ footer {
 
 .bx-wrapper .bx-loading {
     min-height: 50px;
- /*    background: url("/resources/img/images/css/plugins/bxslider/bx_loader.gif") center center no-repeat #ffffff; */
+    /*    background: url("/resources/img/images/css/plugins/bxslider/bx_loader.gif") center center no-repeat #ffffff; */
     height: 100%;
     width: 100%;
     position: absolute;
@@ -9630,7 +9670,7 @@ h3 {
 }
 
 
-/* �씤�듃濡� �뀓�뒪�듃 �냽�꽦 css */
+/* 占쎌뵥占쎈뱜嚥∽옙 占쎈�볩옙�뮞占쎈뱜 占쎈꺗占쎄쉐 css */
 
 h1 {
     font-size: 76px;
@@ -10278,7 +10318,7 @@ blockquote:before {
 
 
 /*
-�쓳湲됱쓽猷뚯젙蹂� �뒪紐� �꽕鍮꾨컮 愿��젴
+占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎈뮞筌륅옙 占쎄퐬�뜮袁⑥뺍 �꽴占쏙옙�졃
 */
 
 .submenu {
@@ -10311,10 +10351,10 @@ blockquote:before {
 }
 
 
-/* �쓳湲됱쓽猷뚯젙蹂� �뒪紐� �꽕鍮꾨컮 愿��젴 */
+/* 占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎈뮞筌륅옙 占쎄퐬�뜮袁⑥뺍 �꽴占쏙옙�졃 */
 
 
-/* �쓳湲됱쓽猷뚯젙蹂� �꽕鍮� �겢由��떆 �븸�뀡 */
+/* 占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎄퐬�뜮占� 占쎄깻�뵳占쏙옙�뻻 占쎈만占쎈�� */
 
 .submenu a:hover,
 .submenu a.active {
@@ -10324,7 +10364,7 @@ blockquote:before {
 }
 
 
-/* �쓳湲됱쓽猷뚯젙蹂� �꽕鍮� �겢由��떆 �븸�뀡 */
+/* 占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎄퐬�뜮占� 占쎄깻�뵳占쏙옙�뻻 占쎈만占쎈�� */
 
 .show-more-cube {
     background: url("../img/images/css/divider_more.png") no-repeat center center;
@@ -10335,7 +10375,7 @@ blockquote:before {
 }
 
 
-/* 吏��룄 PAGE | �븘�씠肄� css  */
+/* 筌욑옙占쎈즲 PAGE | 占쎈툡占쎌뵠�굜占� css  */
 
 .show-more-cube a {
     background-color: #f15151;
@@ -10376,7 +10416,6 @@ blockquote:before {
 */
 
 .line-divider:after {
-	
     background: url("../img/introLine.png") no-repeat bottom center;
     padding-bottom: 25px;
     display: block;
@@ -10451,8 +10490,3 @@ blockquote:before {
 .loading .progress-bar {
     width: 100%;
 }
-
-
-/*
-*	Functional addons
-*/
