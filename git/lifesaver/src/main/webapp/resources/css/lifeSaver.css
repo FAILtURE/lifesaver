@@ -3,13 +3,24 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    /* 쓸데없는 여백을 방지하기 위해 margin: 0px; 해준다 */
     margin: 0px auto;
     background-color: #fffdfd;
 }
 
+#donation {
+    padding: 12%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: url(../img/donationBg.png) no-repeat;
+}
 
-/* 스페이스 그레이 네비바 css */
+.supbtn {
+    width: 191px;
+    height: 53px;
+    border-radius: 10px;
+    padding: 0;
+}
 
 .main__navibar {
     display: flex;
@@ -69,7 +80,44 @@ body {
 }
 
 
-/* 세이버 현황 css */
+/* 상단 네비 부분 mobile css start */
+
+@media screen and (max-width:480px) {
+    .headernavibar01 {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+    }
+    .nav__menu {
+        display: flex;
+        justify-content: space-between;
+        /* flex-wrap: wrap; */
+        align-items: flex-end;
+        padding: 3px 8px;
+        margin-top: 10px;
+    }
+}
+
+
+/* 상단 네비 부분 mobile css end */
+
+
+/* 모바일 로고 부분 media start */
+
+@media screen and (max-width:480px) {
+    #logo_mobile {
+        position: absolute;
+        width: 38%;
+        padding: 2px 10px;
+    }
+    /* #logo_m_link {
+        padding: 7 0 8 0;
+        width: auto;
+    } */
+}
+
+
+/* 占쎄쉭占쎌뵠甕곤옙 占쎌겱占쎌넺 css */
 
 .saverStatusBg {
     font-family: 'Roboto', sans-serif;
@@ -79,12 +127,6 @@ body {
     width: 100%;
     height: 100vh;
 }
-
-
-/* 세이버 현황 css end */
-
-
-/* 응급의료정보 텍스트 및 이미지 링크 시작  */
 
 .sub__navi {
     background: #000;
@@ -130,12 +172,6 @@ body {
     padding: 10px;
 }
 
-
-/* 응급의료정보 텍스트 및 이미지 링크 끝 */
-
-
-/* 세이버등급 페이지 css */
-
 .rating__infoText {
     font-family: Noto Sans CJK JP;
     font-weight: bold;
@@ -153,7 +189,7 @@ body {
     text-align: center;
     /*  border: 1px solid red; */
     margin: 0 auto;
-    background-color: url(../img/saverPage03BG.png) no-repeat scroll center;
+    background-color: url(../resources/img/saverPage03BG.png) no-repeat scroll center;
 }
 
 .rating__title {
@@ -205,6 +241,20 @@ body {
     padding-left: 410px;
 }
 
+@media screen and (max-width:480px) {
+    .rating__mainSub {
+        width: auto;
+        display: flex;
+        text-align: center;
+        padding: 0px;
+    }
+    .rating__footerSub {
+        width: auto;
+        text-align: center;
+        padding: 0px;
+    }
+}
+
 .rating__Text {
     font-size: 30px;
     padding-left: 10px;
@@ -221,19 +271,27 @@ body {
     /* display: flex; */
     /* justify-content: center;
         align-items: flex-end; */
-    background: url(../img/footer.png) no-repeat 50% 0;
+    background: url("../img/footer.png") no-repeat 50% 0;
     margin-top: 90px;
     padding-top: 25px;
 }
 
+@media screen and (max-width:480px) {
+    .rating__footerSub {
+        width: auto;
+        text-align: center;
+        padding: 0px;
+    }
+}
 
-/* 세이버등급 페이지 css end */
+
+/* 占쎄쉭占쎌뵠甕곌쑬踰묉묾占� 占쎈읂占쎌뵠筌욑옙 css end */
 
 
-/* 지도페이지 css */
+/* 筌욑옙占쎈즲占쎈읂占쎌뵠筌욑옙 css */
 
 .saver__map {
-    background: url(../img/saverPage03BG.png);
+    background: url("../img/saverPage03BG.png");
 }
 
 #saver__mapwrap {
@@ -241,7 +299,7 @@ body {
 }
 
 
-/* 지도페이지 css end */
+/* 筌욑옙占쎈즲占쎈읂占쎌뵠筌욑옙 css end */
 
 .up__navi ul li {
     display: flex;
@@ -455,9 +513,6 @@ td,
 th {
     padding: 0;
 }
-
-
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 
 @media print {
     *,
@@ -2057,6 +2112,7 @@ dd {
     margin-left: 0;
 }
 
+
 /* < !-- PAGE | footer start -->*/
 
 
@@ -2115,7 +2171,7 @@ dd {
 }
 
 
-/*    <!— PAGE | footer end —> */
+/*    <!-- PAGE | footer end --> */
 
 @media (min-width: 992px) {
     .dl-horizontal dt {
@@ -8317,7 +8373,7 @@ button.close {
     position: relative;
     overflow: hidden;
     text-align: center;
-    background: #292929 url(../img/images/pages/welcome/welcome.jpg) 50% 0 repeat fixed;
+    background: #292929 url("../img/images/pages/welcome/welcome.jpg") 50% 0 repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -8430,6 +8486,9 @@ button.close {
     overflow: hidden;
 }
 
+
+/* 占쎈뮩占쎌뵬占쎌뵠占쎈굡 占쎈막占쎈빍筌롫뗄�뵠占쎈�� 獄쏄퀗瑗랃옙源뗰옙湲�  */
+
 .portfolio-items .portfolio-overlay {
     width: 100%;
     height: 100%;
@@ -8438,7 +8497,7 @@ button.close {
     position: absolute;
     display: block;
     z-index: 4;
-    background: url(../img/images/css/thumb_over.png) no-repeat scroll center 42% #4e808e;
+    background: url("../css/thumb_over.png") no-repeat scroll center 42% #eb6859;
     background-size: auto 20%;
     opacity: 0;
     filter: alpha(opacity=0);
@@ -8446,6 +8505,9 @@ button.close {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
+
+/* 占쎈뮩占쎌뵬占쎌뵠占쎈굡 占쎈막占쎈빍筌롫뗄�뵠占쎈�� 獄쏄퀗瑗랃옙源뗰옙湲� end*/
 
 .portfolio-items a:hover .portfolio-overlay {
     opacity: 95;
@@ -8507,7 +8569,7 @@ button.close {
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     text-indent: -99999px;
-    background: url("../img/images/css/cls.png") no-repeat center center;
+    background: url("../images/css/cls.png") no-repeat center center;
 }
 
 .portfolio-item-details .close-portfolio span:hover {
@@ -8565,14 +8627,17 @@ button.close {
 *   PAGE | FEATURES
 */
 
+
+/* 
 .page-features {
     position: relative;
-    background: url(../img/donationBg.png) 50% 0 no-repeat fixed;
+    background: url(/resources/img/donationBg.png) 50% 0 no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+ */
 
 .page-features .container {
     position: relative;
@@ -8609,7 +8674,7 @@ button.close {
 }
 
 .page-features .quote {
-    background: url(../img/images/css/divider_q.png) no-repeat 50% 0;
+    background: url(/resources/css/divider_q.png) no-repeat 50% 0;
     margin-top: 100px;
     padding-top: 50px;
 }
@@ -8678,7 +8743,7 @@ button.close {
 
 .page-twitter {
     position: relative;
-    background: url(../img/images/pages/twitter/tw_bck.jpg) 50% 0 no-repeat fixed;
+    background: url(../images/pages/twitter/tw_bck.jpg) 50% 0 no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -8693,7 +8758,7 @@ button.close {
 }
 
 .page-twitter .twitter-devider {
-    background: url(../img/images/css/divider_tw.png) no-repeat center bottom;
+    background: url(/resources/img/images/css/divider_tw.png) no-repeat center bottom;
     padding-bottom: 60px;
 }
 
@@ -9095,7 +9160,7 @@ button.close {
 }
 
 
-/* 메인 네비바 css 속성값 */
+/* 筌롫뗄�뵥 占쎄퐬�뜮袁⑥뺍 css 占쎈꺗占쎄쉐揶쏉옙 */
 
 #navigation #main-menu a {
     font-family: 'Roboto', sans-serif;
@@ -9159,7 +9224,7 @@ button.close {
 }
 
 #navigation .mobile-menu:hover .icon-bar {
-    background-color: #4e808e;
+    background-color: #f15151;
 }
 
 
@@ -9222,7 +9287,7 @@ footer {
 
 .bx-wrapper .bx-loading {
     min-height: 50px;
-    background: url(../img/images/css/plugins/bxslider/bx_loader.gif) center center no-repeat #ffffff;
+    /*    background: url("/resources/img/images/css/plugins/bxslider/bx_loader.gif") center center no-repeat #ffffff; */
     height: 100%;
     width: 100%;
     position: absolute;
@@ -9267,12 +9332,12 @@ footer {
 
 .bx-wrapper .bx-prev {
     left: 10px;
-    background: url(../img/images/css/plugins/bxslider/controls.png) no-repeat 0 -32px;
+    background: url(../images/css/plugins/bxslider/controls.png) no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
     right: 10px;
-    background: url(../img/images/css/plugins/bxslider/controls.png) no-repeat -43px -32px;
+    background: url(../images/css/plugins/bxslider/controls.png) no-repeat -43px -32px;
 }
 
 .bx-wrapper .bx-prev:hover {
@@ -9374,18 +9439,18 @@ footer {
     height: 25px;
     line-height: 14px;
     /* vertical-align: text-top; */
-    background-image: url("../img/images/css/sicon-set.png");
+    background-image: url("../images/css/sicon-set.png");
     background-repeat: no-repeat;
     text-indent: -99999px;
     text-align: center;
 }
 
 .sicon-white i {
-    background-image: url("../img/images/css/sicon-set-white.png");
+    background-image: url("../images/css/sicon-set-white.png");
 }
 
 .sicon-black i {
-    background-image: url("../img/images/css/sicon-set.png");
+    background-image: url("../images/css/sicon-set.png");
 }
 
 
@@ -9456,7 +9521,7 @@ footer {
 }
 
 .social-icons.bordered a:hover i {
-    background-image: url("../img/images/css/sicon-set.png");
+    background-image: url("../images/css/sicon-set.png");
 }
 
 .social-icons.bordered-black {
@@ -9473,7 +9538,7 @@ footer {
 }
 
 .social-icons.bordered-black a:hover i {
-    background-image: url("../img/images/css/sicon-set-white.png");
+    background-image: url("../images/css/sicon-set-white.png");
 }
 
 
@@ -9497,7 +9562,7 @@ footer {
 }
 
 .social-icons.hover-big a:hover i {
-    background-image: url("../img/images/css/sicon-set-white.png");
+    background-image: url("../images/css/sicon-set-white.png");
 }
 
 .social-icons.hover-big .sicon-facebook:hover {
@@ -9605,7 +9670,7 @@ h3 {
 }
 
 
-/* 인트로 텍스트 속성 css */
+/* 占쎌뵥占쎈뱜嚥∽옙 占쎈�볩옙�뮞占쎈뱜 占쎈꺗占쎄쉐 css */
 
 h1 {
     font-size: 76px;
@@ -9939,7 +10004,7 @@ blockquote:before {
         font-size: 19px;
     }
     h4 {
-        font-size: 19px;
+        font-size: 17px;
     }
     h5 {
         font-size: 19px;
@@ -10253,7 +10318,7 @@ blockquote:before {
 
 
 /*
-*   Submenu
+占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎈뮞筌륅옙 占쎄퐬�뜮袁⑥뺍 �꽴占쏙옙�졃
 */
 
 .submenu {
@@ -10272,8 +10337,8 @@ blockquote:before {
 }
 
 .submenu a {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16.5px;
     font-weight: bold;
     text-transform: uppercase;
     line-height: 28px;
@@ -10282,20 +10347,24 @@ blockquote:before {
     padding: 3px 8px;
     margin: 0 3px;
     position: relative;
-    background-color: #bbbbbb;
+    background-color: #b8b6b6e7;
 }
+
+
+/* 占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎈뮞筌륅옙 占쎄퐬�뜮袁⑥뺍 �꽴占쏙옙�졃 */
+
+
+/* 占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎄퐬�뜮占� 占쎄깻�뵳占쏙옙�뻻 占쎈만占쎈�� */
 
 .submenu a:hover,
 .submenu a.active {
-    background-color: #4e808e;
+    background-color: #eb6859;
     text-decoration: none;
     color: #ffffff;
 }
 
 
-/*
-*   Show more cube
-*/
+/* 占쎌벓疫뀀맩�벥�뙴�슣�젟癰귨옙 占쎄퐬�뜮占� 占쎄깻�뵳占쏙옙�뻻 占쎈만占쎈�� */
 
 .show-more-cube {
     background: url("../img/images/css/divider_more.png") no-repeat center center;
@@ -10306,7 +10375,7 @@ blockquote:before {
 }
 
 
-/* 지도 PAGE | 아이콘 css  */
+/* 筌욑옙占쎈즲 PAGE | 占쎈툡占쎌뵠�굜占� css  */
 
 .show-more-cube a {
     background-color: #f15151;
@@ -10359,7 +10428,7 @@ blockquote:before {
 }
 
 .line-divider-inline:after {
-    background: url("../img/images/css/divider_more_text.png") no-repeat bottom center;
+    background: url("../css/divider_more_text.png") no-repeat bottom center;
     padding-bottom: 0px;
     display: block;
     height: 10px;
