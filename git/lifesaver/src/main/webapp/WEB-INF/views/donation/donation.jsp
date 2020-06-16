@@ -38,7 +38,7 @@ html, body {
 			국가의 절대적 의무를 행하는 중재자이자 국민이다
 		</h4>
 
-		<img alt="donate" src="/resources/images/donateUI.png">
+		<img alt="donate" src="/resources/img/donateUI.png">
 
 		<h4>
 			<span style="color: white">기부는</span> <span style="color: red">생명수호</span>
@@ -46,7 +46,7 @@ html, body {
 			<span style="color: red">'라이프 세이버'</span><span style="color: white">들을 위해 사용됩니다.</span></h4>
 		<h4><span style="color: white">함께 참여한 기부 금액 :  ${totalprice}</span></h4>
 
-		<a href="/corporation_mod"><button type="button" style="border: none"><img src="/resources/images/donationBtn.png"></button></a>
+		<a href="/corporation_mod"><button type="button" style="border: none"><img src="/resources/img/donationBtn.png"></button></a>
 	</div>
 
 </body>

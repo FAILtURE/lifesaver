@@ -8,25 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/lawjoin.css" ></c:url>">
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/saverjoin.css" ></c:url>">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-
-// 로그인 유지 버튼 모양 변경
-function changeImg() {
-	var on = document.getElementById('on');
-
-		if (on.src.indexOf('off') == -1) {
-			on.src = on.src.replace('on.png', 'off.png');
-			// 로그인 유지 : 세션에 저장 
-		} else {
-			on.src = on.src.replace('off.png', 'on.png');
-			// 로그인 유지 해제 : 세션에서 삭제
-		}
-	}
-	
 
 // 아이디(이메일)을 readonly로
 $(function() {
@@ -65,7 +51,49 @@ function openDaumPost2(){
 	}).open();
 }
 
+
+function fn_phoneChk(){
+
+	 $.ajax({
+	        url: 'phoneChk',
+	        type: 'get',
+	        dataType : 'json',
+	        data: {'common_phone' : $('#phone').val()}, 			// data  {sql의 컬럼명 : 텍스트 필드의 {아이디}}
+	       success: function(data){
+	    		if(data == 1){
+	    			alert("중복!");
+	    		}else if(data ==0){
+	    			$("#phoneChk").attr("value", "Y");
+	    			alert("사용가능");
+	    		}
+	    		
+	    		
+	       }
+	    })
+}
+
+
+function fn_lLicenseChk(){
+	 $.ajax({
+	        url: 'lLicenseChk',
+	        type: 'get',
+	        dataType : 'json',
+	        data: {'law_license' : $('#law_license').val()}, 			// data  {sql의 컬럼명 : 텍스트 필드의 {아이디}}
+	       success: function(data){
+	    		if(data == 1){
+	    			alert("중복!");
+	    		}else if(data ==0){
+	    			$("#lawChk").attr("value", "Y");
+	    			alert("사용가능");
+	    		}
+	    		
+	    		
+	       }
+	    })
+}
+
 </script>
+
 
 <script type="text/javascript">
 // 유효성 검사 
@@ -131,52 +159,56 @@ $(document).ready(function(){
 	    
 	    // 이름 유효성 검사
 	    if(name.value==''){
-	    	$('#nameCheck').text("필수정보 입니다.");
+	    	alert("이름을 입력해주세요!");
 	    	name.focus();
 	        return false;
 	    }if(!checkHangle.test(name.value)){
-	    	$('#nameCheck').text("한글로 입력해주세요");
+	    	alert("이름은 한글로 실명을 입력해주세요!")
 	    	name.focus();
 	        return false;
 	    }
 	    
 	   // 생년월일 유효성 검사
 	   if(year.value=='선택'){
-		   $('#birthdayCheck').text("생년월일을 입력해주세요.");
+		   alert("생년월일을 입력해주세요!");
 	        return false;
 	    }if(month.value=='선택'){
-	    	$('#birthdayCheck').text("생년월일을 입력해주세요.");
+	    	alert("생년월일을 입력해주세요!");
 	        return false;
 	    }if(day.value=='선택'){
-	    	$('#birthdayCheck').text("생년월일을 입력해주세요.");
+	    	alert("생년월일을 입력해주세요!");
 	        return false;
 	    }
 	    
 	    // 성별 유효성 검사
-		if(gender.value==''){
-			$('#genderCheck').text("성별을 선택해주세요.");
+		if(checkgender.value==''){
+			alert("성별을 선택해주세요!");
 			return false;
 		}
 	    
 	    // 연락처 유효성 검사
-	    if(phone.value=="선택"){
-	    	$('#phoneCheck').text("연락처를 입력해주세요");
+	    if(phone.value==''){
+	    	alert("연락처를 입력해주세요!")
+	    	phone.focus();
 	    	return false;
 	    }if(!checkPhone.test(phone.value)){
-	    	$('#phoneCheck').text("연락처를 정확하게 입력해주세요 : 000-0000-0000");
+	    	alert("연락처를 정확하게 입력해주세요 : 000-0000-0000");
+	    	phone.focus();
 	    	return false;
 	    }
 	    
 	    // 주소 유효성 검사
 	    if(postnumber.value==''){
-	    	$('#addCheck').text("주소를 입력해주세요");
+	    	alert("우편번호를 입력해주세요!")
+	    	postnumber.focus();
 	    	return false;
 	    }if(postaddress.value==''){
-	    	$('#addCheck').text("주소를 입력해주세요");
+	    	alert("상세주소를 입력해주세요!");
+	    	postaddress.focus();
 	    	return false;
 	    }
 
-	/* 	document.frm.action = './lawjoinOK';
+	/* 	document.frm.action = './saverjoinOK';
 		document.frm.method = "GET"; 
 		document.frm.submit(); */
 		alert("회원가입이 완료되었습니다.");
@@ -198,7 +230,7 @@ $(document).ready(function(){
 	<div id="container">
 
 		<div id="header">
-			<img src="<c:url value="/resources/img/lawjoin/logo.png" ></c:url>" alt="로고" id="logo" /> <br /> 
+			<img src="<c:url value="/resources/img/saverjoin/logo.png" ></c:url>" alt="로고" id="logo" /> <br /> 
 			<span id="step">Step.1 약관동의&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				Step.2 회원정보입력&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				Step.3 가입완료</span> <br /> <img src="<c:url value="/resources/img/lawjoin/actionLine.png" ></c:url>" alt="" />
@@ -212,36 +244,41 @@ $(document).ready(function(){
 			<div id="authtext">SNS 인증하기</div>
 			
 			<div id="auth">
-			<a href="https://kauth.kakao.com/oauth/authorize?client_id=5461997da2e1069ba99ac732d8c5018c&redirect_uri=http://13.209.132.37:8080/lifelaw/registerAuth&response_type=code&scope=account_email">
-				<img src="<c:url value="/resources/img/lawjoin/kakaoBtn.png" ></c:url>" alt="" /> 
+			<a href="https://kauth.kakao.com/oauth/authorize?client_id=5461997da2e1069ba99ac732d8c5018c&redirect_uri=http://13.209.132.37:8080/lifesaver/registerAuthLaw&response_type=code&scope=account_email">
+				<img src="<c:url value="/resources/img/saverjoin/kakaoBtn.png" ></c:url>" alt="" /> 
 			</a>
-				<img src="<c:url value="/resources/img/lawjoin/googleBtn.png" ></c:url>" alt="" />
+				<img src="<c:url value="/resources/img/saverjoin/googleBtn.png" ></c:url>" alt="" />
 			</div>
 			
 			<div id="insert">
 
 				<div id="licensefield" class="fields">
 				
+				
 					<div id="license_name" class="names">면허번호 *</div>
 					<div id="license_text" class="texts">
+
 						<input type="text" name="law_license" id="law_license"/>
 					</div>
+					
+					<button class="lawChk" type="button" id="lawChk" onclick="fn_lLicenseChk()" value="N">중복확인</button>
+					
 				</div>
 				
 				<div id="idfield" class="fields">
 				
-					<div id="id_name" class="names">아이디 *</div>
+					<div id="id_name" class="names">아이디(이메일) *</div>
 					<div id="id_text" class="texts">
 					
 						<c:if test="${userId eq null }">
-							<input type="text" name="id" id="id"/>
+							<input type="text" name="id" id="id" readonly="readonly"/>
 						</c:if>
-						
+
 						<c:if test="${userId ne null}">
 							<input type="text" name="id" id="id" value="${userId }" readonly="readonly" />
 						</c:if>
-						
 					</div>
+				<!-- <button class="idChk" type="button" id="idChk" onclick="fn_idChk()" value="N">중복확인</button> -->
 				</div>
 				
 				<div id="pwfield" class="fields">
@@ -313,6 +350,7 @@ $(document).ready(function(){
 					<div id="phone_text" class="texts">
 						<input type="text" name="phone" id="phone" placeholder="010-0000-0000" />
 					</div>
+					<button class="phoneChk" type="button" id="phoneChk" onclick="fn_phoneChk()" value="N">중복확인</button>
 				</div>
 				
 				<div id="addressfield" class="fields">

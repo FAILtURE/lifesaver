@@ -50,8 +50,9 @@ input {
 }
 
 #submitbutton {
-	background: url("/resources/img/login.png") no-repeat;
+	background: url("/lifesaver/resources/img/login.png") no-repeat;
 	background-position: center;
+	border: none;
 }
 
 #keep{
@@ -110,7 +111,7 @@ input {
 	margin-top: -10px;
 }
 
-@media(max-width: 400px) {
+@media(max-width: 1024px) {
 	#container{
 	width: auto;
 	}

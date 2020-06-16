@@ -35,13 +35,9 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	
 	<!-- SqlSessionTemplate -->
 	 <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean> 
-	
-
-	<context:component-scan base-package="kr.co.lifesaver.persistance"></context:component-scan>
 	
 </beans>

@@ -12,22 +12,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script type="text/javascript">
  
-// 로그인 유지 버튼 모양 변경
-function changeImg() {
-	var on = document.getElementById('on');
-
-		if (on.src.indexOf('off') == -1) {
-			on.src = on.src.replace('on.png', 'off.png');
-			// 로그인 유지 : 세션에 저장 
-		} else {
-			on.src = on.src.replace('off.png', 'on.png');
-			// 로그인 유지 해제 : 세션에서 삭제
-		}
-	}
-	
-
 // 아이디(이메일)을 readonly로
 $(function() {
 	$(document).ready(function() {
@@ -65,6 +52,44 @@ function openDaumPost2(){
 	}).open();
 }
 
+function fn_phoneChk(){
+
+	 $.ajax({
+	        url: 'phoneChk',
+	        type: 'get',
+	        dataType : 'json',
+	        data: {'common_phone' : $('#phone').val()}, 			// data  {sql의 컬럼명 : 텍스트 필드의 {아이디}}
+	       success: function(data){
+	    		if(data == 1){
+	    			alert("중복!");
+	    		}else if(data ==0){
+	    			$("#phoneChk").attr("value", "Y");
+	    			alert("사용가능");
+	    		}
+	    		
+	    		
+	       }
+	    })
+}
+function fn_sLicenseChk(){
+	 $.ajax({
+	        url: 'sLicenseChk',
+	        type: 'get',
+	        dataType : 'json',
+	        data: {'saver_license' : $('#saver_license').val()}, 			// data  {sql의 컬럼명 : 텍스트 필드의 {아이디}}
+	       success: function(data){
+	    		if(data == 1){
+	    			alert("중복!");
+	    		}else if(data ==0){
+	    			$("#savChk").attr("value", "Y");
+	    			alert("사용가능");
+	    		}
+	    		
+	    		
+	       }
+	    })
+}
+
 </script>
 
 <script type="text/javascript">
@@ -90,6 +115,8 @@ $(document).ready(function(){
 	    var phone = document.getElementById("phone");
 	    var post = document.getElementById("post");
 	    var addr1 = document.getElementById("addr1");
+	    var jobaddr = document.getElementById("jobaddr");
+	    var saver_grade = document.getElementById("saver_grade");
 
 	
 		
@@ -131,50 +158,62 @@ $(document).ready(function(){
 	    
 	    // 이름 유효성 검사
 	    if(name.value==''){
-	    	$('#nameCheck').text("필수정보 입니다.");
+	    	alert("이름을 입력해주세요!");
 	    	name.focus();
 	        return false;
 	    }if(!checkHangle.test(name.value)){
-	    	$('#nameCheck').text("한글로 입력해주세요");
+	    	alert("이름은 한글로 실명을 입력해주세요!");
 	    	name.focus();
 	        return false;
 	    }
 	    
-	   // 생년월일 유효성 검사
-	   if(year.value=='선택'){
-		   $('#birthdayCheck').text("생년월일을 입력해주세요.");
-	        return false;
-	    }if(month.value=='선택'){
-	    	$('#birthdayCheck').text("생년월일을 입력해주세요.");
-	        return false;
-	    }if(day.value=='선택'){
-	    	$('#birthdayCheck').text("생년월일을 입력해주세요.");
-	        return false;
-	    }
-	    
-	    // 성별 유효성 검사
-		if(gender.value==''){
-			$('#genderCheck').text("성별을 선택해주세요.");
-			return false;
-		}
-	    
-	    // 연락처 유효성 검사
-	    if(phone.value=="선택"){
-	    	$('#phoneCheck').text("연락처를 입력해주세요");
-	    	return false;
-	    }if(!checkPhone.test(phone.value)){
-	    	$('#phoneCheck').text("연락처를 정확하게 입력해주세요 : 000-0000-0000");
-	    	return false;
-	    }
-	    
-	    // 주소 유효성 검사
-	    if(postnumber.value==''){
-	    	$('#addCheck').text("주소를 입력해주세요");
-	    	return false;
-	    }if(postaddress.value==''){
-	    	$('#addCheck').text("주소를 입력해주세요");
-	    	return false;
-	    }
+	    // 생년월일 유효성 검사
+		   if(year.value=='선택'){
+			   alert("생년월일을 입력해주세요!");
+		        return false;
+		    }if(month.value=='선택'){
+		    	alert("생년월일을 입력해주세요!");
+		        return false;
+		    }if(day.value=='선택'){
+		    	alert("생년월일을 입력해주세요!");
+		        return false;
+		    }
+		    
+		    // 성별 유효성 검사
+			if(checkgender.value==''){
+				alert("성별을 선택해주세요!");
+				return false;
+			}
+		    
+		    // 연락처 유효성 검사
+		    if(phone.value==''){
+		    	alert("연락처를 입력해주세요!")
+		    	phone.focus();
+		    	return false;
+		    }if(!checkPhone.test(phone.value)){
+		    	alert("연락처를 정확하게 입력해주세요 : 000-0000-0000");
+		    	phone.focus();
+		    	return false;
+		    }
+		    
+		    // 주소 유효성 검사
+		    if(postnumber.value==''){
+		    	alert("우편번호를 입력해주세요!")
+		    	postnumber.focus();
+		    	return false;
+		    }if(postaddress.value==''){
+		    	alert("상세주소를 입력해주세요!");
+		    	postaddress.focus();
+		    	return false;
+		    }
+		    
+		    // 직장 소재지 검사
+		    if(jobaddr.value == ''){
+		    	alert("의료계 종사자라면 근무지를, 자격증 소지자는 자택 주소를 한 번 더 입력해주세요!");
+		    	jobaddr.focus();
+		    }
+		    
+
 
 	/* 	document.frm.action = './saverjoinOK';
 		document.frm.method = "GET"; 
@@ -226,22 +265,27 @@ $(document).ready(function(){
 					<div id="license_text" class="texts">
 						<input type="text" name="saver_license" id="saver_license"/>
 					</div>
+					<button class="savChk" type="button" id="savChk" onclick="fn_sLicenseChk()" value="N">중복확인</button>
+					
 				</div>
 				
 				<div id="idfield" class="fields">
 				
-					<div id="id_name" class="names">아이디 *</div>
+					<div id="id_name" class="names">아이디(이메일) *</div>
 					<div id="id_text" class="texts">
 					
 						<c:if test="${userId eq null }">
-							<input type="text" name="id" id="id"/>
+							<input type="text" name="id" id="id" readonly="readonly"/>
 						</c:if>
 						
 						<c:if test="${userId ne null}">
 							<input type="text" name="id" id="id" value="${userId }" readonly="readonly" />
 						</c:if>
 						
+						
+						
 					</div>
+					<!-- <button class="idChk" type="button" id="idChk" onclick="fn_idChk()" value="N">중복확인</button> -->
 				</div>
 				
 				<div id="pwfield" class="fields">
@@ -312,6 +356,7 @@ $(document).ready(function(){
 					<div id="phone_text" class="texts">
 						<input type="text" name="phone" id="phone" placeholder="010-0000-0000" />
 					</div>
+					<button class="phoneChk" type="button" id="phoneChk" onclick="fn_phoneChk()" value="N">중복확인</button>
 				</div>
 				
 				<div id="addressfield" class="fields">

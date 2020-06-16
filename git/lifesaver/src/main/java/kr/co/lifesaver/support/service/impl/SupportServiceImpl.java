@@ -6,12 +6,14 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import kr.co.lifesaver.support.service.SupportVO;
 
 
-@Repository
-public class SupportMysqlDAO implements SupportDAO {
+@Service("SupportService")
+public class SupportServiceImpl implements SupportService {
+	
 	@Inject
 	SqlSession ss;
 	

@@ -1,5 +1,7 @@
 package kr.co.lifesaver.user.service;
 
+import java.util.Map;
+
 import lombok.Data;
 
 @Data
@@ -50,25 +52,16 @@ public class JoinVO {
 		this.common_birth = common_birth;
 		this.common_gender = common_gender;
 		this.common_phone = common_phone;
-		this.common_addr = common_addr;
+		this.common_addr = common_addr; 
 	}
 
-
-	
-	
-	
 
 	// Lawyer
-	public JoinVO (String law_license, int law_auth) {
+	public JoinVO (String law_license) {
 		super();
 		this.law_license = law_license;
-		this.law_auth = law_auth;
 	}
- 
-	public void setCommon_id(String id) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	// saver
 	public JoinVO(String saver_license, String saver_grade, String saver_job, String saver_job_addr) {
@@ -79,12 +72,6 @@ public class JoinVO {
 		this.saver_job_addr = saver_job_addr;
 	
 	}
-
 	
 	
-	
-	
-	
-		
-
 }

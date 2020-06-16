@@ -139,7 +139,11 @@ input[id="cb2"] + #cb2 {
 	cursor: pointer;
 }
 
-@media ( max-width : 480px) {
+#savChk, #lawChk ,#phoneChk{
+	margin-left: 10px;
+}
+
+@media ( max-width : 1024px) {
 	#container, #frame, #header {
 		width: auto;
 	}

@@ -1,32 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-    
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <!-- META DATA -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- META DATA -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+<title>Life Saver</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <title>Life Saver</title>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="shortcut icon" href='<c:out value="/resources/img/images/ico/favicon.png" />'>
+<link rel="stylesheet" href="css/Custom.css" type="text/css" />
+<link rel="stylesheet" href="css/newhhw.css" type="text/css" />
 
-    <link rel="shortcut icon" href='<c:out value="/resources/img/images/ico/favicon.png" />'>
+<!-- STYLESHEETS -->
+<link rel="stylesheet" href='<c:url value="/resources/css/lifeSaver.css" />' type="text/css" />
 
-
-
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href='<c:url value="/resources/css/lifeSaver.css" />' type="text/css" />
-
-    <!-- GOOGLE WEB FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Roboto:wght@700&display=swap" rel="stylesheet">
-
+<!-- GOOGLE WEB FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Roboto:wght@700&display=swap" rel="stylesheet">
 
 <!-- 스크립트 시작 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -71,559 +67,589 @@ function getCookie(name){
 </head>
 
 <body>
-    <!-- NAVIGATION -->
-    <nav class="navbar-fixed-top" id="navigation">
-        <div class="headernavibar01">
-            <div class="headernavbar02">
-                <div class="phone">
-                    <a href=""><img src='<c:url value="/resources/img/phone.png"></c:url>' alt=""><span style="font-family: 'Roboto', sans-serif; font-size:12px; color:white;">080-8282-1253</span></a>
+	<!-- NAVIGATION -->
+	<nav class="navbar-fixed-top" id="navigation">
+		<div class="headernavibar01">
+			<div class="headernavbar02">
+				<div class="phone">
+					<a href=""><img src='<c:url value="/resources/img/phone.png"></c:url>' alt="">
+					<span style="font-family: 'Roboto', sans-serif; font-size: 12px; color: white;">080-8282-1253</span></a>
+				</div>
+				<ul class="nav__menu">
+					<li><a href="">세이버소개</a></li>
+					<li><img
+						src='<c:url value="/resources/img/sideBar.png"></c:url>'
+						alt="세이버소개.jpg"></li>
+					<c:if test="${id eq null}">
+						<li><a href="<c:url value="/login"/>">로그인</a></li>
+					</c:if>
+					<c:if test="${id ne null }">
+						<li><a href="<c:url value="/logout"/>" onclick="kout()">로그아웃</a></li>
+					</c:if>
+					<li>
+						<img src='<c:url value="/resources/img/sideBar.png"></c:url>' alt="">
+					</li>
+					<li><a href="<c:url value="/registerAgree"/>">회원가입</a></li>
+					<li><img src='<c:url value="/resources/img/sideBar.png" />' alt=""></li>
+					<li><a href="">ENG</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 center">
+					<!-- LOGO -->
+					<a class="brand pull-left" href=""> <img
+						src=' <c:url value="/resources/img/logo_re.png"/>' alt="LifeSaver">
+					</a>
+					<!-- END LOGO -->
 
-                </div>
-                <ul class="nav__menu">
+					<!-- <-- MOBILE MENU BUTTON -->
+					<div class="mobile-menu" data-toggle="collapse"
+						data-target=".navbar-collapse" aria-controls="bs-navbar"
+						aria-expanded="false">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</div>
+					<!-- END MOBILE MENU BUTTON -->
+					<div class="main__navibar" id="main__navibar">
+						<ul id="main-menu" class="collapse navbar-collapse">
+							<li><a href="#page-status" id="status-move">세이버현황</a></li>
+							<li><a href="#page-grade" id="grade-move">세이버등급</a></li>
+							<li><a href="#page-status" id="status-move">후원</a></li>
+							<li><a href="#page-features" id="feature-move">응급의료정보</a></li>
+							<li><a href="#page-about" id="about-move">응급의료이슈</a></li>
+							<li><a href="#page-blog" id="blog-move">지도</a></li>
+							<li><a href="#page-contact" id="contact-move">나눔소통</a></li>
 
-                    <li><a href="">세이버소개</a></li>
-                    <li>
-                          <img src='<c:url value="/resources/img/sideBar.png"></c:url>' alt="세이버소개.jpg">
-                    </li>
-                     <c:if test="${id eq null}">
-                    
-                    <li><a href="<c:url value="/login"/>">로그인</a></li>
-                    
-                    </c:if>
-                    
-                    <c:if test="${id ne null }">
-                    
-                  
-               
-                    <li><a href="<c:url value="/logout"/>" onclick="kout()">로그아웃</a></li>
-                    
-                    </c:if>
-                    
-                    <li>
-                        <img src='<c:url value="/resources/img/sideBar.png"></c:url>' alt=""> 
-                    </li>
-                    <li><a href="<c:url value="/registerAgree"/>">회원가입</a></li>
-                    <li>
-                    
-                    
-                        <img src='<c:url value="/resources/img/sideBar.png" />' alt="">
-                    </li>
-                    <li><a href="">ENG</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 center">
-                    <!-- LOGO -->
-                    <a class="brand pull-left" href="">
-                  
-                        <img src=' <c:url value="/resources/img/logo_re.png"/>' alt="LifeSaver">
-                    </a>
-                    <!-- END LOGO -->
-
-                    <!-- <-- MOBILE MENU BUTTON -->
-                    <div class="mobile-menu" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="bs-navbar" aria-expanded="false">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </div>
-                    <!-- END MOBILE MENU BUTTON -->
-                    <div class="main__navibar" id="main__navibar">
-                        <ul id="main-menu" class="collapse navbar-collapse">
-
-                            <li><a href="#page-status" id="status-move">세이버현황</a></li>
-                            <li><a href="#page-grade" id="grade-move">세이버등급</a></li>
-                            <li><a href="#page-features" id="feature-move">응급의료정보</a></li>
-                            <li><a href="#page-about" id="about-move">응급의료이슈</a></li>
-                            <li><a href="#page-blog" id="blog-move">지도</a></li>
-                            <!-- <li><a href="#page-contact">나눔소통</a></li> -->
-
-                        </ul>
-                        <!-- END MAIN MENU -->
-                    </div>
-
-                    <!-- MAIN MENU -->
-                    <!-- END MAIN MENU -->
+						</ul>
+						<!-- END MAIN MENU -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- END NAVIGATION -->
 
 
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- END NAVIGATION -->
+	<!-- PAGE | Intro -->
+	<div class="pages white paralax page-welcome" id="page-welcome">
+		<div class="overlay"></div>
+		<!-- Centralized content -->
+		<div class="centralized">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 center">
+						<!-- Animated logo -->
+						<div class="logo">
+							<div class="scrollNormal">
+								<a href="#page-work"> <img
+									src='<c:url value="/resources/img/AED.png"></c:url>'
+									width="140" height="140">
+								</a>
+							</div>
+							<div class="scrollDown">
+								<a href="#page-blog"> <img
+									src='<c:url value="/resources/img/call.png"></c:url>'
+									width="140" height="140">
+								</a>
+							</div>
+						</div>
+
+						<div class="line-divider" id="welcome-messages">
+							<ul class="slides">
+								<li>
+									<h1>LifeSaver</h1>
+								</li>
+								<li>
+									<h1 style="font-family: 'Roboto', sans-serif">5분의 희망</h1>
+								</li>
+
+							</ul>
+						</div>
+						<p>The Five Minute Hope</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END PAGE | Intro -->
 
 
-    <!-- PAGE | Intro -->
-    <div class="pages white paralax page-welcome" id="page-welcome">
-        <div class="overlay"></div>
-        <!-- Centralized content -->
-        <div class="centralized">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 center">
-                        <!-- Animated logo -->
-                        <div class="logo">
-                            <div class="scrollNormal">
-                                <a href="#page-work">
-                                  <img src='<c:url value="/resources/img/AED.png"></c:url>' width="140" height="140">
-                                </a>
-                            </div>
-                            <div class="scrollDown">
-                                <a href="#page-blog">
-								  <img src='<c:url value="/resources/img/call.png"></c:url>' width="140" height="140">
-                                </a>
-                            </div>
-                        </div>
 
-                        <div class="line-divider" id="welcome-messages">
-                            <ul class="slides">
-                                <li>
-                                    <h1>LifeSaver</h1>
-                                </li>
-                                <li>
-                                    <h1 style="font-family: 'Roboto', sans-serif">5분의 희망</h1>
-                                </li>
 
-                            </ul>
-                        </div>
-                        <p>The Five Minute Hope</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END PAGE | Intro -->
+<%--    
     <!-- PAGE | 세이버현황 start -->
     <div class="pages page-work" id="page-status">
-                <div class="saverStatusBg">
-        <!-- DB로 현황을 받아오는 부분 -->
-        	<div class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 430px; position: absolute; margin-left: 370px; font-size: 60px"> <c:out value="${totalSaver }"></c:out></div>
-        	<div class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 767px; position: absolute; margin-left: 1405px; font-size: 60px; padding: 36px;" > <c:out value="${sum }"></c:out></div>
-        	<div class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 767px; position: absolute; margin-left: 370px; font-size: 60px; " > <c:out value="${todayHelp }"></c:out></div>
-            <img src='<c:url value="/resources/img/saverStatusBG.png"></c:url>' id="page-saverStatus" alt="">
-            
+   		<div class="saverStatusBg">
+	        <!-- DB로 현황을 받아오는 부분 -->
+	        <img src='<c:url value="/resources/img/saverStatusBG.png"></c:url>' id="page-saverStatus" alt="">
+            <p class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 430px; position: relative; margin-left: 370px; font-size: 60px"> <c:out value="${totalSaver }"></c:out></p>
+	       	<p class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 767px; position: relative; margin-left: 1405px; font-size: 60px; padding: 36px;" > <c:out value="${sum }"></c:out></p>
+	       	<p class="totalSaver" style="width: 150px; height: 50px; background-color: white; margin-top: 767px; position: relative; margin-left: 370px; font-size: 60px; " > <c:out value="${todayHelp }"></c:out></p>
         </div>
-        <!-- 영역 차지하는 공간 -->
-        <div class="rating__footer">
-
-        </div>
+        <!-- 영역 차지하는 공간 --> 
+        <div class="rating__footer"></div>
     </div>
-
-    <!-- PAGE | 세이버현황 end -->
-    <!-- PAGE | 세이버등급 -->
-    <div class="pages page-clients" id="page-grade">
-
-        <div class="rating__title">
-            <img src='<c:url value="/resources/img/pageLine.png"></c:url>' id="logoLine" />
-            <h2 class="rating__Text"><strong>라이프 세이버 ?</strong></h2>
-        </div>
-        <div class="rating__subTitle">
-            <h4 class="rating__infoText">
-                <span class="rating__redText">'라이프세이버'</span>응급환자 발생시 신고부터 대처까지의 모든 응급 처치 과정들을 부담없이 <br /> 즉각 시행할 수 있는 일반인들의 분위기를 만들고,
-                <span class="rating__redText">'라이프세이버'</span>시스템 도입을 통한 <br /> 좀더 체계적인 <span class="rating__redText">심
-                    정지 사망</span>으로 인한 사망 퍼센티지의 감소에 목적을 가지고 있다
-            </h4>
-        </div>
-        <div class="rating__mainSub">
-            <h6 id="subText">※<span class="rating__redText">'보건의료인'</span>외 CPR교육을 이수받은 '일반인'도 신청이 가능합니다.</h6>
-        </div>
-        <div class="rating__mainContents">
-
-            <div class="rating__step01">
-                 <img src='<c:url value="/resources/img/saver01.png"></c:url>' alt="" />
-            </div>
-
-            <div class="rating__step02">
-
-                 <img src='<c:url value="/resources/img/saver02.png"></c:url>' alt="" />
-            </div>
-            <div class="rating__step03">
-
-                <img src='<c:url value="/resources/img/saver03.png"></c:url>' alt="" />
-            </div>
-            <div class="rating__step04">
-
-                <img src='<c:url value="/resources/img/saver04.png"></c:url>' alt="" />
-            </div>
-            <div class="rating__footerSub">
-                <h6 class="ratingText">※<span class="rating__redText"> ‘라이프 세이버’</span>는 응급조치를 교육받고 수료증을 발급받은 ‘전문인력’을 지칭하는 단어입니다.</h6>
-            </div>
+--%>
 
 
-        </div>
 
-        <div class="rating__footer">
-
-        </div>
-
-    </div>
-
-    <!-- PAGE | 세이버등급 end -->
-
-    <!-- PAGE | 응급의료정보 -->
-    <div class="pages page-work" id="page-features">
-        <div class="container">
-            <!-- 타이틀-->
-            <header>
+	<!-- Saver Status -->
+	<div class="pages page-work" id="page-work" style="height: 750px;padding-top: 4%;">
+        <div class="container" >
+           <div id="all-boxes" >
            
-                <h4><img src='<c:url value="resources/img/images/emergencyPage_icon.png"/>' alt=""></h4>
-                <h3><strong style="font-size: 25px;">응급의료정보</strong></h3>
-
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <p style="font-size:15px;font-weight:600;color:#636363;">
-                            응급의료 서비스를 보다 신속하고 편리하게 이용할 수 있도록 21세기 선진 응급의료사업 추진
-                        </p>
+              <div id="box1">
+                 <div id="box1-1">
+                    <div id ="text-field-1">
+                       <div id ="text1"><span>세이버인원</span></div>
+                       <div id ="number1"><span><c:out value="${totalSaver }"></c:out></span></div>
+                       <div id = "line1"><img src='<c:url value="/resources/img/saverTextLine.png"></c:url>' id="page-saverStatus" alt=""></div>
                     </div>
-                </div>
-                <!-- 타이틀 end -->
-                <!-- Sub menu 네비바 -->
-                <!-- 
+                 </div>
+                 <div id="box1-2">
+                     <img src='<c:url value="/resources/img/saverPeople.png"></c:url>' id="page-saverStatus" id="box1-2-image">
+                 </div>
+              </div>
+              
+              <div id="box2">
+                 <div id="box2-1">
+                 <div id ="text-field-2">
+                       <div id ="text2"><span>오늘 심정지 발생수</span></div>
+                       <div id ="number2"><span>0</span></div>
+                       <div id = "line2"><img src='<c:url value="/resources/img/saverTextLine.png"></c:url>'></div>
+                        
+                    </div>
+                 </div>
+                 <div id="box2-2">
+                 <img src='<c:url value="/resources/img/saverToday.png"></c:url>'>
+                 </div>
+              </div>
+              
+              <div id="box3">
+                 <div id="box3-1">
+                 <div id ="text-field-3">
+                       <div id ="text3"><span>세이버 도움</span></div>
+                       <div id ="number3"><span><c:out value="${todayHelp }"></c:out></span></div>
+                       <div id = "line3"><img src='<c:url value="/resources/img/saverTextLine.png"></c:url>'></div>
+                    </div>
+                 </div>
+                 <div id="box3-2">
+               <img src='<c:url value="/resources/img/saverHelp.png"></c:url>'>
+                 </div>
+              </div>
+              <div id="box4">
+                 <div id="box4-1">
+                 <div id ="text-field-4">
+                       <div id ="text4"><span>세이버가 살린 수</span></div>
+                       <div id ="number4"><span><c:out value="${sum }"></c:out></span></div>
+                       <div id = "line4"><img src='<c:url value="/resources/img/saverTextLine.png"></c:url>'></div>
+                    </div>
+                 </div>
+                 <div id="box4-2">
+                 <img src='<c:url value="/resources/img/saverLife.png"></c:url>'>
+                 </div>
+              </div>
+           </div>
+        </div>
+    </div>
+	<!-- END Saver Status -->
+
+
+
+	<!-- PAGE | 세이버등급 -->
+	<div class="pages page-clients" id="page-grade">
+
+		<div class="rating__title">
+			<img src='<c:url value="/resources/img/pageLine.png"></c:url>'
+				id="logoLine" />
+			<h2 class="rating__Text">
+				<strong>라이프 세이버 ?</strong>
+			</h2>
+		</div>
+		<div class="rating__subTitle">
+			<h4 class="rating__infoText">
+				<span class="rating__redText">'라이프세이버'</span>응급환자 발생시 신고부터 대처까지의 모든
+				응급 처치 과정들을 부담없이 <br /> 즉각 시행할 수 있는 일반인들의 분위기를 만들고, <span
+					class="rating__redText">'라이프세이버'</span>시스템 도입을 통한 <br /> 좀더 체계적인 <span
+					class="rating__redText">심 정지 사망</span>으로 인한 사망 퍼센티지의 감소에 목적을 가지고 있다
+			</h4>
+		</div>
+		<div class="rating__mainSub">
+			<h6 id="subText">
+				※<span class="rating__redText">'보건의료인'</span>외 CPR교육을 이수받은 '일반인'도
+				신청이 가능합니다.
+			</h6>
+		</div>
+		<div class="rating__mainContents">
+
+			<div class="rating__step01">
+				<img src='<c:url value="/resources/img/saver01.png"></c:url>' alt="" />
+			</div>
+
+			<div class="rating__step02">
+
+				<img src='<c:url value="/resources/img/saver02.png"></c:url>' alt="" />
+			</div>
+			<div class="rating__step03">
+
+				<img src='<c:url value="/resources/img/saver03.png"></c:url>' alt="" />
+			</div>
+			<div class="rating__step04">
+
+				<img src='<c:url value="/resources/img/saver04.png"></c:url>' alt="" />
+			</div>
+			<div class="rating__footerSub">
+				<h6 class="ratingText">
+					※<span class="rating__redText"> ‘라이프 세이버’</span>는 응급조치를 교육받고 수료증을
+					발급받은 ‘전문인력’을 지칭하는 단어입니다.
+				</h6>
+			</div>
+		</div>
+		<div class="rating__footer"></div>
+	</div>
+	<!-- PAGE | 세이버등급 end -->
+
+
+
+	<!-- PAGE | 후원 -->
+	<div id="donation">
+      <h4>
+         응급상황의 <span style="color: red">국민</span>을 구조하는 것은 국가의 <span
+            style="color: red">절대적 의무</span>이다<br /> <span style="color: red">'라이프세이버'</span>는
+         국가의 절대적 의무를 행하는 중재자이자 국민이다
+      </h4>
+      <img alt="donate" src="<c:url value="/resources/img/donateUI.png"/>">
+      <h4>
+         <span style="color: white">기부는</span> <span style="color: red">생명수호</span>
+         <span style="color: white">를 하는</span>,<br /> <span style="color: white">모든 </span>
+         <span style="color: red">'라이프 세이버'</span><span style="color: white">들을 위해 사용됩니다.</span></h4>
+      <h4><span style="color: white">함께 참여한 기부 금액 : <c:out value="${totalprice}"></c:out> 원</span></h4>
+      <a href="corporation_mod">
+      	<button type="button" class="supbtn" style="border: none">
+      	<img src="<c:url value="/resources/img/donationBtn.png"/>"></button></a>
+	</div><div class="rating__footer"></div>
+	<!-- PAGE | 후원 end -->
+
+
+
+	<!-- PAGE | 응급의료정보 -->
+	<div class="pages page-work" id="page-features">
+		<div class="container">
+			<!-- 타이틀-->
+			<header>
+				<h4>
+					<img src='<c:url value="resources/img/images/emergencyPage_icon.png"/>' alt="">
+				</h4>
+				<h3>
+					<strong style="font-size: 25px;">응급의료정보</strong>
+				</h3>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<p style="font-size: 15px; font-weight: 600; color: #636363;">
+							응급의료 서비스를 보다 신속하고 편리하게 이용할 수 있도록 21세기 선진 응급의료사업 추진</p>
+					</div>
+				</div>
+				<!-- 타이틀 end -->
+				<!-- Sub menu 네비바 -->
+				<!-- 
             Params: 
                 plugin-filter: Defines links for filtering.
             -->
-                <nav class="submenu">
-                    <ul>
-                        <li>
-                            <a href="#" class="plugin-filter active" data-filter="all">전체</a>
-                        </li>
-                        <li>
-                            <a href="#" class="plugin-filter" data-filter="typography">CPR/AED정보</a>
-                        </li>
-                        <li>
-                            <a href="#" class="plugin-filter" data-filter="illustration">응급의료정보</a>
-                        </li>
-                        <li>
-                            <a href="#" class="plugin-filter" data-filter="branding">법령정보</a>
-                        </li>
-                        <li>
-                            <a href="#" class="plugin-filter" data-filter="photography">기타정보</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <!-- Sub menu 네비바 | End  -->
+				<nav class="submenu">
+					<ul>
+						<li><a href="#" class="plugin-filter active"
+							data-filter="all">전체</a></li>
+						<li><a href="#" class="plugin-filter"
+							data-filter="typography">CPR/AED정보</a></li>
+						<li><a href="#" class="plugin-filter"
+							data-filter="illustration">응급의료정보</a></li>
+						<li><a href="#" class="plugin-filter" data-filter="branding">법령정보</a>
+						</li>
+						<li><a href="#" class="plugin-filter"
+							data-filter="photography">기타정보</a></li>
+					</ul>
+				</nav>
+			</header>
+			<!-- Sub menu 네비바 | End  -->
 
-            <!-- 응급의료정보 | contents-->
-            <article>
+			<!-- 응급의료정보 | contents-->
+			<article>
 
 
+				<!-- 심페소생술 | start -->
+				<ul class="thumbnails plugin-filter-elements portfolio-items">
+					<li class="col-md-4 mix illustration typography">
+					<a href="<c:url value="/cprpage" />" data-destination="portfolio-items" data-insert="before"> <!--  -->
+							<img src='<c:url value="/resources/img/asd/cpr_aed.png" />'
+							alt="Treble"> <!-- Portfolio name, activated on hover -->
+							<div class="portfolio-overlay">
+								<h4 style="font-size: larger;">심페소생술(CPR)</h4>
+							</div>
+					</a></li>
+					<!-- 심페소생술 | end-->
+					<!-- 제생동기 | start -->
+					<!-- col-md-4 mix typography illustration-- =>네비게이션에 데이터값을 입력해줘서 리스트 시킴 -->
+					<li class="col-md-4 mix typography illustration"><a
+						href="<c:url value="/aedinfopage" />"
+						data-destination="portfolio-items" data-insert="before"> <img
+							src=' <c:url value="resources/img/asd/aed_cpr.png"/>'
+							alt="Treble">
+							<div class="portfolio-overlay">
+								<h4 style="font-size: larger;">제생동기(AED)</h4>
+							</div>
+					</a></li>
+					<!-- 제생동기 | end-->
+					<!-- 체계정보 | start -->
+					<li class="col-md-4 mix illustration"><a
+						href="#pages/portfolio/project_3.html"
+						data-destination="portfolio-items" data-insert="before"> <img
+							src='<c:url value="resources/img/asd/emgerImg.png" />'
+							alt="Treble">
+							<div class="portfolio-overlay">
+								<h4 style="font-size: larger;">응급의료체계정보</h4>
+							</div>
+					</a></li>
+					<!-- 체계정보 |end-->
+					<!-- 법령정보 | start -->
+					<li class="col-md-4 mix branding"><a
+						href="<c:url value="/lawpage" />"
+						data-destination="portfolio-items" data-insert="before"> <img
+							src='<c:url value="resources/img/asd/samarianLaw.png" />'
+							alt="Treble">
+							<div class="portfolio-overlay">
+								<h4 style="font-size: larger;">법령정보</h4>
+							</div>
+					</a></li>
+					<!-- 법령정보 | end -->
+					<!-- 자격증정보 | start -->
+					<li class="col-md-4 mix photography"><a
+						href="http://www.kacpr.org/page/page.php?category_idx=1&category1_code=1247206237&category2_code=1527733733&page_idx=1113&gubun=2"
+						data-destination="portfolio-items" data-insert="before"> <img
+							src='<c:url value="/resources/img/asd/license_ens.png" />'>
+							<div class="portfolio-overlay">
+								<h4 style="font-size: larger;">응급자격증정보</h4>
+							</div>
+					</a></li>
+					<!-- 자격증정보 | end-->
+					<!-- 응급의료교육정보 | start -->
+					<li class="col-md-4 mix photography"><a
+						href="https://www.e-gen.or.kr/education/institution.do"
+						data-destination="portfolio-items" data-insert="before"> <img
+							src='<c:url value="resources/img/asd/educationcenter.png" />'
+							alt="Treble">
+							<div class="portfolio-overlay">
+								<h4 style="font-size: larger;">응급의료교육정보</h4>
+							</div>
+					</a></li>
+					<!-- 응급의료교육정보 | end-->
+				</ul>
+			</article>
+			<!-- 응급의료정보 | contents | end-->
 
-                <!-- 심페소생술 | start -->
-                <ul class="thumbnails plugin-filter-elements portfolio-items">
-                    <li class="col-md-4 mix illustration typography">
-                        <a href="<c:url value="/cprpage" />" data-destination="portfolio-items" data-insert="before">
-                            <!--  -->
-                            
-                            
-                            
-                            <img src='<c:url value="/resources/img/asd/cpr_aed.png" />' alt="Treble">
+			<!-- Footer | 응급의료정보 | start -->
+			<footer>
+				<div class="show-more-cube">
 
-                            <!-- Portfolio name, activated on hover -->
-                            <div class="portfolio-overlay">
-                                <h4 style="font-size: larger;">심페소생술(CPR)</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- 심페소생술 | end-->
-                    <!-- 제생동기 | start -->
-                    <!-- col-md-4 mix typography illustration-- =>네비게이션에 데이터값을 입력해줘서 리스트 시킴 -->
-                    <li class="col-md-4 mix typography illustration">
-                        <a href="<c:url value="/aedinfopage" />" data-destination="portfolio-items" data-insert="before">
-                        
-                       
-                        
-                            <img src=' <c:url value="resources/img/asd/aed_cpr.png"/>' alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4 style="font-size: larger;">제생동기(AED)</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- 제생동기 | end-->
-                    <!-- 체계정보 | start -->
-                    <li class="col-md-4 mix illustration">
-                        <a href="#pages/portfolio/project_3.html" data-destination="portfolio-items" data-insert="before">
-                        
-                        
-                        
-                            <img src='<c:url value="resources/img/asd/emgerImg.png" />' alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4 style="font-size: larger;">응급의료체계정보</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- 체계정보 |end-->
-                    <!-- 법령정보 | start -->
-                    <li class="col-md-4 mix branding">
-                        <a href="<c:url value="/lawpage" />" data-destination="portfolio-items" data-insert="before">
-                        
-                        
-                        
-                            <img src='<c:url value="resources/img/asd/samarianLaw.png" />' alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4 style="font-size: larger;">법령정보</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- 법령정보 | end -->
-                    <!-- 자격증정보 | start -->
-                    <li class="col-md-4 mix photography">
-                        <a href="http://www.kacpr.org/page/page.php?category_idx=1&category1_code=1247206237&category2_code=1527733733&page_idx=1113&gubun=2" data-destination="portfolio-items" data-insert="before">
-                          
-                          
-                            <img src='<c:url value="/resources/img/asd/license_ens.png" />'>
-                            <div class="portfolio-overlay">
-                                <h4 style="font-size: larger;">응급자격증정보</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- 자격증정보 | end-->
-                    <!-- 응급의료교육정보 | start -->
-                    <li class="col-md-4 mix photography">
-                        <a href="https://www.e-gen.or.kr/education/institution.do" data-destination="portfolio-items" data-insert="before">
-                         
-                         
-                         
-                            <img src='<c:url value="resources/img/asd/educationcenter.png" />' alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4 style="font-size: larger;">응급의료교육정보</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- 응급의료교육정보 | end-->
-                </ul>
-            </article>
-            <!-- 응급의료정보 | contents | end-->
+					<span style="font-size: large; font-weight: bold; color: #ff4343;">Scroll</span>
+					</a>
+				</div>
+			</footer>
+			<!-- End footer | 응급의료정보 | end -->
+		</div>
+	</div>
 
-            <!-- Footer | 응급의료정보 | start -->
-            <footer>
-                <div class="show-more-cube">
+	<!-- PAGE | 응급의료정보 end -->
 
-                    <span style="font-size: large;font-weight:bold;color:#ff4343;">Scroll</span>
-                    </a>
-                </div>
-            </footer>
-            <!-- End footer | 응급의료정보 | end -->
-        </div>
-    </div>
-
-    <!-- PAGE | 응급의료정보 end -->
-
-    <!-- PAGE | 의료정보 출처 -->
-    <div class="pages page-clients" id="page-clients">
-        <div class="container">
-            <h4 class="line-divider-inline center">참고 및 의료정보 출처</h4>
-            <!-- 기관 logos -->
-            <div class="row">
-           
-                <div class="col-md-2 col-sm-6 center">
-                    <img src=' <c:url value="resources/img/images/pages/clients/01.png" />' alt="Treble">
-                </div>
-                <div class="col-md-2 col-sm-6 center">
-                    <img src=' <c:url value="resources/img/images/pages/clients/02.png" />' alt="Treble">
-                </div>
-                <div class="col-md-2 col-sm-6 center">
-                    <img src=' <c:url value="resources/img/images/pages/clients/03.png" />' alt="Treble">
-                </div>
-                <div class="col-md-2 col-sm-6 center">
-                    <img src=' <c:url value="resources/img/images/pages/clients/04.png" />' alt="Treble">
-                </div>
-                <div class="col-md-2 col-sm-6 center">
-                    <img src=' <c:url value="resources/img/images/pages/clients/05.png" />' alt="Treble">
-                </div>
-                <div class="col-md-2 col-sm-6 center">
-                    <img src=' <c:url value="resources/img/images/pages/clients/06.png" />' alt="Treble">
-                </div>
-            </div>
-            <hr />
-            <!-- 라이퍼 세이버에 대한 간략 소개-->
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 center smallFontBy08">
-                    <p>
-                        <span style="font-weight: 800;color:#ff4343">라이프 세이버는 어떤일을 하나요?</span> <br><br>· <strong>응급환자의
-                            신고 접수를 받으면 신속하게 현장으로 출동해서 환자의 상태를 자세하게 살펴보고 응급처치를 합니다.</strong> <br>
-                        <strong>· 응급처치가 끝난 후 가까운 병원으로 환자를 안전하게 옮기고 응급처치에 대한 내용을 기록해서 담당 의사에게 알려줍니다.</strong>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END PAGE | 의료정보 출처 end -->
+	<!-- PAGE | 의료정보 출처 -->
+	<div class="pages page-clients" id="page-clients">
+		<div class="container">
+			<h4 class="line-divider-inline center">참고 및 의료정보 출처</h4>
+			<!-- 기관 logos -->
+			<div class="row">
+				<div class="col-md-2 col-sm-6 center">
+					<img src=' <c:url value="resources/img/images/pages/clients/01.png" />' alt="Treble">
+				</div>
+				<div class="col-md-2 col-sm-6 center">
+					<img src=' <c:url value="resources/img/images/pages/clients/02.png" />' alt="Treble">
+				</div>
+				<div class="col-md-2 col-sm-6 center">
+					<img src=' <c:url value="resources/img/images/pages/clients/03.png" />' alt="Treble">
+				</div>
+				<div class="col-md-2 col-sm-6 center">
+					<img src=' <c:url value="resources/img/images/pages/clients/04.png" />' alt="Treble">
+				</div>
+				<div class="col-md-2 col-sm-6 center">
+					<img src=' <c:url value="resources/img/images/pages/clients/05.png" />' alt="Treble">
+				</div>
+				<div class="col-md-2 col-sm-6 center">
+					<img src=' <c:url value="resources/img/images/pages/clients/06.png" />' alt="Treble">
+				</div>
+			</div>
+			<hr />
+			<!-- 라이퍼 세이버에 대한 간략 소개-->
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 center smallFontBy08">
+					<p>
+						<span style="font-weight: 800; color: #ff4343">라이프 세이버는
+							어떤일을 하나요?</span> <br>
+						<br>· <strong>응급환자의 신고 접수를 받으면 신속하게 현장으로 출동해서 환자의
+							상태를 자세하게 살펴보고 응급처치를 합니다.</strong> <br> <strong>· 응급처치가 끝난 후
+							가까운 병원으로 환자를 안전하게 옮기고 응급처치에 대한 내용을 기록해서 담당 의사에게 알려줍니다.</strong>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END PAGE | 의료정보 출처 end -->
 
 
 
-    <!-- PAGE | 응급의료이슈  -->
-    <div class="pages page-blog" id="page-about">
-        <div class="container">
-            <!-- Header -->
-            <header>
-                <div class="title__mark">  
-                    <img src=' <c:url value="/resources/img/pageLine.png" />' alt="">
-                </div>
-                <div class="header__title">
-                    <h3>응급의료이슈</h3>
+	<!-- PAGE | 응급의료이슈  -->
+	<div class="pages page-blog" id="page-about">
+		<div class="container">
+			<!-- Header -->
+			<header>
+				<div class="title__mark">
+					<img src=' <c:url value="/resources/img/pageLine.png" />' alt="">
+				</div>
+				<div class="header__title">
+					<h3>응급의료이슈</h3>
+				</div>
 
-                </div>
+			</header>
+			<!-- End Header -->
 
-            </header>
-            <!-- End Header -->
+			<!-- Article -->
+			<article>
+				<!-- Blog articles -->
+				<ul class="thumbnails">
+					<!-- Blog post -->
+					<li class="col-md-4">
+						<!-- Blog image --> <a href="http://www.knn.co.kr/197909"> <img
+							src='<c:url value="/resources/img/issue01.png"></c:url>' alt="">
+					</a> <!-- Blog title -->
+						<h5>
+							시민과 경찰이 구하다.<br /> <small>2019년 12월20일</small>
+						</h5>
+						<div class="read-more">
+							<a href="http://www.knn.co.kr/197909">전문 보기</a>
+						</div>
+					</li>
+					<li class="col-md-4"><a
+						href="https://imnews.imbc.com/replay/2019/nwdesk/article/5246731_28802.html">
+							<img src='<c:url value="/resources/img/issue02.png"></c:url>'
+							alt="">
+					</a>
+						<h5>
+							손발'착착'시민의식<br /> <small>2019년 04월12일</small>
+						</h5>
+						<div class="read-more">
+							<a href="https://imnews.imbc.com/replay/2019/nwdesk/article/5246731_28802.html ">
+								전문보기</a>
+						</div></li>
+					<li class="col-md-4"><a
+						href="http://news.kbs.co.kr/news/view.do?ncd=4453967&ref=A%20-">
+							<img src='<c:url value="/resources/img/issue03.png"></c:url>'
+							alt="Treble">
+					</a>
+						<h5>
+							'영상통화'로 골든타임을 잡다<br /> <small>2020년 05월25일</small>
+						</h5>
+						<div class="read-more">
+							<a
+								href="http://news.kbs.co.kr/news/view.do?ncd=4453967&ref=A%20-">전문보기</a>
+						</div></li>
 
-            <!-- Article -->
-            <article>
-                <!-- Blog articles -->
-                <ul class="thumbnails">
-                    <!-- Blog post -->
-                    <li class="col-md-4">
+					<li class="col-md-4"><a
+						href="https://www.youtube.com/watch?v=bqWDsHwkn4w"> <img
+							src='<c:url value="/resources/img/issue04.png"></c:url>' alt="">
+					</a>
+						<h5>
+							'23초 만에 달려와'심페소생..사라진'천사'<br /> <small>2019년 08월09일</small>
+						</h5> <!--  -->
+						<div class="read-more">
+							<a href="https://www.youtube.com/watch?v=bqWDsHwkn4w"> 전문보기</a>
+						</div></li>
+					<li class="col-md-4"><a
+						href="https://www.youtube.com/watch?v=k-i7NLw6X8Y"> <img
+							src='<c:url value="/resources/img/issue05.png"></c:url>' alt="">
+					</a>
+						<h5>
+							‘심폐소생술’…방법 모를 땐?<br /> <small>2018년 03월21일</small>
+						</h5>
+						<div class="read-more">
+							<a href="https://www.youtube.com/watch?v=k-i7NLw6X8Y">전문보기</a>
+						</div></li>
+					<li class="col-md-4"><a
+						href="https://www.youtube.com/watch?v=1NZIbTy79DU"> <img
+							src='<c:url value="/resources/img/issue06.png"></c:url>' alt="">
+					</a>
+						<h5>
+							주저 없이 필사적으로…기적의 '심폐소생술'<br /> <small>2015년 10월14일</small>
+						</h5>
+						<div class="read-more">
+							<a href="https://www.youtube.com/watch?v=1NZIbTy79DU">전문보기</a>
+						</div></li>
 
-                        <!-- Blog image -->
-                        <a href="http://www.knn.co.kr/197909">
-                            <img src='<c:url value="/resources/img/issue01.png"></c:url>' alt="">
-                        </a>
+				</ul>
+			</article>
+			<!-- End Article -->
 
-                        <!-- Blog title -->
-                        <h5>
-                            시민과 경찰이 구하다.<br />
-                            <small>2019년 12월20일</small>
-                        </h5>
+			<!-- Footer -->
+			<footer>
+				<!-- More blog posts -->
+				<div class="show-more-cube">
+					<a href="#"><span>Life<br />Saver</span></a>
+				</div>
+			</footer>
+			<!-- End Footer -->
+		</div>
+	</div>
+	<!-- END PAGE | 응급의료이슈 end -->
+	
+	<!-- PAGE | 지도 -->
+	<div class="saver__map" id="page-blog">
+		<form name="popForm">
+			<input type="hidden" name="cmd" value="openPop" />
+			<input type="hidden" name="name" />
+			<input type="hidden" name="tell" />
+			<input type="hidden" name="code" />
+			<input type="hidden" name="/img" />
+		</form>
 
-
-                        <div class="read-more">
-                            <a href="http://www.knn.co.kr/197909">전문 보기</a>
-                        </div>
-                    </li>
-                    <li class="col-md-4">
-                        <a href="https://imnews.imbc.com/replay/2019/nwdesk/article/5246731_28802.html">
-                            <img src='<c:url value="/resources/img/issue02.png"></c:url>' alt="">
-                        </a>
-                        <h5>
-                            손발'착착'시민의식<br />
-                            <small>2019년 04월12일</small>
-                        </h5>
-
-                        <div class="read-more">
-                            <a href="https://imnews.imbc.com/replay/2019/nwdesk/article/5246731_28802.html ">
-                                전문보기</a>
-                        </div>
-                    </li>
-                    <li class="col-md-4">
-                        <a href="http://news.kbs.co.kr/news/view.do?ncd=4453967&ref=A%20-">
-                            <img src='<c:url value="/resources/img/issue03.png"></c:url>' alt="Treble">
-                        </a>
-                        <h5>
-                            '영상통화'로 골든타임을 잡다<br />
-                            <small>2020년 05월25일</small>
-                        </h5>
-
-                        <div class="read-more">
-                            <a href="http://news.kbs.co.kr/news/view.do?ncd=4453967&ref=A%20-">전문보기</a>
-                        </div>
-                    </li>
-
-                    <li class="col-md-4">
-                        <a href="https://www.youtube.com/watch?v=bqWDsHwkn4w">
-                           <img src='<c:url value="/resources/img/issue04.png"></c:url>' alt="">
-                        </a>
-                        <h5>
-                            '23초 만에 달려와'심페소생..사라진'천사'<br />
-                            <small>2019년 08월09일</small>
-                        </h5>
-                        <!--  -->
-                        <div class="read-more">
-                            <a href="https://www.youtube.com/watch?v=bqWDsHwkn4w">
-                                전문보기</a>
-                        </div>
-                    </li>
-                    <li class="col-md-4">
-                        <a href="https://www.youtube.com/watch?v=k-i7NLw6X8Y">
-                            <img src='<c:url value="/resources/img/issue05.png"></c:url>' alt="">
-                        </a>
-                        <h5>
-                            ‘심폐소생술’…방법 모를 땐?<br />
-                            <small>2018년 03월21일</small>
-                        </h5>
-
-                        <div class="read-more">
-                            <a href="https://www.youtube.com/watch?v=k-i7NLw6X8Y">전문보기</a>
-                        </div>
-                    </li>
-                    <li class="col-md-4">
-                        <a href="https://www.youtube.com/watch?v=1NZIbTy79DU">
-                            <img src='<c:url value="/resources/img/issue06.png"></c:url>' alt="">
-                        </a>
-                        <h5>
-                            주저 없이 필사적으로…기적의 '심폐소생술'<br />
-                            <small>2015년 10월14일</small>
-                        </h5>
-
-                        <div class="read-more">
-                            <a href="https://www.youtube.com/watch?v=1NZIbTy79DU">전문보기</a>
-                        </div>
-                    </li>
-
-                </ul>
-            </article>
-            <!-- End Article -->
-
-            <!-- Footer -->
-            <footer>
-                <!-- More blog posts -->
-                <div class="show-more-cube">
-                    <a href="./pages/blog/blog.html"><span>Life<br />Saver</span></a>
-                </div>
-            </footer>
-            <!-- End Footer -->
-        </div>
-    </div>
-    <!-- END PAGE | 응급의료이슈 end -->
-    <!-- PAGE | 지도 -->
-    <div class="saver__map" id="page-blog">
-        <form name="popForm">
-            <input type="hidden" name="cmd" value="openPop" />
-            <input type="hidden" name="name" />
-            <input type="hidden" name="tell" />
-            <input type="hidden" name="code" />
-            <input type="hidden" name="/img" />
-        </form>
-
-        <!--%@include file="MapAPI_St1_01.jsp" % -->
-        <!-- 위도 경도 자동 생성 -->
-        <div id="saver__mapwrap">
-            <h3 align="center"> 생명 수호에 필요한 위치 정보를 제공합니다. </h3>
-            <!-- 지도가 표시될 div -->
-            <div id="map" style="width:100%;height:560px; margin:auto">
-                <p align="center">
-                    <button onclick="setZoomable(false)">지도 확대/축소 끄기</button>
-                    <button onclick="setZoomable(true)">지도 확대/축소 켜기</button>
-                </p>
-                <!-- 지도 위에 표시될 마커 카테고리 -->
-                <div class="category">
-                    <ul>
-                        <li id="apMenu" onclick="changeMarker('ap')"> <span class="ico_comm ico_carpark"></span>AED</li>
-                        <li id="hpMenu" onclick="changeMarker('hp')"><span class="ico_comm ico_store"></span>ER/H</li>
-                        <li id="mpMenu" onclick="changeMarker('mp')"><span class="ico_comm ico_coffee"></span>M/P</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <p align="center"><br>
-            <button onclick="setZoomable(false)">지도 확대/축소 끄기</button>
-            <button onclick="setZoomable(true)">지도 확대/축소 켜기</button>
-            <button onclick="getLocation()">현재 내 위치 보기</button><br><br>
-            <button onclick="eraseAllCircles()">써클 삭제</button><br><br>
-
-
-        </p>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=119f00e9c183b4e48ccbded04cfb8f47">
-        </script>
-
-        <script>
+		<!--%@include file="MapAPI_St1_01.jsp" % -->
+		<!-- 위도 경도 자동 생성 -->
+		<div id="saver__mapwrap">
+			<h3 align="center">생명 수호에 필요한 위치 정보를 제공합니다.</h3>
+			<!-- 지도가 표시될 div -->
+			<div id="map" style="width: 80%; height: 560px; margin: auto">
+				<div class="category">
+					<ul>
+						<li id="apMenu" onclick="changeMarker('ap')"><span class="ico_comm ico_carpark"></span>AED</li>
+						<li id="hpMenu" onclick="changeMarker('hp')"><span class="ico_comm ico_store"></span>ER/H</li>
+						<li id="mpMenu" onclick="changeMarker('mp')"><span class="ico_comm ico_coffee"></span>M/P</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<p align="center">
+			<br>
+			<button onclick="getLocation()">내 위치</button>
+			<button onclick="eraseAllCircles()">써클 삭제</button>
+			<br/><br/>
+		</p>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <jsp:include page="footer.jsp"></jsp:include>
+		
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=119f00e9c183b4e48ccbded04cfb8f47"></script>
+		<script>
             function submitInfo(url, name, tell, code, img) {
                 var myForm = document.popForm;
-                window.open("", "popForm",
-                    "toolbar=no, width=405, height=367, directories=no, status=no,    scrollorbars=no, resizable=no");
+                window.open("", "popForm", "toolbar=no, width=405, height=367, directories=no, status=no, scrollorbars=no, resizable=no");
                 myForm.action = url;
                 myForm.method = "post";
                 myForm.target = "popForm";
@@ -632,10 +658,6 @@ function getCookie(name){
                 myForm.code.value = code;
                 myForm.img.value = img;
                 myForm.submit();
-            }
-
-            function setZoomable(zoomable) { // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
-                map.setZoomable(zoomable);
             }
 
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
@@ -989,7 +1011,6 @@ function getCookie(name){
             ];
 
 
-
             // hp 마커가 표시될 좌표 배열입니다
             var hpPositions = [
                 new kakao.maps.LatLng(37.5812887, 126.9364294), /*의료법인동신의료재단 동신병원                                                       */
@@ -1052,7 +1073,7 @@ function getCookie(name){
             ];
             /* =============================================================================  */
 
-            var content_list = [{
+            var saverList = [{
                 'name': '김재욱',
                 'img': 'img/portfolio/kim.jpg',
                 'loc': '서울 동대문구 망우로 82 445',
@@ -1082,51 +1103,44 @@ function getCookie(name){
             var order = 0;
 
             function getContentDataByOrder() {
-                if (order >= content_list.length) {
+                if (order >= saverList.length) {
                     order = 0;
                 }
-                var data = content_list[order];
+                var data = saverList[order];
                 order += 1;
+                console.log(saverList);
                 return data;
-
             }
-            /* 가드 신상 데이터 */
+            
             function wrapInfoContent(position, data) {
-
+				var result = "";
                 var encode_data = JSON.stringify(data);
                 encode_data = window.btoa(encodeURIComponent(encode_data));
 
-                return '<div class="wrap" id="' + position + '">' +
-                    '    <div class="info">' +
-                    '        <div class="title">' +
-                    '            라이프 세이버(1급 의사) ' +
-                    '            <div class="close" onclick="closeInfoOverlay(event, \'' + position + '\')" title="닫기"></div>' +
-                    '        </div>' +
-                    '        <div class="body">' +
-                    '            <div class="/img">' +
-                    '                <img src="' + data.img + '" width="73" height="70">' +
-                    '           </div>' +
-                    '            <div class="desc">' +
-                    '                <div class="ellipsis">' + data.loc + '</div>' +
-                    '                <div class="jibun ellipsis">(담당자 코드) ' + data.code + ' </div>' +
-                    '                <div class="jibun ellipsis">(담당자 번호) ' + data.tell + ' </div>' +
-                    '                <div><input type="button" value="담당자 정보" onclick="showPopup(\'' + encode_data + '\')" /> </div>' +
-                    /*  <iframe href="sinsan.jsp"  width="500" height="300"aling="center"> */
-
-                    '            </div>' +
-                    '        </div>' +
-                    '    </div>' +
-                    '</div>';
-
-                console.log(content_list);
-
+                result += '<div class="wrap" id="' + position + '">';
+                result += '<div class="info">';
+                result += '<div class="title">';
+                result += '라이프 세이버(1급 의사)';
+                result += '<div class="close" onclick="closeInfoOverlay(event, \'' + position + '\')" title="닫기"></div>';
+                result += '</div>';
+                result += '<div class="body">';
+                result += '<div class="/img">';
+                result += '<img src="' + data.img + '" width="73" height="70">';
+                result += '</div>';
+                result += '<div class="desc">';
+                result += '<div class="ellipsis">' + data.loc + '</div>';
+                result += '<div class="jibun ellipsis">(담당자 코드) ' + data.code + ' </div>';
+                result += '<div class="jibun ellipsis">(담당자 번호) ' + data.tell + ' </div>';
+                result += '<div><input type="button" value="담당자 정보" onclick="showPopup(\'' + encode_data + '\')" /> </div>';
+                result += '</div></div></div></div>';
+                return result;
             }
 
             function showPopup(data) {
                 var post_data = JSON.parse(decodeURIComponent(window.atob(data)));
                 submitInfo("sinsang.jsp", post_data.name, post_data.tell, post_data.code, post_data.img)
                     //window.open("sinsang.jsp", "a", "width=400, height=600, left=100, top=50");
-                console.log(content_list[0]);
+                console.log(saverList[0]);
             }
 
 
@@ -1166,13 +1180,10 @@ function getCookie(name){
 
             //mp 마커가 표시될 좌표 배열입니다
             var mpPositions = []; //new kakao.maps.LatLng(37.6389443, 127.0647295) 
-            var markerImageSrc = '/resources/img/category.png'; // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+            var markerImageSrc = '/resources/img/category.png'; // 마커이미지의 주소입니다.
             mpMarkers = [], // mp 마커 객체를 가지고 있을 배열입니다
-                hpMarkers = [], // hp 마커 객체를 가지고 있을 배열입니다
-                apMarkers = []; // ap 마커 객체를 가지고 있을 배열입니다
-
-
-
+            hpMarkers = [], // hp 마커 객체를 가지고 있을 배열입니다
+            apMarkers = []; // ap 마커 객체를 가지고 있을 배열입니다
             creatempMarkers(); // mp 마커를 생성하고 mp 마커 배열에 추가합니다
             createhpMarkers(); // hp 마커를 생성하고 hp 마커 배열에 추가합니다
             createapMarkers(); // ap 마커를 생성하고 ap 마커 배열에 추가합니다
@@ -1343,8 +1354,6 @@ function getCookie(name){
                 resultPoint = 0;
                 resultPeo = 0;
 
-
-
                 var result = confirm("신고자가 두명 이상인가요 ?");
                 if (result) {
                     if (result == true) {
@@ -1353,20 +1362,10 @@ function getCookie(name){
                     console.log(resultPeo);
                 }
 
-
                 /*  자동제세동기 포지션*/
                 //var apPlace = apPositions[i];
                 //var ap_pos = [apPlace.getLat(), apPlace.getLng()]
                 //console.log("자동제세동기 포지션" + ap_pos);
-
-
-
-
-
-
-
-
-
 
 
                 var myPlace = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
@@ -1381,8 +1380,6 @@ function getCookie(name){
 
                     //console.log("현재 신고자 위도 : "  + position.coords.latitude);
                     //console.log("현재 신고자 경도 : "  + position.coords.longitude);
-
-
 
 
                     /*  시간 */
@@ -1406,7 +1403,6 @@ function getCookie(name){
                 function panTo() {
                     var moveLatLon = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     map.panTo(moveLatLon);
-
                 }
 
                 creatempMarkers();
@@ -1417,8 +1413,6 @@ function getCookie(name){
                         var myplace_range = 100
                         drawCircleRange(mouseLatLng, 100); //마우스 클릭 지군, 반경값을 지정합니다.
                         console.log("라이프 세이버 좌표 : " + mouseLatLng);
-
-
 
                         drawInfoMarker(mouseLatLng, function() {
                             var content_data = getContentDataByOrder();
@@ -1454,10 +1448,6 @@ function getCookie(name){
 
                                     resultPoint++;
                                     console.log("resultPoint  : " + resultPoint);
-
-
-
-
 
                                 } else if (dist != 0 && dist > myplace_range + circle_range) { //둘 사이의 거리가, myplace_range + cirecle_range보다 작다면~
                                     console.log("resultPoint  : " + resultPoint);
@@ -1508,40 +1498,30 @@ function getCookie(name){
                                             drawCircleRange(myPlace, (300 + (show_dist - 300)));
                                             drawCircleRange(mouseLatLng, 100);
                                             alert("myPlace" + myPlace + "maching ");
-
-
-
-
                                         }
                                     }
                                 }
                             }
                         }
                         console.log("신고자 좌표 : " + myPlace);
-                        console.log("세이버 코드 : " + content_list[0].code);
+                        console.log("세이버 코드 : " + saverList[0].code);
                         console.log("세이버 좌표 : " + mouseLatLng);
                         console.log("매칭 일자    : " + (Now.getMonth() + 1) + "월" + Now.getDate() + "일");
                         console.log("매칭 시간    : " + Now.getHours() + "시" + Now.getMinutes() + "분" + Now.getSeconds() + "초");
 
                         alert("신고자 좌표 : " + myPlace +
-                            "\n세이버 코드 : " + content_list[0].code +
+                            "\n세이버 코드 : " + saverList[0].code +
                             "\n세이버 좌표 : " + mouseLatLng +
                             "\n매칭 일자    : " + Now.getFullYear() + "년" + (Now.getMonth() + 1) + "월" + Now.getDate() + "일" +
                             "\n매칭 시간    : " + Now.getHours() + "시" + Now.getMinutes() + "분" + Now.getSeconds() + "초" +
                             "\n거리           : " + show_dist + "m");
-                        alert("13" + resultPeo);
-
-
+                        console.log("resultPeo : " + resultPeo);
                         //	var my_pos = [myPlace.getLat(), myPlace.getLng()]
-
-                        //console.log("얍"+ae_pos);
+                        
                         if (resultPeo == 1) {
-                            alert("rtrt");
                             //CPR 이미지 
                             //		var option = "width = 1500, height = 500, top = 100, left = 200, location = no"
                             //		window.open("mapping.jsp", option);
-
-
 
                             var moveLatLon = new kakao.maps.LatLng(37.483327, 126.8972991);
                             map.panTo(moveLatLon);
@@ -1563,22 +1543,15 @@ function getCookie(name){
                             });
                             polyline.setMap(map);
 
-
                             var poldistance = Math.round(myPlace + new kakao.maps.LatLng(37.483327, 126.8972991)), // 선의 총 거리를 계산합니다
                                 content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + poldistance + '</span>m</div>'; // 커스텀오버레이에 추가될 내용입니다
 
                             // 거리정보를 지도에 표시합니다
                             showDistance(content, apPositions);
-
-
                         }
                     }
-
                 );
-
             }
-
-
 
 
             function showPositionErr(error) { //에러코드
@@ -1660,14 +1633,10 @@ function getCookie(name){
 
             function closeInfoOverlay(event, position) {
                 eraseInfoOverlay(position);
-
             }
 
             //클릭에 의한 위치 표시, 즉 라이프 가드의 위치를 임의적으로 매핑해줍니다.
-
-
-
-
+            
             /* var hpPositions = [
                 new kakao.maps.LatLng(37.5812887,	126.9364294) */
 
@@ -1693,76 +1662,450 @@ function getCookie(name){
                     eraseInfoOverlay(Object.keys(drawingInfoOverlay)[info_count - 1 - i])
                     console.log("3");
                 }
-
             }
+                
+                
+           
+                function showPosition(position) {
+             	   
+             	   
+             	   
+                    resultPoint=0;
+                    resultPeo=0;
+                      
+
+                   
+                   var result = confirm("신고자가 두명 이상인가요 ?");
+
+                      if(result==true){
+                         resultPeo +=1;
+                         alert("주변의 자동제세동기 위치를 제공합니다. 자동제세동기는 환자 및 세이버에게 큰 도움이 됩니다.");
+                      }
+                   var myPlace = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
+                   mpPositions = [myPlace];//new kakao.maps.LatLng(37.6389443, 127.0647295)      //mpPositions =  마커
+                   drawCircleRange(myPlace, 100);                        //위치데이터는 myPlace에 담겨있고, 써클만 관여함
+                   console.log("기본 써클 반경은 : 100입니다.");
+                   console.log("resultPoint : " + resultPoint);
+                   //alert("mpPositions.length" + mpPositions.length); // 커피포지션의 위도, 경도 입력완료
+                   if(myPlace != null){
+                   console.log("현재  신고자 좌표 : " + myPlace +  "입니다."); // 내 위도 경도 보여주기.
+                   //console.log("hpPositions" + hpPositions); // 주변 응급실위치입니다. []
+                   /*  시간 */
+                      var Now = new Date();
+                                var NowTime = Now.getFullYear();
+                                NowTime += '0' + (Now.getMonth()+1);
+                                NowTime += '0' + Now.getDate();
+                                NowTime += ' time : ' + Now.getHours();
+                                NowTime += ':' + Now.getMinutes();
+                                NowTime += ':' + Now.getSeconds();
+                                
+                               console.log(NowTime );
+                 /* ------------------------------------------------------중앙위치 재공급  ------------------------------------------------*/
+
+                   var moveLatLon = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude );
+                    map.setCenter(moveLatLon);
+                   }
+                   
+                    /* ------------------------------------------------------중앙위치 재공급   end------------------------------------------------*/
+                    
+                    function panTo(){
+                    var moveLatLon = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude );
+                    map.panTo(moveLatLon);
+
+                 }
+
+                   creatempMarkers();
+                   changeMarker('mp');      //좌측 변경될 이미지(mp)
+                   
+                   kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                      
+                  
+                     var mouseLatLng = mouseEvent.latLng;
+                      var myplace_range = 100
+                      drawCircleRange(mouseLatLng, 100);      //마우스 클릭 지군, 반경값을 지정합니다.
+                      console.log("라이프 세이버 좌표 : " + mouseLatLng);
+                      
+                       
+                       
+                      drawInfoMarker(mouseLatLng, function(){
+                         var content_data = getContentDataByOrder();
+                         drawInfoOverlay(mouseLatLng, wrapInfoContent(mouseLatLng, content_data));
+                         
+                      });
+                     // console.log("drawInfoOverlay" + drawInfoOverlay(mouseLatLng, wrapInfoContent(mouseLatLng, content_data)))
+                      
+                      for(var i=0; i < mpPositions.length; i++) {
+                         var myPlace = mpPositions[i];
+                         var keys = Object.keys(drawingCircles);
+                         for(var j=0; j < keys.length; j++) {
+                            var key = keys[j];
+                            var circle_pos = key.replace(/[()]/gi, "").split(",");
+                            circle_pos = [Number(circle_pos[0]), Number(circle_pos[1])];
+                            var circle_range = drawingCircles[key].getRadius();
+                            var my_pos = [myPlace.getLat(), myPlace.getLng()]
+                                var polyline = new kakao.maps.Polyline({
+                                  path: [new kakao.maps.LatLng(my_pos[0], my_pos[1]), new kakao.maps.LatLng(circle_pos[0], circle_pos[1])],
+                                  // 선을 구성하는 좌표 배열입니다. 원의 중심좌표와 클릭한 위치로 설정합니다
+                              });
+                                     //console.log("pol"+ polyline + kakao.maps.LatLng(my_pos[0], my_pos[1]));
+                            var dist = polyline.getLength() // 내위치부터 다른 원 사이까지의 거리
+                            console.log("범위 :" + (myplace_range + circle_range));
+                            console.log(polyline);
+                            
+                              
+                            
+
+                            //              ************************************** 1level 유효범위 반경100M입니다. 신고자와 세이버 간 거리가 200미터 이하 시  매치됩니다. *****************************************************                          
+                            if (dist != 0 && dist < (myplace_range + circle_range) ) {
+                               //alert( "A"+(myplace_range + circle_range));
+                               var show_dist = Math.round(dist);//신고자와 가드의 거리를 알려줍니다.      
+                            //   alert("신고자와 범위안에 있는 " "  매칭되었습니다.  (거리 : " + show_dist + "m)" );
+                            //   alert("현재 신고자의 위치 (" + myPlace + ") 로 D1166이 출동하였습니다." );
+                               alert("현재 신고자의 위치로 신고가 접수되었습니다." + show_dist + "거리에 세이버가 매치되었습니다.");
+                            
+                               resultPoint ++;
+                               
+                                alert("신고자 좌표 : " + myPlace 
+                                     + "\n세이버 코드 : " + content_list[0].code 
+                                     + "\n세이버 좌표 : " + mouseLatLng
+                                     + "\n매칭 일자    : " +Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                     + "\n매칭 시간    : " + Now.getHours()+"시" + Now.getMinutes()+"분" +  Now.getSeconds()+"초" 
+                                     + "\n거리           : " + show_dist+"m");
+
+                            console.log("//////////////////level 1");
+                            year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                            latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                            Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                 window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                     +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                 // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+                      //       if(window.open !=null ){function drawInfoMarker(position, listener) {drawingInfoMarker[position] = new kakao.maps.Marker({position: position, clickable: true  });drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);}}
+                      
+                                 
+                        
+                           
+                                 drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                            }//if (dist != 0 && dist < (myplace_range + circle_range) )end
+                            //              **************************************신고자와 세이버 간 거리가 200M이상이면 신고자 유효범위 증가합니다. 2level 신고자의 유효범위 반경 200M, 세이버 유효범위 100M 
+                             
+                         
+                         else if(dist != 0 && dist > (myplace_range + circle_range)){//둘 사이의 거리가, myplace_range + cirecle_range보다 작다면~
+                                console.log("//////////////////level 2");
+                                console.log("resultPoint  : " +  resultPoint);
+                               var show_dist = Math.round(dist);
+                                  alert("유효거리가 멀어, 유효범위 증가하여 매치를 시작합니다.");
+                                  if((100-show_dist) < 0 && dist<500){
+                                  var circle_count = Object.keys(drawingCircles).length;
+                                  console.log("check 1 : 써클 삭제합니다.");   
+                                  mpPositions = [myPlace];
+                                  drawCircleRange(myPlace, 100);   //기본 써클반경 300
+                                   for (var i=0; i<circle_count; i++) {
+                                      eraseCircleRange(Object.keys(drawingCircles)[circle_count-1-i])
+                                   console.log("check 2 :  ");
+                                      }
+                                   drawCircleRange(myPlace, (300 + (show_dist-300)));
+                                   drawCircleRange(mouseLatLng, 100);
+                                   console.log("check 3 : 기존에 삭제한 써클 유효범위 증가해 생성합니다.");
+                                   alert("현재 신고자의 위치로 신고가 접수되었습니다." + show_dist + "m 거리에 있는 세이버가 매치되었습니다.");
+                                   alert("신고자 좌표 : "+myPlace+"\n세이버 코드 : "+content_list[0].code + "\n세이버 좌표 : " + mouseLatLng+"\n매칭 일자    : "+Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                        + "\n매칭 시간    : "+Now.getHours()+"시" + Now.getMinutes()+"분"+Now.getSeconds()+"초"+"\n거리           : "+ show_dist+"m");
+                                   year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                                   latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                                   Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                        window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                            +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                  
+                                       drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                             }else if (dist != 0 && dist > (myplace_range + circle_range) && dist<300) {
+                                var circle_count = Object.keys(drawingCircles).length;
+                                mpPositions = [myPlace];
+                                drawCircleRange(myPlace, (300 + (show_dist-300))); //반경 300미터 + (신고자, 세이버 둘 사이의 거리 - 300)
+                                drawCircleRange(mouseLatLng, 100);
+                                
+                                   console.log(myplace_range + circle_range + "myplace_range + circle_range");
+                                  
+                                  console.log(show_dist + " dist");
+                                  console.log("check4 : maching suc");      //connection
+                                  var show_dist = Math.round(dist);//신고자와 가드의 거리를 알려줍니다.   
+                                  alert("현재 신고자의 위치로 신고가 접수되었습니다." + show_dist + "m 거리에 있는 세이버가 매치되었습니다.");
+                                  alert("신고자 좌표 : "+myPlace+"\n세이버 코드 : "+content_list[0].code + "\n세이버 좌표 : " + mouseLatLng+"\n매칭 일자    : "+Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                        + "\n매칭 시간    : "+Now.getHours()+"시" + Now.getMinutes()+"분"+Now.getSeconds()+"초"+"\n거리           : "+ show_dist+"m");
+                                  year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                                  latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                                  Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                       window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                           +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                      
+                                       drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                            }else if(dist> 300 && dist<500 ){
+                                  console.log("check5 : 2번째 재매치 실패했습니다. 3번째 재매치 시작합니다.");      //connection fail, restart
+                                  console.log(dist + (show_dist-300));
+                                  var circle_count = Object.keys(drawingCircles).length;
+                                  mpPositions = [myPlace];
+                                   drawCircleRange(myPlace, (300 + (show_dist-300))); //반경 300미터 + (신고자, 세이버 둘 사이의 거리 - 300)
+                                   drawCircleRange(mouseLatLng, 100);
+                   
+                                   alert("신고자 좌표 : "+myPlace+"\n세이버 코드 : "+content_list[0].code + "\n세이버 좌표 : " + mouseLatLng+"\n매칭 일자    : "+Now.getFullYear()+"년"+ (Now.getMonth()+1)+"월"+Now.getDate()+"일" 
+                                        + "\n매칭 시간    : "+Now.getHours()+"시" + Now.getMinutes()+"분"+Now.getSeconds()+"초"+"\n거리           : "+ show_dist+"m");
+                                   year=Now.getFullYear(); month=(Now.getMonth()+1);  date=Now.getDate();
+                                   latitude= position.coords.latitude;   longitude=position.coords.longitude;
+                                   Hours=Now.getHours(); Minutes=Now.getMinutes(); Seconds=Now.getSeconds();
+                                        window.open("/lifesaver/mapOk?latitude="+latitude+"&longitude="+longitude+"&Hours="+Hours+"&Minutes="+Minutes
+                                            +"&Seconds="+Seconds +"&year="+year+"&month="+month+"&date="+date, "newWindow", "width=300, height=400, scrollbar=no");
+                                       
+                                       drawingInfoMarker[position].setMap(map); kakao.maps.event.addListener(drawingInfoMarker[position], 'click', listener);
+
+                                  }else{
+                                     alert("세이버 매치가 불가합니다.");
+                                     }
+                                 }
+
+                               }//if((100-show_dist) < 0 && dist<500) end
+                               
+                            //else if(dist != 0 && dist > (myplace_range + circle_range)){ end
+                         }//for(var j=0; j < keys.length; j++) end
+                      //for(var i=0; i < mpPositions.length; i++) end
+                      
+                      
+                      ik = Now.getHours()+Now.getMinutes()+Now.getSeconds();
+
+                      if(resultPeo==1){
+                                     
+                          var moveLatLon = new kakao.maps.LatLng(37.483327, 126.8972991 );
+                          map.panTo(moveLatLon);
+                          
+                           var linePath = [ myPlace,  new kakao.maps.LatLng(37.483327, 126.8972991)];
+                          var polyline = new kakao.maps.Polyline({
+                                path: linePath, // 선을 구성하는 좌표배열 입니다
+                                strokeWeight: 5, // 선의 두께 입니다
+                                strokeColor: '#FFAE00', // 선의 색깔입니다
+                                strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                strokeStyle: 'solid' // 선의 스타일입니다
+                            });
+                          polyline.setMap(map);  
+                          var poldistance = Math.round( myPlace + new kakao.maps.LatLng(37.483327, 126.8972991)), // 선의 총 거리를 계산합니다
+                               content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + poldistance + '</span>m</div>'; // 커스텀오버레이에 추가될 내용입니다
+                          }
+                      }
+                   );
+                }//showPosition(position) end
+         
+                
+                $(function () {
+                	$('#btnSend').on('click', function(evt) {
+                	  console.log(socket.readyState);
+                	  evt.preventDefault();
+                	if (socket.readyState !== 1) return;
+                			console.log("반응");
+                		  let msg = "신고가 접수 되었습니다.";
+                		  socket.send(msg);
+                		});
+                });
+                
         </script>
+	</div>
+	<!-- PAGE | 지도 end -->
+	
+	<!-- PAGE | 나눔소통 start -->
+    <section id="page-contact" class="blog-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+          <div class="title__mark">  	
+                    <img src=' <c:url value="/resources/img/pageLine.png" />' alt="">
+          </div>
+            <h3 class="title-a">
+              		나눔소통
+            </h3>
+            
+            <hr />
+            <h3 class="subtitle-a">
+             		 원하는 정보를 찾아보세요
+            </h3>
+            <div class="line-mf"></div>
+          
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="<c:url value="/blog"/>" ><img src='./resources/img/biglogo.png' alt="" class="img-fluid"></a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+                
+              </div>
+              <h3 class="card-title"><a href="<c:url value="/blog"/>" >공지</a></h3>
+             	  <p2>LifeSavor 6월 2일부터 정상 운영합니다
+                         <span id="dots">...</span><br />
+                         <span id="more">저희 LifeSaver가 6월 2일부터 정상 운영됩니다. <br />
+                         
+										지난 5월 19일 세이버 4명의 확진 판정 후 1,400여 직원 및 일부 환자 분에 대한 역학조사 결과, <br />
+										
+						 <span id="moretext">		
+										추가 감염자가 없어 5월 25일 수술장 재오픈에 이어 6월 2일부터 모든 영역에서 정상 운영합니다. <br />
+										
+										기술 지연과 일부 출동 중단으로 인해 불편을 겪으신 분들께 진심으로 사과 드리며 조속히 치료 받으시도록 최선을 다하겠습니다. <br />
+										
+										앞으로 저희 기관은 더 철저히 신종 감염병으로부터 안전한 기관이 되도록 노력하겠습니다. <br />
+						 </span>
+						 <span id="moredots">...</span>	
+                         </span> 
+                         
+                  </p2>
+					 <div class="read-more2">
+						 <a href="<c:url value="/blog"/>"  onclick="myFunction()" id="moreview">더보기..</a>
+                  		<a onclick="myFunction()" id="myBtn">Read More...</a>
+               		 </div>
+              
+            </div>
+          
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="<c:url value="/blog"/>" ><img src='./resources/img/biglogo.png' alt="" class="img-fluid"></a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+                
+              </div>
+              <h3 class="card-title"><a href="<c:url value="/blog"/>" >CPR (심폐소생술) 강사</a></h3>
+              <p>안녕하세요. 심폐소생술 강사에 관심를 갖고 있는 고1 여고생입니다. <br /> 
+                         <span id="dots2">...</span><br />
+                         <span id="more2">인터넷에 CPR강사 조건이나 연봉등을 검색해봐도 잘 나오지 않아서요..ㅜㅜ <br />
+						 <span id="moretext2">		
+										 제가 제일 궁금한 것은 CPR강사가 될 수 있는 방법들이나 연봉이 궁금합니다 <br />
+						 </span>
+						 <span id="moredots2">...</span>	
+                         </span> 
+                         
+                  </p2>
+               
+                        
+                         
+					   
+							       
+							      
+                  			<!-- 심폐소생술관련은 우선 자격증으로 발급되는게 아니고 수료증, 이수증 같은것으로 발급되고요.
+
+							강사 같은 경우 보통 성인이 되어서 일반과정 수료 후 유효기간이 있을때 강사과정을 수료하면 됩니다.
+							
+							심폐소생술강사 같은 경우 대다수가 따로 연봉 같은것은 없습니다. 자신이 얼마나 강의를 많이 했냐에 따라 건당 얼마 이런 형태로 받을 수 있다고 생각하시면 됩니다.
+							
+							간호사면허증, 응급구조사자격증 같이 관련학과를 나온뒤 국가고시를 합격하여 관련 자격증, 
+							면허증을 소지하고 있는경우 보건소,구청이나 관련 업체에 월급 받으면서 일하는 강사는 있긴하지만 그수가 적고요. 
+							일반인인 경우 대부분 건당 얼마 이런 형태 입니다. -->
+                         </span> 
+                         
+                  </p2>
+					 <div class="read-more2">
+						 <a href="<c:url value="/blog"/>"  onclick="myFunction2()" id="moreview2">더보기..</a>
+                  		<a onclick="myFunction2()" id="myBtn2">Read More...</a>
+               		 </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="blog-single.jsp"><img src='./resources/img/save.jpg' alt="" class="img-fluid" ></a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+              </div>
+              <h3 class="card-title"><a href="<c:url value="/blog"/>" >cpr순서</a></h3>
+                 <p2>cpr순서에 대해 알려드립니다 <br />
+                         <span id="dots3">...</span><br />
+                         <span id="more3">1. 심정지 확인(반응 및 호흡 확인)하기
+										        우선 현장의 안전을 확인하고, 쓰러진 사람의 반응 및 호흡상태를 확인합니다. <br />
+						 <span id="moretext3">		
+										 2. 119 신고와 도움요청하기
+											주변에 도움을 요청 및 119에 빠르게 신고하고 발견장소 및 현 상황을 알립니다. <br />
+										 3. 가슴압박 위치잡기
+										        양손을 깍지 끼어 손꿈치로 가슴 중앙(명치를 피해)을 압박하되, 손가락 끝이 몸에 닿지 않도록 합니다. <br />
+									     4. 가슴압박 30회 시행하기
+											팔꿈치를 펴서 팔이 바닥에 수직을 이룬 상태로 체중을 이용하여 가슴압박을 시작합니다. <br />
+										 5. 기도 유지 후 인공호흡 2회 시행하기
+											기도를 확보(머리를 젖히고 턱 들기)한 후 인공호흡을 시행하되 가슴이 부풀어 오르는지 확인하면서 1회/1초, 총 2회 시행합니다. <br />
+										 6. 가슴압박과 인공호흡 병행하기
+											가슴압박과 인공호흡의 시행비율은 가슴압박 30회, 인공호흡 2회로 번갈아서 시행합니다. <br />
+						 </span>
+						 <span id="moredots3">...</span>	
+                         </span> 
+                  </p2>
+					 <div class="read-more2">
+						 <a href="<c:url value="/blog"/>"  onclick="myFunction3()" id="moreview3">더보기..</a>
+                  		<a onclick="myFunction3()" id="myBtn3">Read More...</a>
+               		 </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- PAGE | 지도 end -->
-    <!-- PAGE | 나눔소통 start -->
+    <div class="board-more">
+    	 <a class="boardmore" href="<c:url value="/blog"/>"  id="boardmore">게시판더보기</a>
+    </div>
+  </section>
     <!-- PAGE | 나눔소통 end -->
-    <!-- PAGE | footer start -->
-    <footer id="lifesaver_footer">
-        <div class="lifesaver_footer_container">
-            <div class="lifesaver_footer_text_row">
-                <div class="lifesaver_footer_text">
-                    <ul class="lifesaver_footer_textCol">
-                        <strong>
-                            <li><a href="#">이용약관</a></li>
-                            <li><a href="#">개인정보처리방침</a></li>
-                            <li><a href="#">환자의 권리와 의무</a></li>
-                            <li><a href="#">책임의 한계와 법적 고지</a></li>
-                        </strong>
-
-                    </ul>
-                    <address>
-
-                         <a href="#"><strong><img src='<c:url value="/resources/img/footer_logo.png"></c:url>' alt=""></strong></a> 
-                        <!-- <img src="/img/footerLogo01.png" alt="">
+	
+	<!-- PAGE | footer start -->
+	<footer id="lifesaver_footer">
+		<div class="lifesaver_footer_container">
+			<div class="lifesaver_footer_text_row">
+				<div class="lifesaver_footer_text">
+					<ul class="lifesaver_footer_textCol">
+						<strong>
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#">개인정보처리방침</a></li>
+							<li><a href="#">환자의 권리와 의무</a></li>
+							<li><a href="#">책임의 한계와 법적 고지</a></li>
+						</strong>
+					</ul>
+					<address>
+						<a href="#"><strong><img src='<c:url value="/resources/img/footer_logo.png"></c:url>' alt=""></strong></a>
+						<!-- <img src="/img/footerLogo01.png" alt="">
                         <img src="/img/footerLogo02.png" alt="">
                         <img src="/img/footerLogo03.png" alt=""> -->
-                        <p>Copyright LifeSaver corp.©All Rights Reserved.</p>
-                    </address>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- PAGE | footer end -->
+						<p>Copyright LifeSaver corp.©All Rights Reserved.</p>
+					</address>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- PAGE | footer end -->
 
 
-
-    <!-- JQUERY -->
-    <script src='<c:url value="/resources/js/jquery-1.10.2.min.js"></c:url>' type="text/javascript"></script>
-    <!-- TWITTER BOOTSTRAP -->
-    <script src='<c:url value="/resources/js/bootstrap/bootstrap.min.js"></c:url>' type="text/javascript"></script>    
-    <!--[if lt IE 9]>
+	<!-- JQUERY -->
+	<script src='<c:url value="/resources/js/jquery-1.10.2.min.js"></c:url>' type="text/javascript"></script>
+	<!-- TWITTER BOOTSTRAP -->
+	<script src='<c:url value="/resources/js/bootstrap/bootstrap.min.js"></c:url>' type="text/javascript"></script>
+	<!--[if lt IE 9]>
         <script src="assets/js/bootstrap/html5shiv.js"></script>
     <![endif]-->
 
+	<!-- PLUGINS -->
+	<script src='<c:url value="/resources/js/plugins/jquery.bxslider.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.centralized.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.fixedonlater.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.hashloader.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.mixitup.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.nav.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.parallax-1.1.3.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.responsivevideos.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.scrollTo-1.4.3.1.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.tweet.js"></c:url>' type="text/javascript"></script>
+	<script src='<c:url value="/resources/js/plugins/jquery.tweetCarousel.js"></c:url>' type="text/javascript"></script>
 
-   <!-- PLUGINS -->
-    <script src='<c:url value="/resources/js/plugins/jquery.bxslider.js"></c:url>' type="text/javascript"></script>    
-    <script src='<c:url value="/resources/js/plugins/jquery.centralized.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.fixedonlater.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.hashloader.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.mixitup.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.nav.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.parallax-1.1.3.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.responsivevideos.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.scrollTo-1.4.3.1.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.tweet.js"></c:url>' type="text/javascript"></script>
-    <script src='<c:url value="/resources/js/plugins/jquery.tweetCarousel.js"></c:url>' type="text/javascript"></script>
+	<!-- INITIALIZE -->
+	<script src='<c:url value="/resources/js/application/application.js"></c:url>' type="text/javascript"></script>
 
-
-    <!-- INITIALIZE -->
-    <script src='<c:url value="/resources/js/application/application.js"></c:url>' type="text/javascript"></script>
-
-    <!-- GOOGLE ANALYTICS -->
-    
-    
-    
 </body>
-
-
-
-
 </html>

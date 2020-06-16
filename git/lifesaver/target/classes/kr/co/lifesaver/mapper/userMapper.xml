@@ -6,7 +6,7 @@
 <mapper namespace="com.personal.kakaoLogin.mapper">
 
 	<!-- 회원 정보 조회 -->
-	<select id="selectOne" resultType="dto">
+	<select id="selectOne" resultType="dto" parameterType="String">
 		select * from liferegister
 		where
 		common_id = #{common_id}
@@ -37,11 +37,13 @@
 	<!-- http://www.trandent.com/article/etc/detail/670 -->
 	
 		INSERT INTO law_info
-
+		
 		values(
-		(SELECT CONCAT('L', '-', (SELECT LPAD(common_code ,4,'0') FROM liferegister lr where common_id = common_id ))),
-		(select common_code from liferegister r where common_id = '#{common_id}'),
-		#{license}, 1);
+		(select CONCAT('S', '-', (SELECT LPAD((select count(common_code)+1 from liferegister lr),4,'0')))),
+		(select count(common_code)+1 from liferegister lr),
+		#{law_license}, 0
+		);
+		
 	</insert>
 	
 	<insert id="insertSaver" parameterType="dto">
@@ -61,7 +63,7 @@
 
 	</insert>
 	
-	<select id="saverByCommonCode" resultType="dto">
+	<select id="saverByCommonCode" resultType="dto" parameterType="String">
 		
 		select * from saver_info
 		where
@@ -69,7 +71,7 @@
 	
 	</select>
 	
-	<select id="lawyerByCommonCode" resultType="dto">
+	<select id="lawyerByCommonCode" resultType="dto" parameterType="String">
 		
 		select * from law_info
 		where
@@ -77,6 +79,46 @@
 	
 	</select>
 	
-
+	<select id="selectByID" resultType="dto" parameterType="String" >
+	
+		select * from liferegister
+		where common_id = #{common_id};
+	</select>
+	
+	<select id="selectByLicenseSaver" resultType="dto" parameterType="String">
+		select * from saver_info
+		where saver_license = #{saver_license};
+	
+	</select>
+	
+	<select id="selectByLicenseLaw" resultType="dto" parameterType="String">
+		select * from law_info
+		where law_license = #{law_license};
+	
+	</select>
+	
+	<select id="idChk" resultType="int">
+		
+		select count(*) from liferegister
+		where common_id = #{common_id};
+	</select>
+	
+	<select id="sLicenseChk" resultType="int" parameterType="String">
+		
+		select count(*) from saver_info
+		where saver_license = #{saver_license};
+	</select>
+	
+	<select id="lLicenseChk" resultType="int" parameterType="String">
+		
+		select count(*) from law_info
+		where law_license = #{law_license};
+	</select>
+	
+	<select id="phoneChk" resultType="int" parameterType="String">
+	
+		select count(*) from liferegister
+		where common_phone = #{common_phone};
+	</select>
 
 </mapper>

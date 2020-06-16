@@ -1,0 +1,43 @@
+.read-more2 a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+    padding: 3px 8px;
+    margin: 0 3px;
+    position: relative;
+    background-color: #bbbbbb;
+    display: inline;
+    
+}
+.p2 {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.card-title {
+	text-align: center;
+	font-size: 27px;
+}
+.board-more {
+	font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+    padding: 3px 47.7%;
+    margin: 0 3px;
+    position: relative;
+    background-color: #bbbbbb;
+    display: inline;
+    text-align: center;
+	
+}
